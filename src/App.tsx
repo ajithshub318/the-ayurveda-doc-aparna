@@ -158,28 +158,12 @@ function App() {
               transition={{ duration: 0.8, delay: 0.2 }}
               className="relative"
             >
-              <div className="relative h-[500px] lg:h-[600px] rounded-3xl overflow-hidden shadow-2xl border-4 border-white">
+              <div className="relative h-[500px] lg:h-[600px]">
                 <img
-                  src="https://images.pexels.com/photos/4506105/pexels-photo-4506105.jpeg?auto=compress&cs=tinysrgb&w=1200"
-                  alt="Ayurvedic Healing"
-                  className="w-full h-full object-cover"
+                  src="/src/assets/aparna.png"
+                  alt="Dr. Aparna - Ayurvedic Doctor"
+                  className="w-full h-full object-contain drop-shadow-2xl"
                 />
-                {/* Decorative Elements */}
-                <div className="absolute top-6 right-6 w-20 h-20 bg-sage/20 rounded-full blur-2xl"></div>
-                <div className="absolute bottom-20 left-6 w-32 h-32 bg-earthBrown/20 rounded-full blur-3xl"></div>
-
-                {/* Floating Card */}
-                <div className="absolute bottom-8 left-8 right-8 bg-white/98 backdrop-blur-md rounded-2xl p-6 shadow-2xl border border-sage/10">
-                  <div className="flex items-center gap-4">
-                    <div className="p-3 bg-gradient-to-br from-sage/20 to-sage/10 rounded-xl">
-                      <Heart className="w-6 h-6 text-sage" />
-                    </div>
-                    <div>
-                      <div className="font-semibold text-charcoal text-base">Personalized Care</div>
-                      <div className="text-sm text-charcoal/60 font-light">Tailored treatment plans for you</div>
-                    </div>
-                  </div>
-                </div>
               </div>
             </motion.div>
           </div>
@@ -492,12 +476,12 @@ function App() {
             whileInView="visible"
             viewport={{ once: true, amount: 0.3 }}
             variants={scaleIn}
-            className="relative h-[500px] lg:h-[700px] rounded-2xl overflow-hidden shadow-2xl"
+            className="relative h-[500px] lg:h-[700px]"
           >
             <img
-              src="/src/assets/WhatsApp Image 2025-10-07 at 15.01.22_3b09755b.jpg"
-              alt="Dr. Aparna Albert"
-              className="w-full h-full object-cover"
+              src="/src/assets/aparna.png"
+              alt="Dr. Aparna - Ayurvedic Doctor"
+              className="w-full h-full object-contain drop-shadow-2xl"
             />
           </motion.div>
           <motion.div
