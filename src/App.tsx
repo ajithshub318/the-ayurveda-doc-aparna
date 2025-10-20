@@ -58,7 +58,7 @@ function App() {
   return (
     <div className="min-h-screen bg-ivory">
       {/* Modern Navigation */}
-      <nav className="fixed top-0 left-0 right-0 z-50 bg-white shadow-md">
+      <nav className="fixed top-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-lg shadow-sm border-b border-charcoal/5">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-20 lg:h-24">
             {/* Logo */}
@@ -71,19 +71,19 @@ function App() {
             </div>
 
             {/* Desktop Navigation */}
-            <div className="hidden md:flex items-center space-x-8">
-              <a href="#about" className="text-charcoal hover:text-sage transition-colors font-medium">About</a>
-              <a href="#services" className="text-charcoal hover:text-sage transition-colors font-medium">Services</a>
-              <a href="#plans" className="text-charcoal hover:text-sage transition-colors font-medium">Plans</a>
-              <a href="#testimonials" className="text-charcoal hover:text-sage transition-colors font-medium">Testimonials</a>
-              <a href="#contact" className="text-charcoal hover:text-sage transition-colors font-medium">Contact</a>
+            <div className="hidden md:flex items-center space-x-10">
+              <a href="#about" className="text-charcoal/80 hover:text-sage transition-colors font-medium text-[15px]">About</a>
+              <a href="#services" className="text-charcoal/80 hover:text-sage transition-colors font-medium text-[15px]">Services</a>
+              <a href="#plans" className="text-charcoal/80 hover:text-sage transition-colors font-medium text-[15px]">Plans</a>
+              <a href="#testimonials" className="text-charcoal/80 hover:text-sage transition-colors font-medium text-[15px]">Testimonials</a>
+              <a href="#contact" className="text-charcoal/80 hover:text-sage transition-colors font-medium text-[15px]">Contact</a>
             </div>
 
             {/* CTA Button */}
             <div className="flex items-center space-x-4">
               <button
                 onClick={() => setIsBookingOpen(true)}
-                className="px-6 lg:px-8 py-3 lg:py-3.5 bg-sage text-white rounded-lg hover:bg-sage/90 transition-all duration-300 font-semibold text-sm lg:text-base shadow-lg hover:shadow-xl transform hover:-translate-y-0.5"
+                className="px-6 lg:px-8 py-3 lg:py-3.5 bg-gradient-to-r from-sage to-sage/90 text-white rounded-full hover:shadow-lg hover:shadow-sage/30 transition-all duration-300 font-medium text-sm lg:text-base transform hover:scale-105"
               >
                 Book Consultation
               </button>
@@ -103,48 +103,50 @@ function App() {
               transition={{ duration: 0.8 }}
               className="space-y-8"
             >
-              <div className="inline-block px-4 py-2 bg-sage/10 rounded-full">
-                <span className="text-sage font-semibold text-sm">✓ Certified Ayurvedic Practitioner</span>
+              <div className="inline-flex items-center gap-2 px-5 py-2.5 bg-gradient-to-r from-sage/10 to-sage/5 rounded-full border border-sage/20">
+                <div className="w-2 h-2 bg-sage rounded-full animate-pulse"></div>
+                <span className="text-sage font-medium text-sm tracking-wide">Certified Ayurvedic Practitioner</span>
               </div>
 
-              <h1 className="font-serif text-4xl sm:text-5xl lg:text-6xl xl:text-7xl text-charcoal leading-tight font-bold">
-                Healing Through
-                <span className="block text-sage mt-2">Ancient Wisdom</span>
+              <h1 className="font-serif text-4xl sm:text-5xl lg:text-6xl xl:text-7xl text-charcoal leading-[1.15] font-bold tracking-tight">
+                Your body has been speaking.
+                <span className="block text-sage mt-3 bg-gradient-to-r from-sage to-sage/80 bg-clip-text text-transparent">I help you understand what it's trying to say.</span>
               </h1>
 
-              <p className="text-lg lg:text-xl text-charcoal/70 leading-relaxed max-w-xl">
-                Experience personalized Ayurvedic care with Dr. Aparna Albert. Combining traditional healing practices with modern understanding for holistic wellness.
+              <p className="text-lg lg:text-xl text-charcoal/70 leading-relaxed max-w-xl font-light">
+                <span className="italic">"Ayurveda, practiced with empathy."</span>
+                <span className="block mt-3 text-charcoal/60 font-normal">— Dr. Aparna</span>
               </p>
 
-              <div className="flex flex-col sm:flex-row gap-4 pt-4">
+              <div className="flex flex-col sm:flex-row gap-4 pt-6">
                 <button
                   onClick={() => setIsBookingOpen(true)}
-                  className="px-8 py-4 bg-sage text-white rounded-lg hover:bg-sage/90 transition-all duration-300 font-semibold text-base shadow-lg hover:shadow-xl transform hover:-translate-y-1 flex items-center justify-center gap-2"
+                  className="group px-8 py-4 bg-gradient-to-r from-sage to-sage/90 text-white rounded-full hover:shadow-xl hover:shadow-sage/30 transition-all duration-300 font-medium text-base transform hover:scale-105 flex items-center justify-center gap-2"
                 >
-                  <Calendar className="w-5 h-5" />
-                  Book Consultation
+                  <Calendar className="w-5 h-5 group-hover:rotate-12 transition-transform" />
+                  Consult with me
                 </button>
                 <button
                   onClick={() => setIsContactOpen(true)}
-                  className="px-8 py-4 bg-white text-charcoal border-2 border-sage rounded-lg hover:bg-sage/5 transition-all duration-300 font-semibold text-base"
+                  className="px-8 py-4 bg-white text-charcoal border-2 border-sage/30 rounded-full hover:bg-sage/5 hover:border-sage transition-all duration-300 font-medium text-base"
                 >
-                  Learn More
+                  Learn more
                 </button>
               </div>
 
               {/* Trust Indicators */}
-              <div className="grid grid-cols-3 gap-6 pt-8 border-t border-charcoal/10">
-                <div>
-                  <div className="text-3xl font-bold text-sage">500+</div>
-                  <div className="text-sm text-charcoal/60">Happy Clients</div>
+              <div className="grid grid-cols-3 gap-8 pt-10 border-t border-sage/20">
+                <div className="text-center sm:text-left">
+                  <div className="text-4xl font-bold bg-gradient-to-r from-sage to-earthBrown bg-clip-text text-transparent mb-1">500+</div>
+                  <div className="text-sm text-charcoal/60 font-medium">Happy Clients</div>
                 </div>
-                <div>
-                  <div className="text-3xl font-bold text-sage">10+</div>
-                  <div className="text-sm text-charcoal/60">Years Experience</div>
+                <div className="text-center sm:text-left">
+                  <div className="text-4xl font-bold bg-gradient-to-r from-sage to-earthBrown bg-clip-text text-transparent mb-1">10+</div>
+                  <div className="text-sm text-charcoal/60 font-medium">Years Experience</div>
                 </div>
-                <div>
-                  <div className="text-3xl font-bold text-sage">4.9</div>
-                  <div className="text-sm text-charcoal/60">Rating</div>
+                <div className="text-center sm:text-left">
+                  <div className="text-4xl font-bold bg-gradient-to-r from-sage to-earthBrown bg-clip-text text-transparent mb-1">4.9</div>
+                  <div className="text-sm text-charcoal/60 font-medium">Rating</div>
                 </div>
               </div>
             </motion.div>
@@ -156,21 +158,25 @@ function App() {
               transition={{ duration: 0.8, delay: 0.2 }}
               className="relative"
             >
-              <div className="relative h-[500px] lg:h-[600px] rounded-2xl overflow-hidden shadow-2xl">
+              <div className="relative h-[500px] lg:h-[600px] rounded-3xl overflow-hidden shadow-2xl border-4 border-white">
                 <img
                   src="https://images.pexels.com/photos/4506105/pexels-photo-4506105.jpeg?auto=compress&cs=tinysrgb&w=1200"
                   alt="Ayurvedic Healing"
                   className="w-full h-full object-cover"
                 />
+                {/* Decorative Elements */}
+                <div className="absolute top-6 right-6 w-20 h-20 bg-sage/20 rounded-full blur-2xl"></div>
+                <div className="absolute bottom-20 left-6 w-32 h-32 bg-earthBrown/20 rounded-full blur-3xl"></div>
+
                 {/* Floating Card */}
-                <div className="absolute bottom-8 left-8 right-8 bg-white/95 backdrop-blur-sm rounded-xl p-6 shadow-xl">
+                <div className="absolute bottom-8 left-8 right-8 bg-white/98 backdrop-blur-md rounded-2xl p-6 shadow-2xl border border-sage/10">
                   <div className="flex items-center gap-4">
-                    <div className="p-3 bg-sage/10 rounded-lg">
+                    <div className="p-3 bg-gradient-to-br from-sage/20 to-sage/10 rounded-xl">
                       <Heart className="w-6 h-6 text-sage" />
                     </div>
                     <div>
-                      <div className="font-semibold text-charcoal">Personalized Care</div>
-                      <div className="text-sm text-charcoal/60">Tailored treatment plans for you</div>
+                      <div className="font-semibold text-charcoal text-base">Personalized Care</div>
+                      <div className="text-sm text-charcoal/60 font-light">Tailored treatment plans for you</div>
                     </div>
                   </div>
                 </div>
@@ -188,13 +194,16 @@ function App() {
             whileInView="visible"
             viewport={{ once: true }}
             variants={fadeInUp}
-            className="text-center mb-16"
+            className="text-center mb-20"
           >
-            <h2 className="font-serif text-4xl lg:text-5xl text-charcoal font-bold mb-4">
-              Why Choose Our Ayurvedic Care
+            <div className="inline-block px-4 py-2 bg-sage/10 rounded-full mb-6">
+              <span className="text-sage font-medium text-sm tracking-wide">Why Choose Us</span>
+            </div>
+            <h2 className="font-serif text-4xl lg:text-6xl text-charcoal font-bold mb-6 leading-tight">
+              Authentic Ayurvedic Care
             </h2>
-            <p className="text-lg text-charcoal/70 max-w-2xl mx-auto">
-              Experience authentic Ayurvedic healing combined with modern healthcare standards
+            <p className="text-lg text-charcoal/60 max-w-2xl mx-auto font-light leading-relaxed">
+              Experience traditional healing combined with modern healthcare standards
             </p>
           </motion.div>
 
@@ -230,14 +239,14 @@ function App() {
               <motion.div
                 key={index}
                 variants={scaleIn}
-                whileHover={{ y: -5 }}
-                className="bg-sage/5 rounded-2xl p-8 text-center hover:shadow-lg transition-shadow duration-300"
+                whileHover={{ y: -8, scale: 1.02 }}
+                className="group bg-gradient-to-br from-white to-sage/5 rounded-3xl p-8 text-center hover:shadow-2xl hover:shadow-sage/10 transition-all duration-500 border border-sage/10"
               >
-                <div className="inline-flex p-4 bg-sage/10 rounded-xl mb-4 text-sage">
+                <div className="inline-flex p-5 bg-gradient-to-br from-sage/20 to-sage/10 rounded-2xl mb-6 text-sage group-hover:scale-110 group-hover:rotate-3 transition-transform duration-300">
                   {feature.icon}
                 </div>
-                <h3 className="font-semibold text-xl text-charcoal mb-3">{feature.title}</h3>
-                <p className="text-charcoal/70 leading-relaxed">{feature.description}</p>
+                <h3 className="font-semibold text-xl text-charcoal mb-3 group-hover:text-sage transition-colors">{feature.title}</h3>
+                <p className="text-charcoal/60 leading-relaxed font-light text-[15px]">{feature.description}</p>
               </motion.div>
             ))}
           </motion.div>
@@ -270,13 +279,10 @@ function App() {
               className="space-y-6 order-1 lg:order-2"
             >
               <h2 className="font-serif text-4xl lg:text-5xl text-charcoal font-bold leading-tight">
-                Understanding Ayurveda
+                My Work
               </h2>
               <p className="text-lg text-charcoal/70 leading-relaxed">
-                Every concern — from sleep to skin, digestion to hormones — has a cause that the body is trying to express.
-              </p>
-              <p className="text-lg text-charcoal/70 leading-relaxed">
-                I help you read those signs through Ayurveda, so treatment feels simple, personal, and effective.
+                I help people reconnect with their health through mindful conversations, Ayurvedic practice, and daily choices.
               </p>
 
               <div className="space-y-4 pt-4">
@@ -328,12 +334,15 @@ function App() {
             whileInView="visible"
             viewport={{ once: true }}
             variants={fadeInUp}
-            className="text-center mb-16"
+            className="text-center mb-20"
           >
-            <h2 className="font-serif text-4xl lg:text-5xl text-charcoal font-bold mb-4">
+            <div className="inline-block px-4 py-2 bg-sage/10 rounded-full mb-6">
+              <span className="text-sage font-medium text-sm tracking-wide">Pricing Plans</span>
+            </div>
+            <h2 className="font-serif text-4xl lg:text-6xl text-charcoal font-bold mb-6 leading-tight">
               Choose Your Healing Plan
             </h2>
-            <p className="text-lg text-charcoal/70 max-w-2xl mx-auto">
+            <p className="text-lg text-charcoal/60 max-w-2xl mx-auto font-light leading-relaxed">
               Flexible plans designed to support your wellness journey
             </p>
           </motion.div>
@@ -343,128 +352,100 @@ function App() {
             whileInView="visible"
             viewport={{ once: true, amount: 0.1 }}
             variants={staggerContainer}
-            className="grid md:grid-cols-3 gap-6 lg:gap-8 mb-16"
+            className="grid md:grid-cols-2 gap-8 lg:gap-12 mb-16 max-w-5xl mx-auto"
           >
             {/* Essential Plan */}
             <motion.div
               variants={scaleIn}
               whileHover={{ y: -10, scale: 1.02 }}
-              className="bg-white rounded-3xl p-10 shadow-lg hover:shadow-2xl transition-all duration-500 border border-charcoal/5 hover:border-sage/30 group"
+              className="bg-white rounded-3xl p-10 shadow-xl hover:shadow-2xl hover:shadow-sage/10 transition-all duration-500 border border-sage/10 group"
             >
-              <div className="mb-6">
-                <div className="inline-block p-3 bg-sage/10 rounded-2xl mb-4 group-hover:bg-sage/20 transition-colors">
-                  <Heart className="w-10 h-10 text-sage group-hover:scale-110 transition-transform" strokeWidth={1.5} />
+              <div className="mb-8">
+                <div className="inline-flex p-4 bg-gradient-to-br from-sage/20 to-sage/10 rounded-2xl mb-6 group-hover:scale-110 group-hover:rotate-3 transition-transform">
+                  <Heart className="w-10 h-10 text-sage" strokeWidth={1.5} />
                 </div>
-                <h3 className="font-serif text-3xl text-charcoal mb-3">Essential Plan</h3>
-                <p className="text-5xl font-serif text-earthBrown mb-1">₹4,000</p>
-                <p className="text-base text-charcoal/60 font-body">per month</p>
+                <h3 className="font-serif text-3xl text-charcoal mb-4 font-bold">Essential Plan</h3>
               </div>
-              <ul className="space-y-4 text-charcoal/80 font-light text-base">
+              <ul className="space-y-4 text-charcoal/70 font-light text-[15px] mb-8">
                 <li className="flex items-start gap-3">
-                  <span className="text-sage mt-1 text-xl">✓</span>
+                  <div className="w-5 h-5 rounded-full bg-sage/20 flex items-center justify-center flex-shrink-0 mt-0.5">
+                    <span className="text-sage text-xs">✓</span>
+                  </div>
                   <span>Two online consultations per month</span>
                 </li>
                 <li className="flex items-start gap-3">
-                  <span className="text-sage mt-1 text-xl">✓</span>
+                  <div className="w-5 h-5 rounded-full bg-sage/20 flex items-center justify-center flex-shrink-0 mt-0.5">
+                    <span className="text-sage text-xs">✓</span>
+                  </div>
                   <span>Personalized Ayurvedic plan</span>
                 </li>
                 <li className="flex items-start gap-3">
-                  <span className="text-sage mt-1 text-xl">✓</span>
+                  <div className="w-5 h-5 rounded-full bg-sage/20 flex items-center justify-center flex-shrink-0 mt-0.5">
+                    <span className="text-sage text-xs">✓</span>
+                  </div>
                   <span>WhatsApp / Email support</span>
                 </li>
                 <li className="flex items-start gap-3">
-                  <span className="text-sage mt-1 text-xl">✓</span>
+                  <div className="w-5 h-5 rounded-full bg-sage/20 flex items-center justify-center flex-shrink-0 mt-0.5">
+                    <span className="text-sage text-xs">✓</span>
+                  </div>
                   <span>Monthly review</span>
                 </li>
               </ul>
               <button
                 onClick={() => setIsBookingOpen(true)}
-                className="mt-8 w-full px-8 py-4 bg-beige text-charcoal rounded-full hover:bg-sage hover:text-ivory transition-all duration-300 font-medium text-base tracking-wide"
+                className="mt-auto w-full px-8 py-4 bg-white text-charcoal border-2 border-sage/30 rounded-full hover:bg-sage hover:text-white hover:border-sage transition-all duration-300 font-medium text-base tracking-wide"
               >
-                Choose Plan
+                Learn More
               </button>
             </motion.div>
 
             {/* Focused Plan */}
             <motion.div
               variants={scaleIn}
-              whileHover={{ y: -10, scale: 1.08 }}
-              className="bg-gradient-to-br from-white to-sage/5 rounded-3xl p-8 lg:p-10 shadow-2xl border-2 border-sage/40 relative overflow-hidden transform md:scale-105 transition-all duration-500"
+              whileHover={{ y: -10, scale: 1.05 }}
+              className="bg-gradient-to-br from-sage/5 via-white to-sage/10 rounded-3xl p-8 lg:p-10 shadow-2xl border-2 border-sage relative overflow-hidden transform md:scale-105 transition-all duration-500"
             >
-              <div className="absolute top-0 right-0 bg-sage text-ivory px-6 py-2 rounded-bl-2xl text-sm font-medium tracking-wide shadow-lg">
-                Most Popular
+              <div className="absolute top-0 right-0 bg-gradient-to-r from-sage to-earthBrown text-white px-6 py-2.5 rounded-bl-2xl text-sm font-semibold tracking-wide shadow-lg">
+                ⭐ Most Popular
               </div>
-              <div className="mb-6 mt-4">
-                <div className="inline-block p-3 bg-sage/20 rounded-2xl mb-4">
+              <div className="mb-8 mt-6">
+                <div className="inline-flex p-4 bg-gradient-to-br from-sage/30 to-sage/20 rounded-2xl mb-6 shadow-md">
                   <Calendar className="w-10 h-10 text-sage" strokeWidth={1.5} />
                 </div>
-                <h3 className="font-serif text-3xl text-charcoal mb-3">Focused Plan</h3>
-                <p className="text-5xl font-serif text-earthBrown mb-1">₹6,000</p>
-                <p className="text-base text-charcoal/60 font-body">per month</p>
+                <h3 className="font-serif text-3xl text-charcoal mb-4 font-bold">Focused Plan</h3>
               </div>
-              <ul className="space-y-4 text-charcoal/80 font-light text-base">
+              <ul className="space-y-4 text-charcoal/70 font-light text-[15px] mb-8">
                 <li className="flex items-start gap-3">
-                  <span className="text-sage mt-1 text-xl">✓</span>
+                  <div className="w-5 h-5 rounded-full bg-sage/30 flex items-center justify-center flex-shrink-0 mt-0.5">
+                    <span className="text-sage text-xs font-bold">✓</span>
+                  </div>
                   <span>Weekly consultations</span>
                 </li>
                 <li className="flex items-start gap-3">
-                  <span className="text-sage mt-1 text-xl">✓</span>
+                  <div className="w-5 h-5 rounded-full bg-sage/30 flex items-center justify-center flex-shrink-0 mt-0.5">
+                    <span className="text-sage text-xs font-bold">✓</span>
+                  </div>
                   <span>Tailored guidance on diet & lifestyle</span>
                 </li>
                 <li className="flex items-start gap-3">
-                  <span className="text-sage mt-1 text-xl">✓</span>
+                  <div className="w-5 h-5 rounded-full bg-sage/30 flex items-center justify-center flex-shrink-0 mt-0.5">
+                    <span className="text-sage text-xs font-bold">✓</span>
+                  </div>
                   <span>Unlimited text support</span>
                 </li>
                 <li className="flex items-start gap-3">
-                  <span className="text-sage mt-1 text-xl">✓</span>
+                  <div className="w-5 h-5 rounded-full bg-sage/30 flex items-center justify-center flex-shrink-0 mt-0.5">
+                    <span className="text-sage text-xs font-bold">✓</span>
+                  </div>
                   <span>Weekly tracking</span>
                 </li>
               </ul>
               <button
                 onClick={() => setIsBookingOpen(true)}
-                className="mt-8 w-full px-8 py-4 bg-sage text-ivory rounded-full hover:bg-earthBrown transition-all duration-300 font-medium text-base tracking-wide shadow-lg hover:shadow-xl"
+                className="mt-auto w-full px-8 py-4 bg-gradient-to-r from-sage to-earthBrown text-white rounded-full hover:shadow-xl hover:shadow-sage/40 transition-all duration-300 font-semibold text-base tracking-wide"
               >
-                Choose Plan
-              </button>
-            </motion.div>
-
-            {/* Intensive Plan */}
-            <motion.div
-              variants={scaleIn}
-              whileHover={{ y: -10, scale: 1.02 }}
-              className="bg-white rounded-3xl p-10 shadow-lg hover:shadow-2xl transition-all duration-500 border border-charcoal/5 hover:border-sage/30 group"
-            >
-              <div className="mb-6">
-                <div className="inline-block p-3 bg-sage/10 rounded-2xl mb-4 group-hover:bg-sage/20 transition-colors">
-                  <MessageCircle className="w-10 h-10 text-sage group-hover:scale-110 transition-transform" strokeWidth={1.5} />
-                </div>
-                <h3 className="font-serif text-3xl text-charcoal mb-3">Intensive Plan</h3>
-                <p className="text-5xl font-serif text-earthBrown mb-1">₹15,000</p>
-                <p className="text-base text-charcoal/60 font-body">per month</p>
-              </div>
-              <ul className="space-y-4 text-charcoal/80 font-light text-base">
-                <li className="flex items-start gap-3">
-                  <span className="text-sage mt-1 text-xl">✓</span>
-                  <span>Daily 10–15 min sessions</span>
-                </li>
-                <li className="flex items-start gap-3">
-                  <span className="text-sage mt-1 text-xl">✓</span>
-                  <span>Meal-by-meal guidance</span>
-                </li>
-                <li className="flex items-start gap-3">
-                  <span className="text-sage mt-1 text-xl">✓</span>
-                  <span>Priority response for queries</span>
-                </li>
-                <li className="flex items-start gap-3">
-                  <span className="text-sage mt-1 text-xl">✓</span>
-                  <span>Weekly progress review</span>
-                </li>
-              </ul>
-              <button
-                onClick={() => setIsBookingOpen(true)}
-                className="mt-8 w-full px-8 py-4 bg-beige text-charcoal rounded-full hover:bg-sage hover:text-ivory transition-all duration-300 font-medium text-base tracking-wide"
-              >
-                Choose Plan
+                Learn More
               </button>
             </motion.div>
           </motion.div>
@@ -527,14 +508,96 @@ function App() {
             className="space-y-8"
           >
             <h2 className="font-serif text-5xl lg:text-6xl text-charcoal leading-tight font-light">
-              About Dr. Aparna
+              About
             </h2>
             <p className="text-xl text-charcoal/80 leading-relaxed font-light">
-              I'm an Ayurvedic doctor who believes healing begins with listening.
+              I'm Dr. Aparna — an Ayurvedic doctor from Kerala.
+              I've seen how often we treat symptoms and overlook stories.
+              My work is to help you listen — to your body, your patterns, your pauses.
             </p>
-            <p className="text-xl text-charcoal/80 leading-relaxed font-light">
-              My approach blends classical Ayurvedic wisdom with modern clinical understanding — so your treatment feels compassionate, precise, and truly personal.
+            <p className="text-xl text-charcoal/70 leading-relaxed font-light italic">
+              Healing begins when you stop rushing yourself.
             </p>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* Words & Reflections Section */}
+      <section className="py-20 lg:py-28 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <motion.div
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            variants={fadeInUp}
+            className="text-center mb-20"
+          >
+            <div className="inline-block px-4 py-2 bg-sage/10 rounded-full mb-6">
+              <span className="text-sage font-medium text-sm tracking-wide">Insights & Stories</span>
+            </div>
+            <h2 className="font-serif text-4xl lg:text-6xl text-charcoal font-bold mb-6 leading-tight">
+              Words & Reflections
+            </h2>
+            <p className="text-lg text-charcoal/60 max-w-2xl mx-auto font-light leading-relaxed">
+              I write to remind you that balance isn't a destination.<br/>
+              <span className="italic">It's a relationship — with yourself.</span>
+            </p>
+          </motion.div>
+
+          <motion.div
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.2 }}
+            variants={staggerContainer}
+            className="grid md:grid-cols-2 lg:grid-cols-3 gap-8"
+          >
+            {[
+              {
+                title: "Understanding Your Dosha",
+                description: "Learn how your unique constitution shapes your health journey",
+                image: "https://images.pexels.com/photos/1194218/pexels-photo-1194218.jpeg?auto=compress&cs=tinysrgb&w=800",
+                type: "Read"
+              },
+              {
+                title: "Daily Rituals for Balance",
+                description: "Simple practices to align with nature's rhythms",
+                image: "https://images.pexels.com/photos/3822621/pexels-photo-3822621.jpeg?auto=compress&cs=tinysrgb&w=800",
+                type: "Watch"
+              },
+              {
+                title: "Food as Medicine",
+                description: "Discovering the healing power of mindful eating",
+                image: "https://images.pexels.com/photos/1640777/pexels-photo-1640777.jpeg?auto=compress&cs=tinysrgb&w=800",
+                type: "Read"
+              }
+            ].map((item, index) => (
+              <motion.div
+                key={index}
+                variants={scaleIn}
+                whileHover={{ y: -10, scale: 1.02 }}
+                className="bg-white rounded-3xl overflow-hidden hover:shadow-2xl hover:shadow-sage/10 transition-all duration-500 group cursor-pointer border border-sage/10"
+              >
+                <div className="relative h-64 overflow-hidden">
+                  <img
+                    src={item.image}
+                    alt={item.title}
+                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-charcoal/80 via-charcoal/40 to-transparent opacity-60 group-hover:opacity-80 transition-opacity duration-300"></div>
+                  <div className="absolute bottom-4 right-4 px-4 py-2 bg-white/95 backdrop-blur-sm rounded-full text-sm font-medium text-sage shadow-lg">
+                    {item.type}
+                  </div>
+                </div>
+                <div className="p-7">
+                  <h3 className="font-serif text-2xl text-charcoal mb-3 group-hover:text-sage transition-colors font-bold">
+                    {item.title}
+                  </h3>
+                  <p className="text-charcoal/60 leading-relaxed text-[15px] font-light">
+                    {item.description}
+                  </p>
+                </div>
+              </motion.div>
+            ))}
           </motion.div>
         </div>
       </section>
@@ -547,12 +610,15 @@ function App() {
             whileInView="visible"
             viewport={{ once: true }}
             variants={fadeInUp}
-            className="text-center mb-16"
+            className="text-center mb-20"
           >
-            <h2 className="font-serif text-4xl lg:text-5xl text-charcoal font-bold mb-4">
+            <div className="inline-block px-4 py-2 bg-sage/10 rounded-full mb-6">
+              <span className="text-sage font-medium text-sm tracking-wide">Testimonials</span>
+            </div>
+            <h2 className="font-serif text-4xl lg:text-6xl text-charcoal font-bold mb-6 leading-tight">
               What Our Clients Say
             </h2>
-            <p className="text-lg text-charcoal/70 max-w-2xl mx-auto">
+            <p className="text-lg text-charcoal/60 max-w-2xl mx-auto font-light leading-relaxed">
               Real stories from people who transformed their health with Ayurveda
             </p>
           </motion.div>
@@ -562,16 +628,19 @@ function App() {
               whileInView="visible"
               viewport={{ once: true, amount: 0.3 }}
               variants={scaleIn}
-              whileHover={{ y: -5, scale: 1.02 }}
-              className="bg-white rounded-3xl p-8 lg:p-12 shadow-xl hover:shadow-2xl transition-all duration-500"
+              whileHover={{ y: -5, scale: 1.01 }}
+              className="bg-white rounded-3xl p-10 lg:p-16 shadow-2xl hover:shadow-sage/10 transition-all duration-500 border border-sage/10 relative overflow-hidden"
             >
-              <div className="text-sage text-7xl font-serif mb-4 leading-none">"</div>
-              <p className="font-serif text-2xl lg:text-3xl text-charcoal leading-relaxed font-light mb-6">
-                Her consultation felt like therapy and science in one.
-              </p>
-              <div className="flex items-center gap-4">
-                <div className="w-12 h-px bg-sage/30"></div>
-                <p className="text-charcoal/60 font-light">— Patient Review</p>
+              <div className="absolute top-0 right-0 w-40 h-40 bg-sage/5 rounded-full blur-3xl"></div>
+              <div className="relative">
+                <div className="text-sage text-8xl font-serif mb-6 leading-none opacity-30">"</div>
+                <p className="font-serif text-2xl lg:text-4xl text-charcoal leading-relaxed font-light mb-8">
+                  Her consultation felt like therapy and science in one.
+                </p>
+                <div className="flex items-center gap-4">
+                  <div className="w-16 h-px bg-gradient-to-r from-sage to-transparent"></div>
+                  <p className="text-charcoal/60 font-light text-base">— Patient Review</p>
+                </div>
               </div>
             </motion.div>
 
@@ -580,16 +649,19 @@ function App() {
               whileInView="visible"
               viewport={{ once: true, amount: 0.3 }}
               variants={scaleIn}
-              whileHover={{ y: -5, scale: 1.02 }}
-              className="bg-white rounded-3xl p-8 lg:p-12 shadow-xl hover:shadow-2xl transition-all duration-500"
+              whileHover={{ y: -5, scale: 1.01 }}
+              className="bg-white rounded-3xl p-10 lg:p-16 shadow-2xl hover:shadow-sage/10 transition-all duration-500 border border-sage/10 relative overflow-hidden"
             >
-              <div className="text-sage text-7xl font-serif mb-4 leading-none">"</div>
-              <p className="font-serif text-2xl lg:text-3xl text-charcoal leading-relaxed font-light mb-6">
-                I finally understood what my body was trying to tell me.
-              </p>
-              <div className="flex items-center gap-4">
-                <div className="w-12 h-px bg-sage/30"></div>
-                <p className="text-charcoal/60 font-light">— Patient Review</p>
+              <div className="absolute top-0 right-0 w-40 h-40 bg-earthBrown/5 rounded-full blur-3xl"></div>
+              <div className="relative">
+                <div className="text-sage text-8xl font-serif mb-6 leading-none opacity-30">"</div>
+                <p className="font-serif text-2xl lg:text-4xl text-charcoal leading-relaxed font-light mb-8">
+                  I finally understood what my body was trying to tell me.
+                </p>
+                <div className="flex items-center gap-4">
+                  <div className="w-16 h-px bg-gradient-to-r from-sage to-transparent"></div>
+                  <p className="text-charcoal/60 font-light text-base">— Patient Review</p>
+                </div>
               </div>
             </motion.div>
           </div>
@@ -597,20 +669,42 @@ function App() {
       </section>
 
       {/* Final Invitation Section */}
-      <section className="py-32 px-6 bg-mutedBrown text-center">
-        <div className="max-w-3xl mx-auto space-y-10">
-          <h2 className="font-serif text-5xl lg:text-6xl text-ivory leading-tight font-light">
-            Health begins with understanding your body — not fighting it.
-          </h2>
-          <p className="text-xl text-ivory/90 font-light">
-            Let's start your Ayurvedic journey together.
-          </p>
-          <button
-            onClick={() => setIsBookingOpen(true)}
-            className="px-12 py-4 bg-ivory text-charcoal rounded-full hover:bg-white transition-all duration-300 font-medium text-base tracking-wide shadow-xl hover:shadow-2xl"
+      <section className="relative py-32 px-6 bg-gradient-to-br from-mutedBrown via-earthBrown to-mutedBrown text-center overflow-hidden">
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_50%,rgba(168,184,156,0.1),transparent_50%)]"></div>
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_70%_50%,rgba(123,94,87,0.1),transparent_50%)]"></div>
+        <div className="max-w-3xl mx-auto space-y-12 relative">
+          <motion.h2
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8 }}
+            className="font-serif text-4xl sm:text-5xl lg:text-6xl text-ivory leading-tight font-light"
           >
-            Begin Your Plan
-          </button>
+            If something here feels like what you've been searching for, let's talk.
+          </motion.h2>
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8, delay: 0.2 }}
+            className="flex flex-col sm:flex-row gap-6 justify-center items-center pt-6"
+          >
+            <button
+              onClick={() => setIsBookingOpen(true)}
+              className="group px-12 py-5 bg-ivory text-charcoal rounded-full hover:bg-white transition-all duration-300 font-semibold text-base tracking-wide shadow-2xl hover:shadow-3xl transform hover:scale-105"
+            >
+              <span className="flex items-center gap-2">
+                Book a Consultation
+                <span className="group-hover:translate-x-1 transition-transform">→</span>
+              </span>
+            </button>
+            <button
+              onClick={() => setIsContactOpen(true)}
+              className="px-12 py-5 bg-transparent text-ivory border-2 border-ivory rounded-full hover:bg-ivory/10 hover:border-white transition-all duration-300 font-medium text-base tracking-wide backdrop-blur-sm"
+            >
+              Write to me
+            </button>
+          </motion.div>
         </div>
       </section>
 
@@ -704,7 +798,7 @@ function App() {
           <div className="border-t border-white/10 pt-8 mt-8">
             <div className="flex flex-col md:flex-row justify-between items-center gap-4">
               <p className="text-white/60 text-sm">
-                © 2025 The Ayurveda Doc. All rights reserved.
+                © 2025 The Ayurveda Doc. All rights reserved. Made with care in Kerala.
               </p>
               <div className="flex gap-6 text-sm">
                 <a href="#" className="text-white/60 hover:text-sage transition-colors">Privacy Policy</a>

@@ -12,8 +12,9 @@ export default {
         beige: '#E8E1D9',
       },
       fontFamily: {
-        serif: ['Cormorant Garamond', 'serif'],
-        body: ['Inter', 'sans-serif'],
+        serif: ['Playfair Display', 'serif'],
+        body: ['Poppins', 'sans-serif'],
+        sans: ['Poppins', 'sans-serif'],
       },
       spacing: {
         '120': '30rem',
