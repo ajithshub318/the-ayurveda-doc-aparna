@@ -1,3 +1,5 @@
+import logoImage from '../assets/logo.png';
+
 interface NavigationProps {
   onBookingClick: () => void;
 }
@@ -10,7 +12,7 @@ export function Navigation({ onBookingClick }: NavigationProps) {
           {/* Logo */}
           <div className="flex-shrink-0">
             <img
-              src="/src/assets/logo.png"
+              src={logoImage}
               alt="The Ayurveda Doc"
               className="h-20 lg:h-24 w-auto transition-transform duration-300 hover:scale-105"
             />

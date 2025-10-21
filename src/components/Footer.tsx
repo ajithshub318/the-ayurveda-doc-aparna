@@ -1,4 +1,5 @@
 import { Mail, Phone, MessageCircle } from 'lucide-react';
+import logoImage from '../assets/logo.png';
 
 interface FooterProps {
   onContactClick: () => void;
@@ -13,7 +14,7 @@ export function Footer({ onContactClick, onBookingClick }: FooterProps) {
           {/* Company Info */}
           <div className="space-y-6">
             <img
-              src="/src/assets/Logo___2_-removebg-preview.png"
+              src={logoImage}
               alt="The Ayurveda Doc"
               className="h-16 w-auto"
             />

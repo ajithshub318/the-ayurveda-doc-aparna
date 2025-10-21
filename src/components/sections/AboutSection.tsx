@@ -1,4 +1,5 @@
 import { motion, Variants } from 'framer-motion';
+import aparna2Image from '../../assets/aparna2.jpg';
 
 const scaleIn: Variants = {
   hidden: { opacity: 0, scale: 0.8 },
@@ -30,7 +31,7 @@ export function AboutSection() {
           className="relative h-[500px] lg:h-[700px]"
         >
           <img
-            src="/src/assets/aparna2.jpg"
+            src={aparna2Image}
             alt="Dr. Aparna - Ayurvedic Doctor"
             className="w-full h-full object-contain drop-shadow-2xl"
           />

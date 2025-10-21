@@ -1,5 +1,6 @@
 import { Calendar } from 'lucide-react';
 import { motion } from 'framer-motion';
+import aparnaImage from '../../assets/aparna.png';
 
 interface HeroSectionProps {
   onBookingClick: () => void;
@@ -74,7 +75,7 @@ export function HeroSection({ onBookingClick, onContactClick }: HeroSectionProps
           >
             <div className="relative h-[500px] lg:h-[600px]">
               <img
-                src="/src/assets/aparna.png"
+                src={aparnaImage}
                 alt="Dr. Aparna - Ayurvedic Doctor"
                 className="w-full h-full object-contain drop-shadow-2xl"
               />
