@@ -1,87 +1,137 @@
-Website Copy for theayurvedadoc.com
-
 1. Hero Section
 
-Headline:
+Current:
 
-> Your body has been speaking.
-I help you understand what it’s trying to say.
+“Your body has been speaking. I help you understand what it’s trying to say.”
 
+Image of person holding neck
 
+CTA: Book Consultation, Learn More
 
-Subtext:
+Updated:
 
-> Ayurveda, practiced with empathy.
-— Dr. Aparna
+Headline: “Your body always knows what it needs. I help you notice it, make sense of it, and take steps that actually help.”
 
+Subtext: “From fatigue and digestive discomfort to hormonal shifts or emotional unrest, your body is sending signals. I help you understand them — gently, clearly, and practically.”
 
+CTAs:
 
-CTA buttons:
+Book a Consultation → Opens booking form
 
-> [Consult with me]  [Learn more]
+Explore Recommended Retreats → Opens retreat questionnaire
 
+2. Authentic Ayurvedic Care Section
 
+Current: 4 boxes describing services like “Personalized Approach”, “Holistic Treatments”, etc.
 
+Updated:
 
----
+Header: “What I Do” / “Personalized Ayurveda That Fits Your Life”
 
-2. About
+Text: “I work with classical Ayurvedic principles, but always in a way that fits your life and your body. Together, we look at what your body truly needs, and create simple, effective steps to bring balance back.”
 
-> I’m Dr. Aparna — an Ayurvedic doctor from Kerala.
-I’ve seen how often we treat symptoms and overlook stories.
-My work is to help you listen — to your body, your patterns, your pauses.
+Boxes can include:
 
+1:1 Consultations
 
+Nutrition & Lifestyle Guidance
 
-(Optional soft line below — almost whispered tone)
+Postnatal & Women’s Health Support
 
-> Healing begins when you stop rushing yourself.
+Detox & Rejuvenation Plans
 
+CTA: optional Start Your Journey → Book Consultation
 
+3. My Work Section
 
+Current: Image of a person + description of work
 
----
+Updated:
 
-3. My Work
+Keep as “My Work” or “How I Work”
 
-> I help people reconnect with their health through
-mindful conversations, Ayurvedic practice, and daily choices.
+Text: “I guide you through understanding your body’s signals, creating practical steps and rituals that restore balance, energy, and clarity.”
 
+CTA: Book a Consultation →
 
+4. Modern Living Meets Ayurveda Section
 
-Three links/cards:
+Current: Some text + Book Consultation button
 
+Updated:
 
+Header: “Healing Needs Space” (Retreat Section)
 
+Text: “Some things need more than a routine — they need space, attention, and a place to truly rest. I personally guide you to retreats that stay true to classical Ayurveda, care deeply for their guests, and create room for real healing. Each recommendation is based on your body, goals, and current phase of life.”
 
+CTA: Explore Recommended Retreats → Leads to retreat questionnaire
 
----
+5. Choose Your Healing Plan Section
 
-4. Words & Reflections
+Current: Two plan cards (Essential Plan, Focused Plan)
 
-> I write to remind you that balance isn’t a destination.
-It’s a relationship — with yourself.
+Updated:
 
+Could remain as-is for programs you offer
 
+Include Ayurveda Gut Cleansing Program as a highlighted card:
 
-(This section can display 3–4 recent posts or reels with soft hover text like “Read” or “Watch.”)
+Header: “Ayurveda Gut Cleansing Program”
 
+Text: “Reset your gut. Fully personalized. 12 spots for [Insert Date]. Only a few seats left.”
 
----
+CTA: Reserve Your Spot → Leads to program form
 
-5. Contact / Closing
+6. In-Person Healing Section
 
-> If something here feels like what you’ve been searching for,
-let’s talk.
+Current: Image + text
 
+Updated:
 
+Could stay as-is, emphasizes personal care
 
-CTA options:
+Keep CTA: Book Consultation →
 
-> [Book a Consultation] or [Write to me → hello@theayurvedadoc.com]
+7. About Section
 
+Current: Placeholder for text
 
+Updated:
 
-(Optional footer line)
+Text: “I’m Dr. Aparna, an Ayurvedic doctor passionate about helping people reconnect with their body’s wisdom. I combine classical Ayurveda, practical routines, and personalized care to guide you to balance, energy, and clarity.”
 
-> Made with care in Kerala.
+8. Words & Reflections Section
+
+Current: Blog previews
+
+Updated:
+
+Keep section as-is, but use your tone for titles:
+
+“Understanding Your Dosha”
+
+“Daily Rituals for Balance”
+
+“Food as Medicine”
+
+9. What Our Clients Say Section
+
+Current: Testimonials
+
+Updated:
+
+Keep as-is, with emphasis on human, warm experiences
+
+10. Footer CTA
+
+Current: “If something here feels like what you’ve been searching for, let’s talk.”
+
+Updated:
+
+Could stay as-is
+
+CTAs:
+
+Book a Consultation → Booking form
+
+Optional: Message Me → Contact form

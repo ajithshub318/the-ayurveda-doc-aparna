@@ -3,7 +3,9 @@
     "allow": [
       "Bash(npm install framer-motion)",
       "Bash(npm run dev)",
-      "Bash(git add .)"
+      "Bash(git add .)",
+      "Bash(git commit -m \"$(cat <<''EOF''\nUpdate website design with modern UI improvements and professional imagery\n\n- Upgraded fonts: Changed to Poppins (body) and Playfair Display (headings) for modern, elegant typography\n- Enhanced navigation: Added glassmorphism effect with backdrop blur and improved hover animations\n- Improved hero section: Added gradient text effects, animated badges, and enhanced trust indicators\n- Updated feature cards: Implemented gradient backgrounds, improved hover effects with scale and rotation\n- Redesigned pricing plans: Removed all pricing amounts, changed buttons to \"Learn More\", removed Intensive Plan\n- Adjusted pricing layout: Changed from 3-card to 2-card centered layout with better spacing\n- Enhanced testimonials: Added larger quote marks, decorative blur elements, and improved borders\n- Updated Words & Reflections section: Implemented modern card design with enhanced hover effects\n- Improved final CTA section: Added gradient background with radial overlays and animated buttons\n- Replaced images: Updated hero and about sections with professional photo of Dr. Aparna (aparna.png)\n- Added drop shadows: Applied elegant drop-shadow effects to images without background containers\n- Implemented custom scrollbar: Added styled scrollbar with brand colors\n- Applied content from nom.md: Updated copy throughout the site with empathetic, mindful messaging\n\n🤖 Generated with [Claude Code](https://claude.com/claude-code)\n\nCo-Authored-By: Claude <noreply@anthropic.com>\nEOF\n)\")",
+      "Bash(git push)"
     ],
     "deny": [],
     "ask": []
