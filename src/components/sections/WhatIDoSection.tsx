@@ -40,7 +40,7 @@ export function WhatIDoSection() {
   ];
 
   return (
-    <section id="services" className="py-16 sm:py-24 lg:py-32 bg-white relative overflow-hidden">
+    <section id="services" aria-label="Ayurvedic consultation and wellness services" className="py-16 sm:py-24 lg:py-32 bg-white relative overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           initial="hidden"
@@ -53,7 +53,7 @@ export function WhatIDoSection() {
             <span className="text-forest text-xs tracking-[0.2em] uppercase font-medium">What I Do</span>
           </div>
           <h2 className="font-serif text-3xl sm:text-4xl lg:text-6xl text-charcoal font-medium mb-6 sm:mb-8 leading-tight">
-            Personalized Ayurveda That<br className="hidden sm:block" /> Fits Your <span className="text-forest italic">Busy Life</span>
+            Personalized Ayurvedic Wellness That<br className="hidden sm:block" /> Fits Your <span className="text-forest italic">Busy Life</span>
           </h2>
           <p className="text-base sm:text-lg text-charcoal max-w-2xl mx-auto font-light leading-relaxed">
             I work with classical Ayurvedic principles, but always in a way that fits your busy life and your body. Together, we look at what your body truly needs, and create simple, effective steps to bring balance back.

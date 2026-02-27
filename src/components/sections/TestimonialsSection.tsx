@@ -46,7 +46,7 @@ export function TestimonialsSection() {
   ];
 
   return (
-    <section id="testimonials" className="py-16 sm:py-24 lg:py-32 bg-ivory relative overflow-hidden">
+    <section id="testimonials" aria-label="Client testimonials for Ayurvedic consultation" className="py-16 sm:py-24 lg:py-32 bg-ivory relative overflow-hidden">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative">
         <motion.div
           initial="hidden"

@@ -9,7 +9,7 @@ interface HeroSectionProps {
 
 export function HeroSection({ onBookingClick, onContactClick }: HeroSectionProps) {
   return (
-    <section className="relative pt-16 sm:pt-20 lg:pt-24 min-h-screen flex items-center bg-ivory overflow-hidden">
+    <section aria-label="Dr. Aparna Albert - Ayurveda Doctor in Trivandrum, Kerala" className="relative pt-16 sm:pt-20 lg:pt-24 min-h-screen flex items-center bg-ivory overflow-hidden">
       <div className="absolute inset-0 opacity-[0.03]" style={{ backgroundImage: 'radial-gradient(circle at 1px 1px, #4A4340 1px, transparent 0)', backgroundSize: '24px 24px' }}></div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12 lg:py-20 w-full relative">
@@ -33,17 +33,18 @@ export function HeroSection({ onBookingClick, onContactClick }: HeroSectionProps
             </motion.div>
 
             <h1 className="font-serif text-4xl sm:text-5xl lg:text-7xl xl:text-8xl text-charcoal leading-[1.05] font-medium tracking-tight">
-              Your body already knows how to
+              Dr. Aparna Albert — Your body already knows how to
               <span className="text-forest italic"> heal.</span>
             </h1>
 
             <p className="text-base sm:text-lg lg:text-xl text-charcoal leading-relaxed max-w-lg font-light">
-              Most metabolic issues begin quietly — often in your early twenties. Tiredness after meals, bloating, acne, irregular sleep, stubborn belly fat — they're not random. They're your body asking for attention. When you start listening early, healing becomes simple and natural. I help you do that through <span className="font-semibold text-forest">Personalised Ayurveda</span>.
+              Most metabolic issues begin quietly — often in your early twenties. Tiredness after meals, bloating, acne, irregular sleep, stubborn belly fat — they're not random. They're your body asking for attention. When you start listening early, healing becomes simple and natural. As an Ayurveda doctor in Trivandrum, I help you do that through <span className="font-semibold text-forest">personalized Ayurvedic treatment</span>.
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4 pt-2 sm:pt-4">
               <button
                 onClick={onBookingClick}
+                aria-label="Book Ayurvedic consultation on WhatsApp"
                 className="btn-leaf btn-glow group px-8 sm:px-10 py-4 sm:py-5 bg-charcoal text-ivory font-medium text-sm tracking-[0.08em] shadow-lg shadow-charcoal/10 hover:shadow-xl hover:shadow-charcoal/20 flex items-center justify-center gap-3"
               >
                 <span className="relative z-10 flex items-center gap-3">
@@ -53,6 +54,7 @@ export function HeroSection({ onBookingClick, onContactClick }: HeroSectionProps
               </button>
               <button
                 onClick={onContactClick}
+                aria-label="Learn more about Ayurvedic consultation"
                 className="btn-leaf group px-8 sm:px-10 py-4 sm:py-5 bg-transparent text-charcoal border-2 border-charcoal/15 font-medium text-sm tracking-[0.08em] hover:border-ocean hover:text-ocean flex items-center justify-center gap-3 hover:shadow-lg hover:shadow-ocean/10"
               >
                 Learn more
@@ -88,8 +90,12 @@ export function HeroSection({ onBookingClick, onContactClick }: HeroSectionProps
               <div className="relative w-full h-full overflow-hidden rounded-[2rem_0.5rem_2rem_0.5rem]">
                 <img
                   src={heroImage}
-                  alt="Dr. Aparna - Ayurvedic Doctor"
+                  alt="Dr. Aparna Albert - Ayurveda Doctor in Trivandrum, Kerala"
                   className="w-full h-full object-cover"
+                  width={800}
+                  height={1000}
+                  loading="eager"
+                  fetchPriority="high"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-deep/10 via-transparent to-transparent"></div>
               </div>

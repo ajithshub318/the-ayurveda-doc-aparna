@@ -8,7 +8,7 @@ interface HealingNeedsSpaceSectionProps {
 
 export function HealingNeedsSpaceSection({ onBookingClick }: HealingNeedsSpaceSectionProps) {
   return (
-    <section className="py-16 sm:py-24 lg:py-32 px-4 sm:px-6 lg:px-8 bg-ivory">
+    <section aria-label="Ayurveda treatment retreats in Kerala" className="py-16 sm:py-24 lg:py-32 px-4 sm:px-6 lg:px-8 bg-ivory">
       <div className="max-w-7xl mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 40 }}
@@ -20,8 +20,12 @@ export function HealingNeedsSpaceSection({ onBookingClick }: HealingNeedsSpaceSe
           <div className="relative min-h-[500px] sm:h-[550px] lg:h-[600px]">
             <img
               src={healingImage}
-              alt="Footprints on the beach - the journey of healing"
+              alt="Serene Ayurvedic healing environment in Kerala"
               className="w-full h-full object-cover absolute inset-0"
+              width={1400}
+              height={600}
+              loading="lazy"
+              decoding="async"
             />
             <div className="absolute inset-0 bg-gradient-to-r from-deep/90 via-deep/70 to-deep/30"></div>
 
@@ -48,6 +52,7 @@ export function HealingNeedsSpaceSection({ onBookingClick }: HealingNeedsSpaceSe
                 </p>
                 <button
                   onClick={onBookingClick}
+                  aria-label="Book an Ayurvedic consultation on WhatsApp"
                   className="btn-leaf btn-glow group mt-2 px-8 sm:px-10 py-4 sm:py-5 bg-ivory text-charcoal text-sm tracking-[0.08em] font-medium shadow-lg hover:shadow-xl flex items-center gap-3"
                 >
                   <span className="relative z-10 flex items-center gap-3">

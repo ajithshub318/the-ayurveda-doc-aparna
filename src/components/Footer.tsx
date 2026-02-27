@@ -14,7 +14,7 @@ export function Footer({ onContactClick, onBookingClick }: FooterProps) {
           <div className="space-y-5 sm:space-y-6">
             <img
               src={logoImage}
-              alt="The Ayurveda Doc"
+              alt="The Ayurveda Doc - Dr. Aparna Albert, Ayurveda Doctor"
               className="h-12 sm:h-16 w-auto brightness-200"
             />
             <p className="text-white/80 leading-relaxed font-light text-sm sm:text-base">

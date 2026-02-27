@@ -8,12 +8,16 @@ interface FinalInvitationSectionProps {
 
 export function FinalInvitationSection({ onBookingClick }: FinalInvitationSectionProps) {
   return (
-    <section className="relative py-20 sm:py-32 lg:py-40 px-4 sm:px-6 text-center overflow-hidden">
+    <section aria-label="Book an Ayurvedic consultation with Dr. Aparna Albert" className="relative py-20 sm:py-32 lg:py-40 px-4 sm:px-6 text-center overflow-hidden">
       <div className="absolute inset-0">
         <img
           src={ctaBgImage}
-          alt=""
+          alt="Book an Ayurvedic consultation with Dr. Aparna Albert"
           className="w-full h-full object-cover"
+          width={1400}
+          height={600}
+          loading="lazy"
+          decoding="async"
         />
         <div className="absolute inset-0 bg-charcoal/75"></div>
       </div>
@@ -44,6 +48,7 @@ export function FinalInvitationSection({ onBookingClick }: FinalInvitationSectio
         >
           <button
             onClick={onBookingClick}
+            aria-label="Book Ayurvedic consultation on WhatsApp"
             className="btn-leaf btn-glow group px-8 sm:px-12 py-4 sm:py-5 bg-ivory text-charcoal text-sm tracking-[0.08em] font-medium shadow-xl hover:shadow-2xl flex items-center gap-3"
           >
             <span className="relative z-10 flex items-center gap-3">
@@ -55,6 +60,7 @@ export function FinalInvitationSection({ onBookingClick }: FinalInvitationSectio
             href="https://wa.me/917012399593"
             target="_blank"
             rel="noopener noreferrer"
+            aria-label="Write to Dr. Aparna Albert on WhatsApp"
             className="btn-leaf group px-8 sm:px-12 py-4 sm:py-5 border-2 border-white/30 text-white text-sm tracking-[0.08em] font-medium hover:bg-white/10 hover:border-white/60 hover:shadow-lg flex items-center gap-3"
           >
             Write to me

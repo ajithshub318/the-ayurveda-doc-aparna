@@ -8,7 +8,7 @@ const fadeInUp: Variants = {
 
 export function AboutSection() {
   return (
-    <section id="about" className="py-16 sm:py-24 lg:py-32 px-4 sm:px-6 lg:px-8 bg-sand/40">
+    <section id="about" aria-label="About Dr. Aparna Albert - Ayurveda Doctor" className="py-16 sm:py-24 lg:py-32 px-4 sm:px-6 lg:px-8 bg-sand/40">
       <div className="max-w-7xl mx-auto grid lg:grid-cols-2 gap-10 sm:gap-16 lg:gap-24 items-center">
         <motion.div
           initial="hidden"
@@ -22,8 +22,12 @@ export function AboutSection() {
             <div className="relative w-full h-full overflow-hidden rounded-[2rem_0.5rem_2rem_0.5rem]">
               <img
                 src={aboutImage}
-                alt="Dr. Aparna - Ayurvedic Doctor"
+                alt="Dr. Aparna Albert - Holistic Ayurvedic practitioner"
                 className="w-full h-full object-cover"
+                width={800}
+                height={1000}
+                loading="lazy"
+                decoding="async"
               />
             </div>
           </div>
@@ -40,10 +44,10 @@ export function AboutSection() {
           </div>
 
           <h2 className="font-serif text-4xl sm:text-5xl lg:text-7xl text-charcoal leading-tight font-medium">
-            Dr. <span className="text-forest italic">Aparna</span>
+            Dr. Aparna <span className="text-forest italic">Albert</span>
           </h2>
           <p className="text-base sm:text-xl text-charcoal leading-relaxed font-light">
-            I'm Dr. Aparna, an Ayurvedic doctor trained in genomic technologies. I work by understanding your unique body and mind, and bringing forward the authentic Kerala Ayurveda I grew up around — in a way that fits into real, busy lives.
+            I'm Dr. Aparna Albert, an Ayurveda doctor trained in genomic technologies. I work by understanding your unique body and mind, and bringing forward the authentic Ayurveda treatment Kerala is known for — in a way that fits into real, busy lives.
           </p>
           <p className="text-base sm:text-xl text-charcoal leading-relaxed font-light">
             I prefer gentle, plant-based medicines over stronger mineral preparations, and I focus on lifestyle, diet, and classical Ayurvedic treatment that supports your body without overwhelming it.

@@ -12,7 +12,7 @@ interface PricingPlansSectionProps {
 
 export function PricingPlansSection({ onBookingClick }: PricingPlansSectionProps) {
   return (
-    <section id="plans" className="py-16 sm:py-24 lg:py-32 bg-sand/30 relative overflow-hidden">
+    <section id="plans" aria-label="Ayurvedic consultation plans and pricing" className="py-16 sm:py-24 lg:py-32 bg-sand/30 relative overflow-hidden">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative">
         <motion.div
           initial="hidden"
@@ -61,6 +61,7 @@ export function PricingPlansSection({ onBookingClick }: PricingPlansSectionProps
             </ul>
             <button
               onClick={onBookingClick}
+              aria-label="Get started with the Essential Ayurvedic consultation plan"
               className="btn-leaf group/btn w-full py-3 sm:py-3.5 border-2 border-charcoal/15 text-charcoal text-sm tracking-[0.08em] font-medium hover:bg-charcoal hover:text-ivory hover:border-charcoal flex items-center justify-center gap-3 transition-colors duration-500"
             >
               <span className="relative z-10 flex items-center gap-3">
@@ -95,6 +96,7 @@ export function PricingPlansSection({ onBookingClick }: PricingPlansSectionProps
             </ul>
             <button
               onClick={onBookingClick}
+              aria-label="Get started with the Focused Ayurvedic consultation plan"
               className="btn-leaf btn-glow group/btn w-full py-3 sm:py-3.5 bg-charcoal text-ivory text-sm tracking-[0.08em] font-medium hover:shadow-lg hover:shadow-charcoal/20 flex items-center justify-center gap-3"
             >
               <span className="relative z-10 flex items-center gap-3">

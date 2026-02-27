@@ -16,7 +16,7 @@ export function HowIWorkSection() {
   ];
 
   return (
-    <section className="py-16 sm:py-24 lg:py-32 bg-sand/40">
+    <section aria-label="Personalized Ayurvedic consultation process" className="py-16 sm:py-24 lg:py-32 bg-sand/40">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid lg:grid-cols-2 gap-10 sm:gap-16 lg:gap-24 items-center">
           <motion.div
@@ -31,8 +31,12 @@ export function HowIWorkSection() {
               <div className="relative w-full h-full overflow-hidden rounded-[0.5rem_2rem_0.5rem_2rem]">
                 <img
                   src={howIWorkImage}
-                  alt="Dr. Aparna by the Kerala backwaters"
+                  alt="Personalized Ayurvedic consultation process"
                   className="w-full h-full object-cover"
+                  width={800}
+                  height={1000}
+                  loading="lazy"
+                  decoding="async"
                 />
               </div>
             </div>
@@ -53,7 +57,7 @@ export function HowIWorkSection() {
               How I <span className="text-forest italic">Work</span>
             </h2>
             <p className="text-base sm:text-lg text-charcoal leading-relaxed font-light">
-              I look closely at your symptoms, history, and blood work to understand the deeper cause of your condition. Then I create an Ayurvedic treatment plan tailored to your body's current state.
+              I look closely at your symptoms, history, and blood work — including a thorough dosha assessment — to understand the deeper cause of your condition. Then I create a personalized Ayurvedic treatment plan tailored to your body's current state.
             </p>
 
             <div className="space-y-4 sm:space-y-5 pt-2 sm:pt-4">

@@ -18,26 +18,29 @@ export function WordsReflectionsSection() {
   const articles = [
     {
       title: "Understanding Your Dosha",
-      description: "Learn how your unique constitution shapes your health journey",
+      description: "Learn how your unique constitution shapes your health journey through dosha assessment",
       image: readingImage,
+      alt: "Ayurvedic dosha assessment and body constitution guide",
       type: "Read"
     },
     {
       title: "Daily Rituals for Balance",
-      description: "Simple practices to align with nature's rhythms",
+      description: "Simple Ayurvedic practices to align with nature's rhythms",
       image: beachImage,
+      alt: "Daily Ayurvedic wellness rituals for holistic balance",
       type: "Watch"
     },
     {
       title: "Food as Medicine",
-      description: "Discovering the healing power of mindful eating",
+      description: "Discovering the healing power of mindful eating in Ayurveda",
       image: waveImage,
+      alt: "Ayurvedic dietary guidance and food as medicine",
       type: "Read"
     }
   ];
 
   return (
-    <section className="py-16 sm:py-24 lg:py-32 bg-white">
+    <section aria-label="Ayurvedic wellness insights and articles" className="py-16 sm:py-24 lg:py-32 bg-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           initial="hidden"
@@ -75,8 +78,12 @@ export function WordsReflectionsSection() {
               <div className="relative h-52 sm:h-72 overflow-hidden rounded-[2rem_0.75rem_2rem_0.75rem] mb-4 sm:mb-6">
                 <img
                   src={item.image}
-                  alt={item.title}
+                  alt={item.alt}
                   className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                  width={600}
+                  height={400}
+                  loading="lazy"
+                  decoding="async"
                 />
                 <div className="absolute top-3 right-3 sm:top-4 sm:right-4 w-8 h-8 sm:w-10 sm:h-10 check-leaf bg-white flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-500 translate-y-2 group-hover:translate-y-0 shadow-lg">
                   <ArrowUpRight className="w-4 h-4 sm:w-5 sm:h-5 text-forest" />

@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://theayurvedadoc.com/sitemap.xml

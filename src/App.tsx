@@ -1,18 +1,20 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, lazy, Suspense } from 'react';
 import { Modal } from './components/Modal';
 import { ContactForm } from './components/ContactForm';
 import { Navigation } from './components/Navigation';
 import { Footer } from './components/Footer';
 import { HeroSection } from './components/sections/HeroSection';
-import { WhatIDoSection } from './components/sections/WhatIDoSection';
-import { HowIWorkSection } from './components/sections/HowIWorkSection';
-import { HealingNeedsSpaceSection } from './components/sections/HealingNeedsSpaceSection';
-import { PricingPlansSection } from './components/sections/PricingPlansSection';
-import { InPersonHealingSection } from './components/sections/InPersonHealingSection';
-import { AboutSection } from './components/sections/AboutSection';
-import { WordsReflectionsSection } from './components/sections/WordsReflectionsSection';
-import { TestimonialsSection } from './components/sections/TestimonialsSection';
-import { FinalInvitationSection } from './components/sections/FinalInvitationSection';
+
+// Lazy load below-the-fold sections for better initial load performance
+const WhatIDoSection = lazy(() => import('./components/sections/WhatIDoSection').then(m => ({ default: m.WhatIDoSection })));
+const HowIWorkSection = lazy(() => import('./components/sections/HowIWorkSection').then(m => ({ default: m.HowIWorkSection })));
+const HealingNeedsSpaceSection = lazy(() => import('./components/sections/HealingNeedsSpaceSection').then(m => ({ default: m.HealingNeedsSpaceSection })));
+const PricingPlansSection = lazy(() => import('./components/sections/PricingPlansSection').then(m => ({ default: m.PricingPlansSection })));
+const InPersonHealingSection = lazy(() => import('./components/sections/InPersonHealingSection').then(m => ({ default: m.InPersonHealingSection })));
+const AboutSection = lazy(() => import('./components/sections/AboutSection').then(m => ({ default: m.AboutSection })));
+const WordsReflectionsSection = lazy(() => import('./components/sections/WordsReflectionsSection').then(m => ({ default: m.WordsReflectionsSection })));
+const TestimonialsSection = lazy(() => import('./components/sections/TestimonialsSection').then(m => ({ default: m.TestimonialsSection })));
+const FinalInvitationSection = lazy(() => import('./components/sections/FinalInvitationSection').then(m => ({ default: m.FinalInvitationSection })));
 
 function App() {
   const [isVisible, setIsVisible] = useState(false);
@@ -39,30 +41,34 @@ function App() {
     <div className="min-h-screen bg-ivory">
       <Navigation onBookingClick={() => handleWhatsAppClick()} />
 
-      <HeroSection
-        onBookingClick={() => handleWhatsAppClick()}
-        onContactClick={() => setIsContactOpen(true)}
-      />
+      <main>
+        <HeroSection
+          onBookingClick={() => handleWhatsAppClick()}
+          onContactClick={() => setIsContactOpen(true)}
+        />
 
-      <WhatIDoSection />
+        <Suspense fallback={<div className="min-h-[200px]" />}>
+          <WhatIDoSection />
 
-      <HowIWorkSection />
+          <HowIWorkSection />
 
-      <PricingPlansSection onBookingClick={() => handleWhatsAppClick()} />
+          <PricingPlansSection onBookingClick={() => handleWhatsAppClick()} />
 
-      <HealingNeedsSpaceSection onBookingClick={() => handleWhatsAppClick()} />
+          <HealingNeedsSpaceSection onBookingClick={() => handleWhatsAppClick()} />
 
-      <InPersonHealingSection />
+          <InPersonHealingSection />
 
-      <AboutSection />
+          <AboutSection />
 
-      <WordsReflectionsSection />
+          <WordsReflectionsSection />
 
-      <TestimonialsSection />
+          <TestimonialsSection />
 
-      <FinalInvitationSection
-        onBookingClick={() => handleWhatsAppClick()}
-      />
+          <FinalInvitationSection
+            onBookingClick={() => handleWhatsAppClick()}
+          />
+        </Suspense>
+      </main>
 
       <Footer
         onContactClick={() => setIsContactOpen(true)}
