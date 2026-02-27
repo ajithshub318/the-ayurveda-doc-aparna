@@ -4,17 +4,23 @@ export default {
   theme: {
     extend: {
       colors: {
-        ivory: '#F9F6F2',
-        charcoal: '#1F1D1A',
-        sage: '#A8B89C',
-        earthBrown: '#7B5E57',
-        mutedBrown: '#8B7265',
-        beige: '#E8E1D9',
+        ivory: '#FDF8F3',
+        charcoal: '#4A4340',
+        forest: '#7BAF95',
+        terra: '#C4A882',
+        walnut: '#A09590',
+        sand: '#F0E6D9',
+        ocean: '#9DC4D4',
+        deep: '#3A4F5C',
+        sage: '#7BAF95',
+        earthBrown: '#C4A882',
+        mutedBrown: '#A09590',
+        beige: '#F0E6D9',
       },
       fontFamily: {
-        serif: ['Playfair Display', 'serif'],
-        body: ['Poppins', 'sans-serif'],
-        sans: ['Poppins', 'sans-serif'],
+        serif: ['"Cormorant Garamond"', 'serif'],
+        body: ['Outfit', 'sans-serif'],
+        sans: ['Outfit', 'sans-serif'],
       },
       spacing: {
         '120': '30rem',

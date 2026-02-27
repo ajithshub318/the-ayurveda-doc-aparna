@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700;800&family=Playfair+Display:wght@400;500;600;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500&family=Outfit:wght@200;300;400;500;600;700;800&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -14,91 +14,92 @@
   }
 }
 
+@layer components {
+  .btn-leaf {
+    @apply relative overflow-hidden transition-all duration-500 ease-out;
+    border-radius: 2rem 0.75rem 2rem 0.75rem;
+  }
+  .btn-leaf:hover {
+    border-radius: 0.75rem 2rem 0.75rem 2rem;
+    transform: translateY(-2px);
+  }
+
+  .btn-petal {
+    @apply relative overflow-hidden transition-all duration-500 ease-out;
+    border-radius: 3rem 1.2rem 3rem 1.2rem;
+  }
+  .btn-petal:hover {
+    border-radius: 1.2rem 3rem 1.2rem 3rem;
+    transform: translateY(-2px);
+  }
+
+  .btn-glow::after {
+    content: '';
+    @apply absolute inset-0 opacity-0 transition-opacity duration-700;
+    background: linear-gradient(120deg, transparent 30%, rgba(255,255,255,0.15) 50%, transparent 70%);
+  }
+  .btn-glow:hover::after {
+    @apply opacity-100;
+    animation: sweep 0.8s ease-out;
+  }
+
+  .divider-leaf {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+  }
+  .divider-leaf::before,
+  .divider-leaf::after {
+    content: '';
+    height: 1px;
+    width: 2rem;
+    background: currentColor;
+    opacity: 0.4;
+  }
+
+  .check-leaf {
+    border-radius: 1rem 0.25rem 1rem 0.25rem;
+    transition: all 0.5s ease;
+  }
+  .group:hover .check-leaf,
+  .check-leaf:hover {
+    border-radius: 0.25rem 1rem 0.25rem 1rem;
+  }
+}
+
 @layer utilities {
   .fade-in {
     animation: fadeIn 1.2s ease-in-out;
   }
 
   @keyframes fadeIn {
-    from {
-      opacity: 0;
-      transform: translateY(20px);
-    }
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
   }
 
-  @keyframes slideDown {
-    from {
-      opacity: 0;
-      transform: translateY(-30px);
-    }
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
+  @keyframes sweep {
+    from { transform: translateX(-100%); }
+    to { transform: translateX(100%); }
   }
 
-  @keyframes slideUp {
-    from {
-      opacity: 0;
-      transform: translateY(30px);
-    }
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
-  }
-
-  @keyframes scaleIn {
-    from {
-      opacity: 0;
-      transform: scale(0.9);
-    }
-    to {
-      opacity: 1;
-      transform: scale(1);
-    }
-  }
-
-  @keyframes float {
-    0%, 100% {
-      transform: translateY(0px);
-    }
-    50% {
-      transform: translateY(-10px);
-    }
-  }
-
-  /* Smooth scrolling */
   @supports (scrollbar-width: thin) {
     * {
       scrollbar-width: thin;
-      scrollbar-color: #A8B89C #F9F6F2;
+      scrollbar-color: #7BAF95 #FDF8F3;
     }
   }
 
-  /* Webkit scrollbar */
-  ::-webkit-scrollbar {
-    width: 8px;
-  }
-
-  ::-webkit-scrollbar-track {
-    background: #F9F6F2;
-  }
-
-  ::-webkit-scrollbar-thumb {
-    background: #A8B89C;
-    border-radius: 4px;
-  }
-
-  ::-webkit-scrollbar-thumb:hover {
-    background: #8B9E80;
-  }
+  ::-webkit-scrollbar { width: 6px; }
+  ::-webkit-scrollbar-track { background: #FDF8F3; }
+  ::-webkit-scrollbar-thumb { background: #7BAF95; border-radius: 3px; }
+  ::-webkit-scrollbar-thumb:hover { background: #5e9a7e; }
 }
 
 html {
   scroll-behavior: smooth;
+}
+
+::selection {
+  background: #7BAF95;
+  color: #FDF8F3;
 }

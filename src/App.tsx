@@ -1,7 +1,6 @@
 import { useState, useEffect } from 'react';
 import { Modal } from './components/Modal';
 import { ContactForm } from './components/ContactForm';
-import { BookingForm } from './components/BookingForm';
 import { Navigation } from './components/Navigation';
 import { Footer } from './components/Footer';
 import { HeroSection } from './components/sections/HeroSection';
@@ -18,12 +17,7 @@ import { FinalInvitationSection } from './components/sections/FinalInvitationSec
 function App() {
   const [isVisible, setIsVisible] = useState(false);
   const [isContactOpen, setIsContactOpen] = useState(false);
-  const [isBookingOpen, setIsBookingOpen] = useState(false);
   const [showSuccessMessage, setShowSuccessMessage] = useState(false);
-
-  useEffect(() => {
-    setIsVisible(true);
-  }, []);
 
   const handleContactSuccess = () => {
     setIsContactOpen(false);
@@ -31,18 +25,22 @@ function App() {
     setTimeout(() => setShowSuccessMessage(false), 5000);
   };
 
-  const handleBookingSuccess = () => {
-    setIsBookingOpen(false);
-    setShowSuccessMessage(true);
-    setTimeout(() => setShowSuccessMessage(false), 5000);
+  useEffect(() => {
+    setIsVisible(true);
+  }, []);
+
+  const WHATSAPP_URL = 'https://wa.me/917012399593';
+
+  const handleWhatsAppClick = () => {
+    window.open(WHATSAPP_URL, '_blank', 'noopener,noreferrer');
   };
 
   return (
     <div className="min-h-screen bg-ivory">
-      <Navigation onBookingClick={() => setIsBookingOpen(true)} />
+      <Navigation onBookingClick={() => handleWhatsAppClick()} />
 
       <HeroSection
-        onBookingClick={() => setIsBookingOpen(true)}
+        onBookingClick={() => handleWhatsAppClick()}
         onContactClick={() => setIsContactOpen(true)}
       />
 
@@ -50,9 +48,9 @@ function App() {
 
       <HowIWorkSection />
 
-      <HealingNeedsSpaceSection onContactClick={() => setIsContactOpen(true)} />
+      <PricingPlansSection onBookingClick={() => handleWhatsAppClick()} />
 
-      <PricingPlansSection onBookingClick={() => setIsBookingOpen(true)} />
+      <HealingNeedsSpaceSection onBookingClick={() => handleWhatsAppClick()} />
 
       <InPersonHealingSection />
 
@@ -63,13 +61,12 @@ function App() {
       <TestimonialsSection />
 
       <FinalInvitationSection
-        onBookingClick={() => setIsBookingOpen(true)}
-        onContactClick={() => setIsContactOpen(true)}
+        onBookingClick={() => handleWhatsAppClick()}
       />
 
       <Footer
         onContactClick={() => setIsContactOpen(true)}
-        onBookingClick={() => setIsBookingOpen(true)}
+        onBookingClick={() => handleWhatsAppClick()}
       />
 
       {/* Success Message */}
@@ -79,13 +76,9 @@ function App() {
         </div>
       )}
 
-      {/* Modals */}
+      {/* Contact Modal */}
       <Modal isOpen={isContactOpen} onClose={() => setIsContactOpen(false)} title="Get in Touch">
         <ContactForm onSuccess={handleContactSuccess} />
-      </Modal>
-
-      <Modal isOpen={isBookingOpen} onClose={() => setIsBookingOpen(false)} title="Book Appointment">
-        <BookingForm onSuccess={handleBookingSuccess} />
       </Modal>
     </div>
   );

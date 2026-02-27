@@ -1,31 +1,17 @@
 import { motion, Variants } from 'framer-motion';
+import { ArrowUpRight } from 'lucide-react';
+import readingImage from '../../assets/DSC00630.jpg';
+import waveImage from '../../assets/DSC00501.jpg';
+import beachImage from '../../assets/DSC00453.jpg';
 
 const fadeInUp: Variants = {
-  hidden: { opacity: 0, y: 60 },
-  visible: {
-    opacity: 1,
-    y: 0,
-    transition: { duration: 0.6 }
-  }
+  hidden: { opacity: 0, y: 40 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.8, ease: [0.22, 1, 0.36, 1] } }
 };
 
 const staggerContainer: Variants = {
   hidden: { opacity: 0 },
-  visible: {
-    opacity: 1,
-    transition: {
-      staggerChildren: 0.2
-    }
-  }
-};
-
-const scaleIn: Variants = {
-  hidden: { opacity: 0, scale: 0.8 },
-  visible: {
-    opacity: 1,
-    scale: 1,
-    transition: { duration: 0.5 }
-  }
+  visible: { opacity: 1, transition: { staggerChildren: 0.15 } }
 };
 
 export function WordsReflectionsSection() {
@@ -33,42 +19,42 @@ export function WordsReflectionsSection() {
     {
       title: "Understanding Your Dosha",
       description: "Learn how your unique constitution shapes your health journey",
-      image: "https://images.pexels.com/photos/1194218/pexels-photo-1194218.jpeg?auto=compress&cs=tinysrgb&w=800",
+      image: readingImage,
       type: "Read"
     },
     {
       title: "Daily Rituals for Balance",
       description: "Simple practices to align with nature's rhythms",
-      image: "https://images.pexels.com/photos/3822621/pexels-photo-3822621.jpeg?auto=compress&cs=tinysrgb&w=800",
+      image: beachImage,
       type: "Watch"
     },
     {
       title: "Food as Medicine",
       description: "Discovering the healing power of mindful eating",
-      image: "https://images.pexels.com/photos/1640777/pexels-photo-1640777.jpeg?auto=compress&cs=tinysrgb&w=800",
+      image: waveImage,
       type: "Read"
     }
   ];
 
   return (
-    <section className="py-20 lg:py-28 bg-white">
+    <section className="py-16 sm:py-24 lg:py-32 bg-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true }}
           variants={fadeInUp}
-          className="text-center mb-20"
+          className="text-center mb-10 sm:mb-20"
         >
-          <div className="inline-block px-4 py-2 bg-sage/10 rounded-full mb-6">
-            <span className="text-sage font-medium text-sm tracking-wide">Insights & Stories</span>
+          <div className="divider-leaf justify-center text-forest mb-6 sm:mb-8">
+            <span className="text-forest text-xs tracking-[0.2em] uppercase font-medium">Insights & Stories</span>
           </div>
-          <h2 className="font-serif text-4xl lg:text-6xl text-charcoal font-bold mb-6 leading-tight">
-            Words & Reflections
+          <h2 className="font-serif text-3xl sm:text-4xl lg:text-6xl text-charcoal font-medium mb-6 sm:mb-8 leading-tight">
+            Words & <span className="text-forest italic">Reflections</span>
           </h2>
-          <p className="text-lg text-charcoal/60 max-w-2xl mx-auto font-light leading-relaxed">
-            I write to remind you that balance isn't a destination.<br/>
-            <span className="italic">It's a relationship — with yourself.</span>
+          <p className="text-base sm:text-lg text-charcoal max-w-2xl mx-auto font-light leading-relaxed">
+            I write to remind you that balance isn't a destination.<br className="hidden sm:block" />
+            <span className="font-serif italic">It's a relationship — with yourself.</span>
           </p>
         </motion.div>
 
@@ -77,34 +63,34 @@ export function WordsReflectionsSection() {
           whileInView="visible"
           viewport={{ once: true, amount: 0.2 }}
           variants={staggerContainer}
-          className="grid md:grid-cols-2 lg:grid-cols-3 gap-8"
+          className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-8"
         >
           {articles.map((item, index) => (
             <motion.div
               key={index}
-              variants={scaleIn}
-              whileHover={{ y: -10, scale: 1.02 }}
-              className="bg-white rounded-3xl overflow-hidden hover:shadow-2xl hover:shadow-sage/10 transition-all duration-500 group cursor-pointer border border-sage/10"
+              variants={fadeInUp}
+              whileHover={{ y: -8 }}
+              className="group cursor-pointer"
             >
-              <div className="relative h-64 overflow-hidden">
+              <div className="relative h-52 sm:h-72 overflow-hidden rounded-[2rem_0.75rem_2rem_0.75rem] mb-4 sm:mb-6">
                 <img
                   src={item.image}
                   alt={item.title}
-                  className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-charcoal/80 via-charcoal/40 to-transparent opacity-60 group-hover:opacity-80 transition-opacity duration-300"></div>
-                <div className="absolute bottom-4 right-4 px-4 py-2 bg-white/95 backdrop-blur-sm rounded-full text-sm font-medium text-sage shadow-lg">
-                  {item.type}
+                <div className="absolute top-3 right-3 sm:top-4 sm:right-4 w-8 h-8 sm:w-10 sm:h-10 check-leaf bg-white flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-500 translate-y-2 group-hover:translate-y-0 shadow-lg">
+                  <ArrowUpRight className="w-4 h-4 sm:w-5 sm:h-5 text-forest" />
+                </div>
+                <div className="absolute bottom-3 left-3 sm:bottom-4 sm:left-4">
+                  <span className="bg-charcoal text-ivory text-[9px] sm:text-[10px] tracking-[0.15em] uppercase font-bold px-4 py-2 rounded-[1rem_0.25rem_1rem_0.25rem] inline-block shadow-md">{item.type}</span>
                 </div>
               </div>
-              <div className="p-7">
-                <h3 className="font-serif text-2xl text-charcoal mb-3 group-hover:text-sage transition-colors font-bold">
-                  {item.title}
-                </h3>
-                <p className="text-charcoal/60 leading-relaxed text-[15px] font-light">
-                  {item.description}
-                </p>
-              </div>
+              <h3 className="font-serif text-xl sm:text-2xl text-charcoal mb-2 sm:mb-3 group-hover:text-forest transition-colors font-medium">
+                {item.title}
+              </h3>
+              <p className="text-charcoal leading-relaxed text-sm sm:text-[15px] font-light">
+                {item.description}
+              </p>
             </motion.div>
           ))}
         </motion.div>

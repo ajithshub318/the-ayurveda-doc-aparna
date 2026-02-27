@@ -1,6 +1,6 @@
-import { Calendar } from 'lucide-react';
+import { ArrowRight } from 'lucide-react';
 import { motion } from 'framer-motion';
-import aparnaImage from '../../assets/aparna.png';
+import heroImage from '../../assets/DSC00414.jpg';
 
 interface HeroSectionProps {
   onBookingClick: () => void;
@@ -9,76 +9,93 @@ interface HeroSectionProps {
 
 export function HeroSection({ onBookingClick, onContactClick }: HeroSectionProps) {
   return (
-    <section className="relative pt-20 lg:pt-24 bg-gradient-to-br from-sage/5 via-ivory to-beige/20">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 lg:py-20">
-        <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
-          {/* Left Content */}
-          <motion.div
-            initial={{ opacity: 0, x: -50 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8 }}
-            className="space-y-8"
-          >
-            <div className="inline-flex items-center gap-2 px-5 py-2.5 bg-gradient-to-r from-sage/10 to-sage/5 rounded-full border border-sage/20">
-              <div className="w-2 h-2 bg-sage rounded-full animate-pulse"></div>
-              <span className="text-sage font-medium text-sm tracking-wide">Certified Ayurvedic Practitioner</span>
-            </div>
+    <section className="relative pt-16 sm:pt-20 lg:pt-24 min-h-screen flex items-center bg-ivory overflow-hidden">
+      <div className="absolute inset-0 opacity-[0.03]" style={{ backgroundImage: 'radial-gradient(circle at 1px 1px, #4A4340 1px, transparent 0)', backgroundSize: '24px 24px' }}></div>
 
-            <h1 className="font-serif text-4xl sm:text-5xl lg:text-6xl xl:text-7xl text-charcoal leading-[1.15] font-bold tracking-tight">
-              Your body always knows what it needs.
-              <span className="block text-sage mt-3 bg-gradient-to-r from-sage to-sage/80 bg-clip-text text-transparent">I help you notice it, make sense of it, and take steps that actually help.</span>
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12 lg:py-20 w-full relative">
+        <div className="grid lg:grid-cols-2 gap-8 sm:gap-12 lg:gap-20 items-center">
+          <motion.div
+            initial={{ opacity: 0, y: 40 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 1, ease: [0.22, 1, 0.36, 1] }}
+            className="space-y-6 sm:space-y-8 lg:space-y-10"
+          >
+            <motion.div
+              initial={{ opacity: 0, x: -20 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.8, delay: 0.3 }}
+              className="flex items-center gap-3"
+            >
+              <div className="w-7 h-7 sm:w-8 sm:h-8 check-leaf bg-forest/10 flex items-center justify-center">
+                <div className="w-2 h-2 rounded-full bg-forest"></div>
+              </div>
+              <span className="text-forest font-medium text-[10px] sm:text-xs tracking-[0.15em] uppercase">Certified Ayurvedic Practitioner</span>
+            </motion.div>
+
+            <h1 className="font-serif text-4xl sm:text-5xl lg:text-7xl xl:text-8xl text-charcoal leading-[1.05] font-medium tracking-tight">
+              Your body already knows how to
+              <span className="text-forest italic"> heal.</span>
             </h1>
 
-            <p className="text-lg lg:text-xl text-charcoal/70 leading-relaxed max-w-xl font-light">
-              From fatigue and digestive discomfort to hormonal shifts or emotional unrest, your body is sending signals. I help you understand them — gently, clearly, and practically.
+            <p className="text-base sm:text-lg lg:text-xl text-charcoal leading-relaxed max-w-lg font-light">
+              Most metabolic issues begin quietly — often in your early twenties. Tiredness after meals, bloating, acne, irregular sleep, stubborn belly fat — they're not random. They're your body asking for attention. When you start listening early, healing becomes simple and natural. I help you do that through <span className="font-semibold text-forest">Personalised Ayurveda</span>.
             </p>
 
-            <div className="flex flex-col sm:flex-row gap-4 pt-6">
+            <div className="flex flex-col sm:flex-row gap-4 pt-2 sm:pt-4">
               <button
                 onClick={onBookingClick}
-                className="group px-8 py-4 bg-gradient-to-r from-sage to-sage/90 text-white rounded-full hover:shadow-xl hover:shadow-sage/30 transition-all duration-300 font-medium text-base transform hover:scale-105 flex items-center justify-center gap-2"
+                className="btn-leaf btn-glow group px-8 sm:px-10 py-4 sm:py-5 bg-charcoal text-ivory font-medium text-sm tracking-[0.08em] shadow-lg shadow-charcoal/10 hover:shadow-xl hover:shadow-charcoal/20 flex items-center justify-center gap-3"
               >
-                <Calendar className="w-5 h-5 group-hover:rotate-12 transition-transform" />
-                Consult with me
+                <span className="relative z-10 flex items-center gap-3">
+                  Consult with me
+                  <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform duration-300" />
+                </span>
               </button>
               <button
                 onClick={onContactClick}
-                className="px-8 py-4 bg-white text-charcoal border-2 border-sage/30 rounded-full hover:bg-sage/5 hover:border-sage transition-all duration-300 font-medium text-base"
+                className="btn-leaf group px-8 sm:px-10 py-4 sm:py-5 bg-transparent text-charcoal border-2 border-charcoal/15 font-medium text-sm tracking-[0.08em] hover:border-ocean hover:text-ocean flex items-center justify-center gap-3 hover:shadow-lg hover:shadow-ocean/10"
               >
                 Learn more
+                <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform duration-300" />
               </button>
             </div>
 
-            {/* Trust Indicators */}
-            <div className="grid grid-cols-3 gap-8 pt-10 border-t border-sage/20">
-              <div className="text-center sm:text-left">
-                <div className="text-4xl font-bold bg-gradient-to-r from-sage to-earthBrown bg-clip-text text-transparent mb-1">500+</div>
-                <div className="text-sm text-charcoal/60 font-medium">Happy Clients</div>
-              </div>
-              <div className="text-center sm:text-left">
-                <div className="text-4xl font-bold bg-gradient-to-r from-sage to-earthBrown bg-clip-text text-transparent mb-1">10+</div>
-                <div className="text-sm text-charcoal/60 font-medium">Years Experience</div>
-              </div>
-              <div className="text-center sm:text-left">
-                <div className="text-4xl font-bold bg-gradient-to-r from-sage to-earthBrown bg-clip-text text-transparent mb-1">4.9</div>
-                <div className="text-sm text-charcoal/60 font-medium">Rating</div>
-              </div>
+            <div className="flex items-center gap-6 sm:gap-10 pt-4 sm:pt-8 border-t border-charcoal/10">
+              {[
+                { value: "500+", label: "Happy Clients" },
+                { value: "10+", label: "Years Experience" },
+                { value: "4.9", label: "Rating" }
+              ].map((stat, i) => (
+                <div key={i} className="flex items-center gap-6 sm:gap-10">
+                  <div>
+                    <div className="text-2xl sm:text-4xl font-serif font-semibold text-forest mb-1">{stat.value}</div>
+                    <div className="text-[10px] sm:text-xs text-charcoal tracking-[0.12em] uppercase font-medium">{stat.label}</div>
+                  </div>
+                  {i < 2 && <div className="w-px h-8 sm:h-12 bg-charcoal/10"></div>}
+                </div>
+              ))}
             </div>
           </motion.div>
 
-          {/* Right Image */}
           <motion.div
-            initial={{ opacity: 0, x: 50 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8, delay: 0.2 }}
+            initial={{ opacity: 0, scale: 0.95 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 1.2, delay: 0.3, ease: [0.22, 1, 0.36, 1] }}
             className="relative"
           >
-            <div className="relative h-[500px] lg:h-[600px]">
-              <img
-                src={aparnaImage}
-                alt="Dr. Aparna - Ayurvedic Doctor"
-                className="w-full h-full object-contain drop-shadow-2xl"
-              />
+            <div className="relative h-[350px] sm:h-[450px] lg:h-[700px]">
+              <div className="absolute -top-3 -right-3 sm:-top-4 sm:-right-4 w-full h-full border-2 border-ocean/25 rounded-[2rem_0.5rem_2rem_0.5rem]"></div>
+              <div className="relative w-full h-full overflow-hidden rounded-[2rem_0.5rem_2rem_0.5rem]">
+                <img
+                  src={heroImage}
+                  alt="Dr. Aparna - Ayurvedic Doctor"
+                  className="w-full h-full object-cover"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-deep/10 via-transparent to-transparent"></div>
+              </div>
+              <div className="absolute -bottom-3 -left-3 sm:-bottom-5 sm:-left-5 bg-terra text-white px-5 sm:px-8 py-3 sm:py-5 rounded-[1.5rem_0.5rem_1.5rem_0.5rem] shadow-lg shadow-terra/20">
+                <p className="font-serif text-sm sm:text-lg italic">Kerala, India</p>
+              </div>
             </div>
           </motion.div>
         </div>
