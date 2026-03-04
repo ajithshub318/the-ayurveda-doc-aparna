@@ -1,0 +1,722 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Your Body Clock — Dr. Aparna Albert</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600;1,700&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+
+:root{
+  --cream:#F2EDE3;
+  --white:#FDFAF5;
+  --dark:#2B2B2B;
+  --teal:#4A9B7F;
+  --muted:#8A8278;
+  --border:rgba(43,43,43,0.10);
+  --serif:'Cormorant Garamond',Georgia,serif;
+  --sans:'DM Sans',system-ui,sans-serif;
+}
+
+body{
+  font-family:var(--sans);
+  background:var(--cream);
+  color:var(--dark);
+  min-height:100vh;
+  display:flex;
+  align-items:flex-start;
+  justify-content:center;
+  padding:40px 16px 72px;
+}
+
+.w{width:100%;max-width:500px;}
+.hidden{display:none!important;}
+
+/* ── SHARED ── */
+.eyebrow{
+  font-size:10px;letter-spacing:.22em;text-transform:uppercase;
+  color:var(--teal);display:flex;align-items:center;gap:8px;margin-bottom:28px;
+}
+.eyebrow::before{content:'';width:6px;height:6px;border-radius:50%;background:var(--teal);flex-shrink:0;}
+
+.btn{
+  display:flex;align-items:center;justify-content:center;gap:10px;
+  width:100%;padding:16px 24px;border-radius:99px;border:none;
+  font-family:var(--sans);font-size:15px;font-weight:500;
+  cursor:pointer;text-decoration:none;
+  transition:transform .2s,filter .2s;margin-bottom:11px;
+}
+.btn:hover{transform:translateY(-2px);filter:brightness(1.06);}
+.btn-dark{background:var(--dark);color:var(--cream);}
+.btn-wa{background:#25D366;color:#fff;}
+.btn-ghost{background:transparent;color:var(--muted);border:1.5px solid var(--border);font-size:13px;}
+.wa-svg{width:20px;height:20px;fill:#fff;flex-shrink:0;}
+
+/* ══════════════════════════════════
+   INTRO
+══════════════════════════════════ */
+#intro{animation:up .5s ease;}
+
+.intro-lines{
+  margin-bottom:36px;
+}
+
+.line-block{
+  margin-bottom:28px;
+}
+
+.line-big{
+  font-family:var(--serif);
+  font-size:clamp(38px,9vw,56px);
+  font-weight:600;
+  line-height:1.05;
+  color:var(--dark);
+  display:block;
+}
+.line-big em{
+  font-style:italic;
+  color:var(--teal);
+}
+
+.line-answer{
+  font-family:var(--sans);
+  font-size:14px;
+  color:var(--muted);
+  line-height:1.7;
+  margin-top:8px;
+  display:block;
+  padding-left:2px;
+}
+.line-answer strong{
+  color:var(--dark);
+  font-weight:500;
+}
+
+.divider{
+  width:32px;height:1px;
+  background:var(--border);
+  margin:24px 0;
+}
+
+.intro-cta-label{
+  font-size:13px;color:var(--muted);
+  line-height:1.6;margin-bottom:20px;
+}
+.intro-cta-label strong{color:var(--dark);font-weight:500;}
+
+/* ══════════════════════════════════
+   QUIZ
+══════════════════════════════════ */
+#quiz{animation:up .35s ease;}
+
+.prog-row{display:flex;align-items:center;gap:12px;margin-bottom:32px;}
+.prog-track{flex:1;height:2px;background:var(--border);border-radius:99px;overflow:hidden;}
+.prog-fill{height:100%;background:var(--teal);border-radius:99px;transition:width .4s ease;}
+.prog-lbl{font-size:12px;color:var(--muted);white-space:nowrap;}
+
+.q-step{font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--teal);margin-bottom:10px;}
+.q-h{
+  font-family:var(--serif);
+  font-size:clamp(24px,5.5vw,32px);
+  font-weight:500;font-style:italic;
+  line-height:1.3;color:var(--dark);margin-bottom:8px;
+}
+.q-sub{font-size:13px;color:var(--muted);line-height:1.65;margin-bottom:26px;}
+
+.time-grid{display:grid;grid-template-columns:1fr 1fr;gap:9px;}
+.topt{
+  background:var(--white);border:1.5px solid var(--border);
+  border-radius:13px;padding:13px 16px;
+  font-family:var(--sans);font-size:14px;color:var(--dark);
+  cursor:pointer;text-align:left;transition:all .18s ease;
+  line-height:1.35;
+}
+.topt:hover{border-color:var(--teal);background:rgba(74,155,127,0.06);transform:translateY(-2px);}
+.topt-time{font-weight:600;font-size:15px;color:var(--dark);display:block;margin-bottom:2px;}
+.topt-note{font-size:11px;color:var(--muted);}
+.topt-full{grid-column:1/-1;}
+
+/* ══════════════════════════════════
+   RESULT
+══════════════════════════════════ */
+#result{animation:up .4s ease;}
+
+.result-top{margin-bottom:28px;}
+.result-eyebrow{font-size:10px;letter-spacing:.22em;text-transform:uppercase;color:var(--teal);margin-bottom:12px;}
+.result-h{
+  font-family:var(--serif);
+  font-size:clamp(28px,6vw,38px);
+  font-weight:600;line-height:1.15;
+  color:var(--dark);margin-bottom:12px;
+}
+.result-h em{font-style:italic;color:var(--teal);}
+.result-sub{font-size:14px;color:var(--muted);line-height:1.7;}
+
+/* Timeline */
+.timeline-wrap{
+  margin-bottom:28px;background:var(--white);
+  border:1.5px solid var(--border);border-radius:18px;padding:20px 20px 20px;
+}
+.tl-title{font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--muted);margin-bottom:16px;}
+.tl-zones{position:relative;height:18px;margin-bottom:4px;}
+.tl-zone-lbl{
+  position:absolute;font-size:9px;font-weight:600;
+  letter-spacing:.08em;text-transform:uppercase;
+  transform:translateX(-50%);white-space:nowrap;
+}
+.tl-bar-wrap{position:relative;margin-bottom:32px;}
+.tl-bar{
+  position:relative;height:36px;border-radius:10px;
+  overflow:visible;background:var(--cream);display:flex;
+}
+.tl-band{position:absolute;top:0;bottom:0;}
+.tl-ticks{position:relative;height:18px;margin-top:6px;}
+.tl-tick{
+  position:absolute;font-size:9px;color:var(--muted);
+  transform:translateX(-50%);white-space:nowrap;
+}
+.tl-marker{
+  position:absolute;top:50%;transform:translate(-50%,-50%);
+  width:14px;height:14px;border-radius:50%;
+  background:var(--dark);border:2px solid var(--white);
+  cursor:default;z-index:2;
+}
+.tl-marker.optimal{background:var(--teal);}
+.tl-marker.warn{background:#C47B5A;}
+.tl-marker.mild{background:#D4A96A;}
+.tl-marker-lbl{
+  position:absolute;font-size:9px;font-weight:600;
+  color:var(--dark);white-space:nowrap;
+  transform:translateX(-50%);top:calc(100% + 22px);
+}
+.tl-legend{
+  display:flex;align-items:center;flex-wrap:wrap;gap:12px;
+  margin-top:8px;padding-top:14px;border-top:1px solid var(--border);
+}
+.tl-leg-item{display:flex;align-items:center;gap:5px;font-size:10px;color:var(--muted);}
+.tl-leg-dot{width:8px;height:8px;border-radius:50%;flex-shrink:0;}
+
+/* Gap cards */
+.gap-cards{margin-bottom:24px;}
+.gcard{
+  background:var(--dark);border-radius:18px;
+  padding:24px 24px;margin-bottom:12px;
+  position:relative;overflow:hidden;animation:up .4s ease;
+}
+.gcard::after{
+  content:'';position:absolute;inset:0;
+  background:radial-gradient(ellipse at top right,rgba(74,155,127,0.14) 0%,transparent 60%);
+  pointer-events:none;
+}
+.gcard.good{background:var(--white);border:1.5px solid var(--border);}
+.gcard.good::after{display:none;}
+
+.gcard-moment{font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:rgba(74,155,127,.8);margin-bottom:10px;}
+.gcard.good .gcard-moment{color:var(--teal);}
+.gcard-title{font-family:var(--serif);font-size:clamp(18px,4vw,22px);font-weight:700;color:#F2EDE3;line-height:1.25;margin-bottom:12px;}
+.gcard.good .gcard-title{color:var(--dark);}
+.gcard-body{font-size:13px;color:rgba(242,237,227,.60);line-height:1.8;margin-bottom:14px;}
+.gcard.good .gcard-body{color:var(--muted);}
+.gcard-truth{font-family:var(--serif);font-style:italic;font-size:15px;color:var(--teal);line-height:1.55;padding-top:12px;border-top:1px solid rgba(74,155,127,.2);}
+.gcard.good .gcard-truth{color:var(--teal);border-top-color:rgba(74,155,127,.15);}
+
+/* Closing */
+.closing{
+  border-left:3px solid var(--teal);background:rgba(74,155,127,.06);
+  border-radius:0 14px 14px 0;padding:20px 22px;margin-bottom:26px;
+}
+.closing-lbl{font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--teal);margin-bottom:8px;}
+.closing-text{font-family:var(--serif);font-style:italic;font-size:18px;color:var(--dark);line-height:1.65;}
+
+.brand-footer{text-align:center;font-size:11px;color:var(--muted);margin-top:8px;}
+
+@keyframes up{from{opacity:0;transform:translateY(18px);}to{opacity:1;transform:translateY(0);}}
+.out{animation:dn .25s ease forwards;}
+@keyframes dn{to{opacity:0;transform:translateY(-14px);}}
+</style>
+</head>
+<body>
+<div class="w">
+
+<!-- ══════════ INTRO ══════════ -->
+<div id="intro">
+  <div class="eyebrow">Dr. Aparna Albert &middot; Ayurvedic Practitioner</div>
+
+  <div class="intro-lines">
+
+    <div class="line-block">
+      <span class="line-big">You slept 7 hours.<br>You're still <em>tired.</em></span>
+      <span class="line-answer">That's not a sleep problem. That's a timing problem.</span>
+    </div>
+
+    <div class="divider"></div>
+
+    <div class="line-block">
+      <span class="line-big">You eat well.<br>You still <em>bloat.</em></span>
+      <span class="line-answer">Not what you're eating. <strong>When</strong> you're eating it.</span>
+    </div>
+
+    <div class="divider"></div>
+
+    <div class="line-block">
+      <span class="line-big">3PM hits.<br>You <em>crash.</em></span>
+      <span class="line-answer">Every single day. Like clockwork. Because it <strong>is</strong> a clock.</span>
+    </div>
+
+    <div class="divider"></div>
+
+    <span class="line-big" style="font-size:clamp(22px,5vw,30px);color:var(--muted);font-style:italic;">
+      Your body runs on a 5,000-year-old rhythm.<br>
+      See how far off yours is.
+    </span>
+
+  </div>
+
+  <button class="btn btn-dark" onclick="startQuiz()">
+    Map my day &rarr;
+  </button>
+  <p style="font-size:12px;color:var(--muted);text-align:center;margin-top:2px;">
+    6 questions &middot; 2 minutes &middot; No email
+  </p>
+</div>
+
+<!-- ══════════ QUIZ ══════════ -->
+<div id="quiz" class="hidden">
+  <div class="prog-row">
+    <div class="prog-track"><div class="prog-fill" id="prog"></div></div>
+    <div class="prog-lbl" id="prog-lbl">1 of 6</div>
+  </div>
+  <div class="q-step" id="q-step"></div>
+  <div class="q-h"    id="q-h"></div>
+  <div class="q-sub"  id="q-sub"></div>
+  <div class="time-grid" id="q-opts"></div>
+</div>
+
+<!-- ══════════ RESULT ══════════ -->
+<div id="result" class="hidden">
+  <div class="result-top">
+    <div class="result-eyebrow">Your Dinacharya Report</div>
+    <h2 class="result-h">Your day,<br>mapped against<br>your body's <em>clock.</em></h2>
+    <p class="result-sub" id="result-sub"></p>
+  </div>
+
+  <div class="timeline-wrap">
+    <div class="tl-title">Your day vs the Ayurvedic clock &mdash; 6AM to 1AM</div>
+    <div class="tl-zones" id="tl-zones"></div>
+    <div class="tl-bar-wrap">
+      <div class="tl-bar" id="tl-bar"></div>
+      <div class="tl-ticks" id="tl-ticks"></div>
+    </div>
+    <div class="tl-legend">
+      <div class="tl-leg-item"><div class="tl-leg-dot" style="background:var(--teal)"></div>Aligned</div>
+      <div class="tl-leg-item"><div class="tl-leg-dot" style="background:#D4A96A"></div>Slight gap</div>
+      <div class="tl-leg-item"><div class="tl-leg-dot" style="background:#C47B5A"></div>Significant gap</div>
+    </div>
+  </div>
+
+  <div class="gap-cards" id="gap-cards"></div>
+
+  <div class="closing">
+    <div class="closing-lbl">What this means</div>
+    <div class="closing-text" id="closing-text"></div>
+  </div>
+
+  <a id="wa-btn" href="#" target="_blank" class="btn btn-wa">
+    <svg class="wa-svg" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+    Talk to Dr. Aparna on WhatsApp
+  </a>
+  <button class="btn btn-ghost" onclick="resetQuiz()">Start over</button>
+  <div class="brand-footer">theayurvedadoc.com &middot; Dr. Aparna Albert</div>
+</div>
+
+</div>
+<script>
+var WA = "917012399593";
+var TL_START = 5, TL_END = 25, TL_SPAN = 20;
+
+var BANDS = [
+  {from:6, to:10, color:"rgba(74,155,127,0.12)",  dosha:"Kapha", lc:"#4A9B7F"},
+  {from:10,to:14, color:"rgba(212,140,80,0.12)",   dosha:"Pitta", lc:"#C47B5A"},
+  {from:14,to:18, color:"rgba(138,130,150,0.12)",  dosha:"Vata",  lc:"#8A8278"},
+  {from:18,to:22, color:"rgba(74,155,127,0.12)",   dosha:"Kapha", lc:"#4A9B7F"},
+  {from:22,to:25, color:"rgba(212,140,80,0.12)",   dosha:"Pitta", lc:"#C47B5A"}
+];
+
+var TICKS = [{h:6,l:"6AM"},{h:10,l:"10AM"},{h:14,l:"2PM"},{h:18,l:"6PM"},{h:22,l:"10PM"}];
+
+var QS = [
+  {
+    step:"Moment 1 — Wake",
+    q:"What time do your eyes actually open?",
+    sub:"Not the alarm. What actually happens.",
+    key:"wake",
+    opts:[
+      {lbl:"Before 5:30",   note:"Vata time — the mind is clear", h:5.0},
+      {lbl:"Around 6",      note:"Right at the transition",        h:6.0},
+      {lbl:"6:30 – 7",      note:"Early Kapha",                    h:6.75},
+      {lbl:"7:30 – 8",      note:"Mid Kapha",                      h:7.75},
+      {lbl:"After 8:30",    note:"Deep in Kapha",                   h:9.0}
+    ]
+  },
+  {
+    step:"Moment 2 — First meal",
+    q:"When does your first meal happen?",
+    sub:"Breakfast, or whatever you call it.",
+    key:"breakfast",
+    opts:[
+      {lbl:"Before 8",       note:"Still in Kapha — good",         h:7.5},
+      {lbl:"8:30 – 9",       note:"Kapha winding down",            h:8.75},
+      {lbl:"9:30 – 10",      note:"Very late Kapha",               h:9.75},
+      {lbl:"I skip it",      note:"Straight to lunch",             h:null}
+    ]
+  },
+  {
+    step:"Moment 3 — Main meal",
+    q:"When does your main meal happen?",
+    sub:"The biggest thing you eat all day.",
+    key:"lunch",
+    opts:[
+      {lbl:"Around noon",    note:"Pitta at peak — this is it",    h:12.0},
+      {lbl:"12:30 – 1",      note:"Strong Pitta",                  h:12.75},
+      {lbl:"1:30 – 2",       note:"Pitta waning",                  h:13.75},
+      {lbl:"After 2:30",     note:"Pitta has passed",              h:14.75},
+      {lbl:"I skip lunch",   note:"Or eat something very small",   h:null}
+    ]
+  },
+  {
+    step:"Moment 4 — Dinner",
+    q:"What time does dinner actually land?",
+    sub:"Most nights. The honest average.",
+    key:"dinner",
+    opts:[
+      {lbl:"Before 7",       note:"Digestive fire still active",   h:6.5},
+      {lbl:"Around 7 – 7:30",note:"Early Kapha",                   h:7.25},
+      {lbl:"Around 8",       note:"Mid Kapha",                     h:20.0},
+      {lbl:"8:30 – 9",       note:"Late Kapha",                    h:20.75},
+      {lbl:"After 9:30",     note:"Kapha nearly over",             h:21.75}
+    ]
+  },
+  {
+    step:"Moment 5 — Movement",
+    q:"When do you move your body?",
+    sub:"Workout, walk — whatever it looks like.",
+    key:"workout",
+    opts:[
+      {lbl:"Morning, before 10", note:"Kapha time — optimal",      h:"morning"},
+      {lbl:"Afternoon 2–5",      note:"Vata time — decent",        h:"afternoon"},
+      {lbl:"Evening 6–8",        note:"Kapha wind-down",           h:"evening"},
+      {lbl:"Late night 9+",      note:"Into repair window",        h:"late"},
+      {lbl:"Not regularly",      note:"Right now, not really",     h:"none"}
+    ]
+  },
+  {
+    step:"Moment 6 — Sleep",
+    q:"When do you actually go to sleep?",
+    sub:"Lights out, phone down. The real time.",
+    key:"sleep",
+    opts:[
+      {lbl:"Before 10",      note:"Full repair window — ideal",    h:22.0},
+      {lbl:"Around 10:30",   note:"Just catching it",              h:22.5},
+      {lbl:"Around 11",      note:"Missing first hour",            h:23.0},
+      {lbl:"Around midnight",note:"Missing two hours",             h:24.0},
+      {lbl:"After midnight", note:"Most of the window gone",       h:25.0}
+    ]
+  }
+];
+
+var cur=0, data={};
+
+function show(id){
+  ["intro","quiz","result"].forEach(function(s){document.getElementById(s).classList.add("hidden");});
+  document.getElementById(id).classList.remove("hidden");
+}
+function startQuiz(){cur=0;data={};renderQ();show("quiz");}
+
+function renderQ(){
+  var q=QS[cur];
+  document.getElementById("q-step").textContent=q.step;
+  document.getElementById("q-h").textContent=q.q;
+  document.getElementById("q-sub").textContent=q.sub;
+  document.getElementById("prog").style.width=((cur+1)/QS.length*100)+"%";
+  document.getElementById("prog-lbl").textContent=(cur+1)+" of "+QS.length;
+  var box=document.getElementById("q-opts");
+  box.innerHTML="";
+  q.opts.forEach(function(opt,i){
+    var isLast=(i===q.opts.length-1);
+    var isOdd=q.opts.length%2!==0;
+    var btn=document.createElement("button");
+    btn.className="topt"+(isOdd&&isLast?" topt-full":"");
+    btn.innerHTML='<span class="topt-time">'+opt.lbl+'</span><span class="topt-note">'+opt.note+'</span>';
+    btn.onclick=(function(h,k){return function(){pick(h,k);};})(opt.h,q.key);
+    box.appendChild(btn);
+  });
+}
+
+function pick(h,key){
+  data[key]=h;
+  var el=document.getElementById("quiz");
+  el.classList.add("out");
+  setTimeout(function(){
+    el.classList.remove("out");
+    if(cur<QS.length-1){cur++;renderQ();}
+    else showResult();
+  },240);
+}
+
+function hStr(h){
+  if(h===null||typeof h==="string")return null;
+  var hh=Math.floor(h),mm=Math.round((h-hh)*60);
+  var ap=hh>=12?"PM":"AM";
+  var d=hh>12?hh-12:(hh===0?12:hh);
+  return d+(mm>0?":"+(mm<10?"0"+mm:mm):"")+"\u202F"+ap;
+}
+
+/* ── Analysis ── */
+function analyzeWake(h){
+  if(h===null)return null;
+  if(h<=6.25)return{sev:"optimal",marker:h,moment:"Wake — "+hStr(h),
+    title:"Waking at the right time",
+    body:"Rising at or before dawn puts you in Vata time — when the mind is clear and the body is light. You've already completed your repair cycle. The day starts clean.",
+    truth:"This one habit sets the tone for your digestion, energy and focus for everything that follows."};
+  if(h<=7.5)return{sev:"mild",marker:h,moment:"Wake — "+hStr(h),
+    title:"Waking in Kapha — the heaviness is not in your head",
+    body:"Kapha starts at 6AM and brings a natural heaviness to the body. Waking at "+hStr(h)+" puts you inside it. The grogginess isn't laziness. It's Kapha. The longer you sleep into it, the harder it pulls.",
+    truth:"Shifting your wake time 30 minutes earlier is one of the highest-leverage changes you can make."};
+  return{sev:"warn",marker:h,moment:"Wake — "+hStr(h),
+    title:"Deep Kapha wake — this is why you feel heavy before the day even starts",
+    body:"By "+hStr(h)+", your body has been in Kapha's slow, heavy phase for over two hours. You're waking up mid-inertia. No amount of coffee fully fixes what earlier waking prevents.",
+    truth:"Every 30 minutes reclaimed from Kapha changes how your whole day feels."};
+}
+
+function analyzeBreakfast(h){
+  if(h===null)return{sev:"mild",marker:null,moment:"Breakfast — skipped",
+    title:"Skipping breakfast leaves your nervous system running on empty",
+    body:"Vata time activates your mind and nervous system before you wake. By morning they're already running. With nothing in the system, concentration wavers and energy drops before noon.",
+    truth:"A small, warm breakfast isn't about calories. It's a signal to the nervous system that the day has begun."};
+  if(h<=9.0)return null;
+  return{sev:"mild",marker:h,moment:"Breakfast — "+hStr(h),
+    title:"Late breakfast is competing with a system already building toward lunch",
+    body:"By "+hStr(h)+" Pitta is waking up. A heavy breakfast now competes with the digestive fire that should be building toward your biggest meal at noon.",
+    truth:"Earlier and lighter here. Save the fire for lunch."};
+}
+
+function analyzeLunch(h){
+  if(h===null)return{sev:"warn",marker:null,moment:"Lunch — skipped",
+    title:"Skipping lunch wastes the one window your body was built for",
+    body:"10AM–2PM is your digestive fire at absolute peak. Skip this window and the fire burns through itself. You compensate at dinner — when the fire is already winding down.",
+    truth:"Whatever you save skipping lunch, your body takes back at dinner when it can least afford to process it."};
+  if(h>=11.5&&h<=13.5)return{sev:"optimal",marker:h,moment:"Lunch — "+hStr(h),
+    title:"Lunch at "+hStr(h)+" — right in the window",
+    body:"Pitta peaks between 10AM and 2PM. "+hStr(h)+" is the middle of it. Your digestive fire is at maximum. This meal gets fully processed, absorbed and converted to energy exactly as it should.",
+    truth:"Make this your biggest meal. Everything you put here, your body handles well."};
+  if(h<=14.25)return{sev:"mild",marker:h,moment:"Lunch — "+hStr(h),
+    title:"Lunch at "+hStr(h)+" — catching the end of the window",
+    body:"Pitta starts winding down after 2PM. "+hStr(h)+" still catches some fire — but it's declining, not peaking. You get maybe 70% of the processing you'd get at noon.",
+    truth:"30–40 minutes earlier would show up in your afternoon energy."};
+  return{sev:"warn",marker:h,moment:"Lunch — "+hStr(h),
+    title:"Lunch at "+hStr(h)+" — eating after the kitchen closed",
+    body:"The Pitta window closed at 2PM. Lunch at "+hStr(h)+" asks your body to process a full meal on a declining fire. What doesn't process fully gets stored — not as energy, but as weight and ama.",
+    truth:"This single shift — eating your main meal before 2PM — changes more symptoms than any supplement."};
+}
+
+function analyzeDinner(h){
+  var rh=h<12?h+12:h;
+  if(rh<=19.25)return{sev:"optimal",marker:rh,moment:"Dinner — "+hStr(rh),
+    title:"Dinner at "+hStr(rh)+" — still catching the fire",
+    body:"Kapha starts at 6PM and brings a natural slowing of digestion. Eating at "+hStr(rh)+" catches the very beginning of that transition — your fire still has capacity. The body processes it, rests well, and begins its repair cycle on schedule.",
+    truth:"If other timings are aligned, this dinner pattern shows up directly in your sleep quality and how you feel at 7AM."};
+  if(rh<=20.25)return{sev:"mild",marker:rh,moment:"Dinner — "+hStr(rh),
+    title:"Dinner at "+hStr(rh)+" — working with less fire",
+    body:"By "+hStr(rh)+" Kapha has been running for over an hour. Digestive fire is winding down. The food gets processed — but at 60–70% capacity. The heaviness before bed, the coating on your tongue in the morning — this is where it comes from.",
+    truth:"45 minutes earlier is enough to feel the difference."};
+  if(rh<=21.25)return{sev:"warn",marker:rh,moment:"Dinner — "+hStr(rh),
+    title:"Dinner at "+hStr(rh)+" — the kitchen was already closing",
+    body:"Your digestive fire has been declining for two hours by "+hStr(rh)+". The meal doesn't process properly — it sits, ferments, and becomes ama. This is the pattern behind morning heaviness, skin issues, and weight that won't move.",
+    truth:"The body doesn't care how clean the food was. It cares when it arrived."};
+  return{sev:"warn",marker:rh,moment:"Dinner — "+hStr(rh),
+    title:"Dinner at "+hStr(rh)+" — your body was preparing to repair, not digest",
+    body:"By "+hStr(rh)+" Pitta's repair cycle is about to begin. You're asking a system preparing to restore itself to do digestion instead. The repair gets pushed back. You wake up tired not from bad sleep but from a body that was doing overtime.",
+    truth:"This is the most common pattern in patients who say everything they try eventually stops working."};
+}
+
+function analyzeWorkout(h){
+  if(h==="none"||h===null)return null;
+  if(h==="morning")return{sev:"optimal",marker:8.0,moment:"Workout — Morning",
+    title:"Morning exercise — working with your body",
+    body:"Kapha (6–10AM) is when the body is physically strongest and needs movement to clear stagnation. Exercise here ignites digestive fire, clears Kapha heaviness and sets the metabolic tone for the day.",
+    truth:"The ancient texts called morning movement maintenance, not optional."};
+  if(h==="afternoon")return null;
+  if(h==="evening")return{sev:"mild",marker:19.0,moment:"Workout — Evening",
+    title:"Evening workouts stimulate you when the body wants to wind down",
+    body:"Kapha (6–10PM) is your natural wind-down window. A hard workout at 6–8PM spikes cortisol right into it. You feel wired when you should feel settled. Sleep takes longer to arrive.",
+    truth:"If evenings are all you have, lighter movement — walk, yoga, stretching — works with the window instead of against it."};
+  return{sev:"warn",marker:21.5,moment:"Workout — Late night",
+    title:"Late training borrows from the window your body uses to repair itself",
+    body:"After 10PM your body enters its Pitta repair cycle — rebuilding tissue, processing the day, restoring immunity. Exercise here spikes cortisol directly into that window. Recovery slows. You feel it the next morning.",
+    truth:"The harder you train at night, the more the body falls behind. It's a debt that compounds."};
+}
+
+function analyzeSleep(h){
+  if(h<=22.25)return{sev:"optimal",marker:h,moment:"Sleep — "+hStr(h),
+    title:"Sleeping at "+hStr(h)+" — the full repair window is yours",
+    body:"The body's Pitta repair cycle runs 10PM–2AM. Falling asleep at "+hStr(h)+" means you're present for all of it. Tissue rebuilds, the day gets processed, immunity restores — on schedule. This is why early sleepers wake up different.",
+    truth:"This window cannot be replicated at midnight. The body does this work now, or it doesn't do it."};
+  if(h<=23.25)return{sev:"mild",marker:h,moment:"Sleep — "+hStr(h),
+    title:"Sleeping at "+hStr(h)+" — missing the first hour of repair",
+    body:"The window opened at 10PM. By "+hStr(h)+" an hour has passed. You get most of the cycle — not all. Over weeks, that hour compounds into tiredness you can't sleep off.",
+    truth:"You can sleep nine hours and wake up tired if you consistently miss the start of this window."};
+  if(h<=24.25)return{sev:"warn",marker:h,moment:"Sleep — "+hStr(h),
+    title:"Sleeping at midnight — two hours of your repair window are already gone",
+    body:"The Pitta repair window opened at 10PM. By midnight the body has been trying to do this work for two hours while you were still awake, asking it for energy. When you finally sleep, the cycle is already disrupted.",
+    truth:"This is why eight hours at midnight never feels the same as six hours at 10PM."};
+  return{sev:"warn",marker:Math.min(h,25.5),moment:"Sleep — After midnight",
+    title:"After midnight — most of your body's repair window is already gone",
+    body:"The Pitta repair window runs 10PM to 2AM. If you're sleeping after midnight the best part of the cycle has passed. The fatigue that doesn't go away with sleep, the immunity that keeps dipping — these are the symptoms of a consistently missed repair cycle.",
+    truth:"No supplement, no morning routine and no amount of weekend sleep compensates for what happens between 10PM and 2AM."};
+}
+
+/* ── Show result ── */
+function showResult(){
+  var gaps=[];
+  var g;
+  g=analyzeWake(data.wake);           if(g)gaps.push(g);
+  g=analyzeBreakfast(data.breakfast); if(g)gaps.push(g);
+  g=analyzeLunch(data.lunch);         if(g)gaps.push(g);
+  g=analyzeDinner(data.dinner);       if(g)gaps.push(g);
+  g=analyzeWorkout(data.workout);     if(g)gaps.push(g);
+  g=analyzeSleep(data.sleep);         if(g)gaps.push(g);
+
+  var warns=gaps.filter(function(g){return g.sev==="warn";}).length;
+  var milds=gaps.filter(function(g){return g.sev==="mild";}).length;
+
+  document.getElementById("result-sub").textContent=
+    warns>=2 ? "Several of your daily timings are running against your body's natural clock. The symptoms you have been trying to explain are most likely connected to these specific moments." :
+    milds>=2 ? "A few of your timings are slightly off. These are not large gaps — but consistent ones, and consistency is what creates the symptoms that feel impossible to pin down." :
+               "Your daily rhythm is largely aligned. The gaps below are small — but naming them precisely is what changes the remaining symptoms.";
+
+  buildTimeline(gaps);
+
+  var container=document.getElementById("gap-cards");
+  container.innerHTML="";
+  gaps.forEach(function(g,i){
+    var c=document.createElement("div");
+    c.className="gcard"+(g.sev==="optimal"?" good":"");
+    c.style.animationDelay=(i*.07)+"s";
+    c.innerHTML='<div class="gcard-moment">'+g.moment+'</div><div class="gcard-title">'+g.title+'</div><div class="gcard-body">'+g.body+'</div><div class="gcard-truth">'+g.truth+'</div>';
+    container.appendChild(c);
+  });
+
+  var closings=[
+    "These patterns are not permanent. They are just habits formed without a map. Understanding which window to protect first — and in what order — is the difference between trying things and things actually working.",
+    "What Ayurveda offers is not a harder routine. It is a different relationship with time. Your body already knows how to heal. It needs the right timing to do it.",
+    "Your rhythm is close. Precise, small adjustments to timing — not more supplements, not more effort — are what close the remaining gap."
+  ];
+  document.getElementById("closing-text").textContent=closings[warns>=2?0:milds>=2?1:2];
+
+  var badGaps=gaps.filter(function(g){return g.sev!=="optimal";}).slice(0,3).map(function(g){return g.moment;});
+  var msg=encodeURIComponent("Hi Dr. Aparna! I used the Body Clock calculator on your website. The gaps it found were: "+(badGaps.length?badGaps.join(", "):"a few small ones")+". I would love to understand what to do about these.");
+  document.getElementById("wa-btn").href="https://wa.me/"+WA+"?text="+msg;
+
+  show("result");
+}
+
+/* ── Timeline ── */
+function buildTimeline(gaps){
+  var bar=document.getElementById("tl-bar");
+  var ticks=document.getElementById("tl-ticks");
+  var zones=document.getElementById("tl-zones");
+  bar.innerHTML="";ticks.innerHTML="";zones.innerHTML="";
+
+  BANDS.forEach(function(b){
+    var d=document.createElement("div");
+    d.className="tl-band";
+    d.style.left=((b.from-TL_START)/TL_SPAN*100)+"%";
+    d.style.width=((b.to-b.from)/TL_SPAN*100)+"%";
+    d.style.background=b.color;
+    bar.appendChild(d);
+    var l=document.createElement("div");
+    l.className="tl-zone-lbl";
+    l.style.left=(((b.from+b.to)/2-TL_START)/TL_SPAN*100)+"%";
+    l.style.color=b.lc;
+    l.textContent=b.dosha;
+    zones.appendChild(l);
+  });
+
+  TICKS.forEach(function(t){
+    var d=document.createElement("div");
+    d.className="tl-tick";
+    d.style.left=((t.h-TL_START)/TL_SPAN*100)+"%";
+    d.textContent=t.l;
+    ticks.appendChild(d);
+  });
+
+  // workout mapping
+  var wh=data.workout;
+  var workoutH=wh==="morning"?8.0:wh==="afternoon"?15.0:wh==="evening"?19.0:wh==="late"?21.5:null;
+
+  var moments=[
+    {h:data.wake,       label:"Wake",      key:"wake"},
+    {h:data.breakfast,  label:"Breakfast", key:"breakfast"},
+    {h:data.lunch,      label:"Lunch",     key:"lunch"},
+    {h:data.dinner,     label:"Dinner",    key:"dinner"},
+    {h:workoutH,        label:"Workout",   key:"workout"},
+    {h:data.sleep,      label:"Sleep",     key:"sleep"}
+  ];
+
+  // Build resolved list first so we can stagger overlapping labels
+  var resolved=[];
+  moments.forEach(function(m){
+    if(m.h===null||typeof m.h==="string")return;
+    var rh=m.key==="dinner"&&m.h<12?m.h+12:m.h;
+    var clamp=Math.min(Math.max(rh,TL_START+0.3),TL_END-0.3);
+    var lp=(clamp-TL_START)/TL_SPAN*100;
+    var found=null;
+    for(var i=0;i<gaps.length;i++){
+      if(gaps[i].moment&&gaps[i].moment.toLowerCase().indexOf(m.label.toLowerCase())>-1){found=gaps[i];break;}
+    }
+    resolved.push({lp:lp, label:m.label, sev:found?found.sev:"optimal"});
+  });
+
+  // Assign row: 0=close to bar, 1=further — stagger if two labels within 13% of each other
+  var rows=[];
+  resolved.forEach(function(r,i){
+    var row=0;
+    for(var j=0;j<i;j++){
+      if(Math.abs(resolved[j].lp - r.lp) < 13){
+        row = rows[j]===0 ? 1 : 0;
+        break;
+      }
+    }
+    rows.push(row);
+  });
+
+  resolved.forEach(function(r,i){
+    var dot=document.createElement("div");
+    dot.className="tl-marker "+r.sev;
+    dot.style.left=r.lp+"%";
+    bar.appendChild(dot);
+
+    // Stem line
+    var stem=document.createElement("div");
+    stem.style.cssText="position:absolute;width:1px;background:rgba(43,43,43,0.15);left:"+r.lp+"%;top:100%;height:"+(rows[i]===0?18:34)+"px;transform:translateX(-50%);";
+    bar.appendChild(stem);
+
+    var lbl=document.createElement("div");
+    lbl.className="tl-marker-lbl";
+    lbl.style.left=r.lp+"%";
+    lbl.style.top="calc(100% + "+(rows[i]===0?20:36)+"px)";
+    lbl.textContent=r.label;
+    bar.appendChild(lbl);
+  });
+
+  // Extra bottom padding so labels don't get clipped
+  bar.parentElement.style.marginBottom="56px";
+}
+
+function resetQuiz(){cur=0;data={};show("intro");}
+
+if(!Array.prototype.filter){Array.prototype.filter=function(cb){var r=[];for(var i=0;i<this.length;i++)if(cb(this[i]))r.push(this[i]);return r;};}
+</script>
+</body>
+</html>

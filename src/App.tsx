@@ -8,6 +8,7 @@ import { HeroSection } from './components/sections/HeroSection';
 // Lazy load below-the-fold sections for better initial load performance
 const WhatIDoSection = lazy(() => import('./components/sections/WhatIDoSection').then(m => ({ default: m.WhatIDoSection })));
 const HowIWorkSection = lazy(() => import('./components/sections/HowIWorkSection').then(m => ({ default: m.HowIWorkSection })));
+const DinacharyaSection = lazy(() => import('./components/sections/DinacharyaSection').then(m => ({ default: m.DinacharyaSection })));
 const HealingNeedsSpaceSection = lazy(() => import('./components/sections/HealingNeedsSpaceSection').then(m => ({ default: m.HealingNeedsSpaceSection })));
 const PricingPlansSection = lazy(() => import('./components/sections/PricingPlansSection').then(m => ({ default: m.PricingPlansSection })));
 const InPersonHealingSection = lazy(() => import('./components/sections/InPersonHealingSection').then(m => ({ default: m.InPersonHealingSection })));
@@ -51,6 +52,8 @@ function App() {
           <WhatIDoSection />
 
           <HowIWorkSection />
+
+          <DinacharyaSection />
 
           <PricingPlansSection onBookingClick={() => handleWhatsAppClick()} />
 
