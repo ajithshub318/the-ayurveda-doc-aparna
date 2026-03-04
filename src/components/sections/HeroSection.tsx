@@ -64,8 +64,8 @@ export function HeroSection({ onBookingClick, onContactClick }: HeroSectionProps
 
             <div className="flex items-center gap-6 sm:gap-10 pt-4 sm:pt-8 border-t border-charcoal/10">
               {[
-                { value: "500+", label: "Happy Clients" },
-                { value: "10+", label: "Years Experience" },
+                { value: "250+", label: "Happy Clients" },
+                { value: "4+", label: "Years Experience" },
                 { value: "4.9", label: "Rating" }
               ].map((stat, i) => (
                 <div key={i} className="flex items-center gap-6 sm:gap-10">
