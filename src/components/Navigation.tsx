@@ -25,13 +25,19 @@ export function Navigation({ onBookingClick }: NavigationProps) {
             </div>
 
             <div className="hidden md:flex items-center space-x-8 lg:space-x-12">
-              {["Home", "Services", "About", "Contact"].map((item) => (
+              {[
+                { label: "Home", href: "#" },
+                { label: "Services", href: "#services" },
+                { label: "Body Clock", href: "#body-clock" },
+                { label: "About", href: "#about" },
+                { label: "Contact", href: "#contact" },
+              ].map((item) => (
                 <a
-                  key={item}
-                  href={item === "Home" ? "#" : `#${item.toLowerCase()}`}
+                  key={item.label}
+                  href={item.href}
                   className="relative text-charcoal hover:text-forest transition-colors text-sm tracking-[0.12em] uppercase font-medium group"
                 >
-                  {item}
+                  {item.label}
                   <span className="absolute -bottom-1 left-0 w-0 h-[1.5px] bg-forest group-hover:w-full transition-all duration-500 ease-out"></span>
                 </a>
               ))}
@@ -63,14 +69,20 @@ export function Navigation({ onBookingClick }: NavigationProps) {
         {/* Mobile menu */}
         {mobileOpen && (
           <div className="md:hidden bg-ivory/95 backdrop-blur-xl border-t border-charcoal/5 px-4 py-6 space-y-4">
-            {["Home", "Services", "About", "Contact"].map((item) => (
+            {[
+              { label: "Home", href: "#" },
+              { label: "Services", href: "#services" },
+              { label: "Body Clock", href: "#body-clock" },
+              { label: "About", href: "#about" },
+              { label: "Contact", href: "#contact" },
+            ].map((item) => (
               <a
-                key={item}
-                href={item === "Home" ? "#" : `#${item.toLowerCase()}`}
+                key={item.label}
+                href={item.href}
                 onClick={() => setMobileOpen(false)}
                 className="block text-charcoal hover:text-forest transition-colors text-sm tracking-[0.12em] uppercase font-medium py-2"
               >
-                {item}
+                {item.label}
               </a>
             ))}
             <button

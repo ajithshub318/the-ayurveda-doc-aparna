@@ -40,6 +40,7 @@ export function Footer({ onContactClick, onBookingClick }: FooterProps) {
               {[
                 { label: "Home", href: "#" },
                 { label: "Services", href: "#services" },
+                { label: "Body Clock", href: "#body-clock" },
                 { label: "About", href: "#about" },
                 { label: "Testimonials", href: "#testimonials" },
               ].map((link) => (
