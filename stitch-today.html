@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>21-Day Sugar Cut Tracker</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Eb+Garamond:ital,wght@0,400;0,700;1,400;1,700&amp;family=Dm+Sans:wght@400;500;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              'brand-bg': '#FAF7F2',
+              'brand-primary': '#E07A5F',
+              'brand-secondary': '#7BA787',
+              'brand-accent': '#D4A843',
+              'brand-text': '#2C2C2C',
+              'brand-text-light': '#4A4A4A',
+              'brand-muted': '#8A8778',
+              'brand-coral-light': '#FFF0EC',
+              'brand-coral-dark': '#C45B4A'
+            },
+            fontFamily: {
+              "headline": ["Eb Garamond", "serif"],
+              "body": ["Dm Sans", "sans-serif"],
+              "label": ["Dm Sans", "sans-serif"]
+            },
+            borderRadius: {"DEFAULT": "0.5rem", "lg": "1rem", "xl": "1.5rem", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body {
+            background-color: #FAF7F2;
+            font-family: 'Dm Sans', sans-serif;
+            color: #2C2C2C;
+        }
+        .serif-text {
+            font-family: 'Eb Garamond', serif;
+        }
+        .hide-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-brand-bg min-h-screen pb-32">
+<!-- Top App Bar (Shared Component) -->
+<header class="fixed top-0 w-full z-50 flex justify-between items-center px-6 h-16 bg-gradient-to-r from-[#E07A5F] to-[#C45B4A] text-white">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined cursor-pointer" data-icon="menu">menu</span>
+<h1 class="font-serif text-2xl font-bold tracking-tight">21-Day Sugar Cut</h1>
+</div>
+<div class="w-8 h-8 rounded-full overflow-hidden border-2 border-white/20">
+<img alt="Profile" data-alt="Professional headshot of a friendly female doctor with an approachable smile, soft warm lighting, studio background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBPtFiQUaD_hjoUwEgXtbxkhaqi37SNr-GjB4gKwnOxPE9uylFQOydrGrC1TwyNFBJNcIDdLS11zTAEYu3hLez4agLrj3mdD8wE2y-3T9galC9X_mmP4Iz1CmdQRlv8XUrC1V9eztyEZHszRTtGJ8SSlztqHLLrsjuYyTn81B_Y04K9XneXxhtdsAcf8b004HY8uX0Yp0S_kqLaMwAt8RrVRFm6pxxxJTRo3QLjfw8Yg9qfRZfa_RfksxBw-aFB1odFpIw6zIMiFj1T"/>
+</div>
+</header>
+<!-- Main Hero Header -->
+<section class="mt-16 pt-8 pb-12 px-6 bg-gradient-to-r from-[#E07A5F] to-[#C45B4A] text-white rounded-b-[40px] shadow-lg relative overflow-hidden">
+<div class="absolute top-0 right-0 w-48 h-48 bg-white/10 rounded-full -mr-12 -mt-12 blur-2xl"></div>
+<div class="flex justify-between items-end relative z-10">
+<div>
+<div class="flex items-baseline gap-2">
+<h2 class="serif-text text-5xl font-bold">Day 1</h2>
+<span class="text-xl opacity-80 font-medium">of 21</span>
+</div>
+<p class="mt-1 text-lg font-body font-medium opacity-90 tracking-wide uppercase text-xs">Sugar Cut Challenge</p>
+</div>
+<!-- Progress Ring -->
+<div class="relative w-24 h-24 flex items-center justify-center">
+<svg class="w-full h-full transform -rotate-90">
+<circle cx="48" cy="48" fill="transparent" r="40" stroke="rgba(255,255,255,0.2)" stroke-width="8"></circle>
+<circle cx="48" cy="48" fill="transparent" r="40" stroke="white" stroke-dasharray="251.2" stroke-dashoffset="125.6" stroke-linecap="round" stroke-width="8"></circle>
+</svg>
+<div class="absolute inset-0 flex flex-col items-center justify-center">
+<span class="text-2xl font-bold">4/8</span>
+<span class="text-[10px] uppercase font-bold tracking-tighter">Tasks</span>
+</div>
+</div>
+</div>
+</section>
+<main class="max-w-md mx-auto px-6 -mt-6 relative z-20 space-y-6">
+<!-- Tip of the Day Card -->
+<div class="bg-brand-coral-light border-l-4 border-brand-primary p-5 rounded-xl shadow-sm flex gap-4">
+<div class="bg-brand-primary/10 p-2 rounded-full h-fit">
+<span class="material-symbols-outlined text-brand-primary" data-icon="lightbulb">lightbulb</span>
+</div>
+<div>
+<h4 class="text-brand-primary font-bold text-sm uppercase tracking-wider mb-1">Tip of the Day</h4>
+<p class="text-brand-text font-medium leading-relaxed">Day 1 is the hardest. Your body is used to sugar spikes. Drink warm water with lemon when cravings hit.</p>
+</div>
+</div>
+<!-- Daily Checklist -->
+<div class="bg-white rounded-2xl p-6 shadow-sm border border-stone-100">
+<h3 class="serif-text text-2xl font-bold mb-5 text-brand-text">Daily Checklist</h3>
+<div class="space-y-4">
+<!-- Task 1 (Completed) -->
+<label class="flex items-start gap-3 cursor-pointer group">
+<div class="relative flex items-center justify-center mt-1">
+<input checked="" class="peer h-5 w-5 rounded border-stone-300 text-brand-primary focus:ring-brand-primary" type="checkbox"/>
+</div>
+<span class="text-brand-text-light line-through decoration-brand-primary/40 transition-all font-medium">No added sugar in tea/coffee/milk</span>
+</label>
+<!-- Task 2 (Completed) -->
+<label class="flex items-start gap-3 cursor-pointer">
+<div class="relative flex items-center justify-center mt-1">
+<input checked="" class="peer h-5 w-5 rounded border-stone-300 text-brand-primary focus:ring-brand-primary" type="checkbox"/>
+</div>
+<span class="text-brand-text-light line-through decoration-brand-primary/40 font-medium">No soda, packaged juice, or energy drinks</span>
+</label>
+<!-- Task 3 (Completed) -->
+<label class="flex items-start gap-3 cursor-pointer">
+<div class="relative flex items-center justify-center mt-1">
+<input checked="" class="peer h-5 w-5 rounded border-stone-300 text-brand-primary focus:ring-brand-primary" type="checkbox"/>
+</div>
+<span class="text-brand-text-light line-through decoration-brand-primary/40 font-medium">No sweets, desserts, or mithai</span>
+</label>
+<!-- Task 4 (Pending) -->
+<label class="flex items-start gap-3 cursor-pointer">
+<div class="relative flex items-center justify-center mt-1">
+<input class="peer h-5 w-5 rounded border-stone-300 text-brand-primary focus:ring-brand-primary" type="checkbox"/>
+</div>
+<span class="text-brand-text font-medium">No packaged snacks with hidden sugar</span>
+</label>
+<!-- Task 5 (Pending) -->
+<label class="flex items-start gap-3 cursor-pointer">
+<div class="relative flex items-center justify-center mt-1">
+<input class="peer h-5 w-5 rounded border-stone-300 text-brand-primary focus:ring-brand-primary" type="checkbox"/>
+</div>
+<span class="text-brand-text font-medium">Read a food label before eating</span>
+</label>
+<!-- Task 6 (Pending) -->
+<label class="flex items-start gap-3 cursor-pointer">
+<div class="relative flex items-center justify-center mt-1">
+<input class="peer h-5 w-5 rounded border-stone-300 text-brand-primary focus:ring-brand-primary" type="checkbox"/>
+</div>
+<span class="text-brand-text font-medium">Ate a fresh fruit when craving sugar</span>
+</label>
+<!-- Task 7 (Completed) -->
+<label class="flex items-start gap-3 cursor-pointer">
+<div class="relative flex items-center justify-center mt-1">
+<input checked="" class="peer h-5 w-5 rounded border-stone-300 text-brand-primary focus:ring-brand-primary" type="checkbox"/>
+</div>
+<span class="text-brand-text-light line-through decoration-brand-primary/40 font-medium">Drank 8+ glasses of water</span>
+</label>
+<!-- Task 8 (Pending) -->
+<label class="flex items-start gap-3 cursor-pointer">
+<div class="relative flex items-center justify-center mt-1">
+<input class="peer h-5 w-5 rounded border-stone-300 text-brand-primary focus:ring-brand-primary" type="checkbox"/>
+</div>
+<span class="text-brand-text font-medium">Ate home-cooked meals</span>
+</label>
+</div>
+</div>
+<!-- Self Assessment -->
+<div class="bg-white rounded-2xl p-6 shadow-sm border border-stone-100">
+<h3 class="serif-text text-2xl font-bold mb-5 text-brand-text">Self-Assessment</h3>
+<div class="space-y-6">
+<!-- Energy Level -->
+<div>
+<label class="block text-xs font-bold text-brand-muted uppercase tracking-widest mb-3">Energy Level</label>
+<div class="flex gap-2 hide-scrollbar overflow-x-auto pb-1">
+<button class="px-4 py-2 rounded-full border border-stone-200 text-sm font-medium hover:bg-stone-50 transition-colors">Low</button>
+<button class="px-4 py-2 rounded-full border border-stone-200 text-sm font-medium hover:bg-stone-50 transition-colors">Okay</button>
+<button class="px-4 py-2 rounded-full bg-brand-primary text-white text-sm font-medium shadow-md shadow-brand-primary/20">Good</button>
+<button class="px-4 py-2 rounded-full border border-stone-200 text-sm font-medium hover:bg-stone-50 transition-colors">Great</button>
+</div>
+</div>
+<!-- Sugar Cravings -->
+<div>
+<label class="block text-xs font-bold text-brand-muted uppercase tracking-widest mb-3">Sugar Cravings</label>
+<div class="flex gap-2 hide-scrollbar overflow-x-auto pb-1">
+<button class="px-4 py-2 rounded-full border border-stone-200 text-sm font-medium hover:bg-stone-50 transition-colors">Intense</button>
+<button class="px-4 py-2 rounded-full border border-stone-200 text-sm font-medium hover:bg-stone-50 transition-colors">Strong</button>
+<button class="px-4 py-2 rounded-full bg-brand-primary text-white text-sm font-medium shadow-md shadow-brand-primary/20">Mild</button>
+<button class="px-4 py-2 rounded-full border border-stone-200 text-sm font-medium hover:bg-stone-50 transition-colors">None</button>
+</div>
+</div>
+<!-- Mood -->
+<div>
+<label class="block text-xs font-bold text-brand-muted uppercase tracking-widest mb-3">Mood</label>
+<div class="flex gap-2 hide-scrollbar overflow-x-auto pb-1">
+<button class="px-4 py-2 rounded-full border border-stone-200 text-sm font-medium hover:bg-stone-50 transition-colors">Low</button>
+<button class="px-4 py-2 rounded-full border border-stone-200 text-sm font-medium hover:bg-stone-50 transition-colors">Okay</button>
+<button class="px-4 py-2 rounded-full border border-stone-200 text-sm font-medium hover:bg-stone-50 transition-colors">Good</button>
+<button class="px-4 py-2 rounded-full border border-stone-200 text-sm font-medium hover:bg-stone-50 transition-colors">Great</button>
+</div>
+</div>
+<!-- Sleep Quality -->
+<div>
+<label class="block text-xs font-bold text-brand-muted uppercase tracking-widest mb-3">Sleep Quality</label>
+<div class="flex gap-2 hide-scrollbar overflow-x-auto pb-1">
+<button class="px-4 py-2 rounded-full border border-stone-200 text-sm font-medium hover:bg-stone-50 transition-colors">Low</button>
+<button class="px-4 py-2 rounded-full border border-stone-200 text-sm font-medium hover:bg-stone-50 transition-colors">Okay</button>
+<button class="px-4 py-2 rounded-full border border-stone-200 text-sm font-medium hover:bg-stone-50 transition-colors">Good</button>
+<button class="px-4 py-2 rounded-full border border-stone-200 text-sm font-medium hover:bg-stone-50 transition-colors">Great</button>
+</div>
+</div>
+</div>
+</div>
+<!-- Notes -->
+<div class="bg-white rounded-2xl p-6 shadow-sm border border-stone-100">
+<h3 class="serif-text text-2xl font-bold mb-5 text-brand-text">Daily Notes</h3>
+<textarea class="w-full h-32 rounded-xl border-stone-200 focus:ring-brand-primary focus:border-brand-primary placeholder:text-stone-400 font-medium" placeholder="How was your day? Any cravings you overcame?"></textarea>
+</div>
+</main>
+<!-- Fixed Action Bar -->
+<div class="fixed bottom-0 left-0 w-full z-40">
+<!-- Main Action Button -->
+<div class="px-6 pb-4">
+<button class="w-full bg-brand-primary text-white py-4 rounded-2xl font-bold text-lg shadow-lg shadow-brand-primary/30 active:scale-95 transition-transform">
+                Save Today's Entry
+            </button>
+</div>
+<!-- Bottom NavBar (Shared Component) -->
+<nav class="bg-white dark:bg-stone-900 border-t border-stone-100 dark:border-stone-800 shadow-[0_-4px_16px_rgba(0,0,0,0.04)] rounded-t-[24px] flex justify-around items-center px-4 pb-6 pt-3">
+<div class="flex flex-col items-center justify-center bg-orange-50 dark:bg-orange-900/30 text-orange-700 dark:text-orange-200 rounded-xl px-4 py-1.5 active:translate-y-0.5 transition-transform">
+<span class="material-symbols-outlined" data-icon="calendar_today" style="font-variation-settings: 'FILL' 1;">calendar_today</span>
+<span class="font-sans text-[11px] font-medium uppercase tracking-wider mt-1">Tracker</span>
+</div>
+<div class="flex flex-col items-center justify-center text-stone-400 dark:text-stone-500 px-4 py-1.5 hover:text-orange-500 active:translate-y-0.5 transition-transform">
+<span class="material-symbols-outlined" data-icon="insights">insights</span>
+<span class="font-sans text-[11px] font-medium uppercase tracking-wider mt-1">Insights</span>
+</div>
+<div class="flex flex-col items-center justify-center text-stone-400 dark:text-stone-500 px-4 py-1.5 hover:text-orange-500 active:translate-y-0.5 transition-transform">
+<span class="material-symbols-outlined" data-icon="restaurant_menu">restaurant_menu</span>
+<span class="font-sans text-[11px] font-medium uppercase tracking-wider mt-1">Recipes</span>
+</div>
+<div class="flex flex-col items-center justify-center text-stone-400 dark:text-stone-500 px-4 py-1.5 hover:text-orange-500 active:translate-y-0.5 transition-transform">
+<span class="material-symbols-outlined" data-icon="person">person</span>
+<span class="font-sans text-[11px] font-medium uppercase tracking-wider mt-1">Profile</span>
+</div>
+</nav>
+</div>
+</body></html>

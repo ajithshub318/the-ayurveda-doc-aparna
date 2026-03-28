@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>My21 - Sugar Cut Progress</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Eb+Garamond:wght@400;500;600;700&amp;family=Dm+Sans:wght@400;500;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              'ayur-bg': '#FAF7F2',
+              'ayur-primary': '#E07A5F',
+              'ayur-secondary': '#7BA787',
+              'ayur-accent': '#D4A843',
+              'ayur-charcoal': '#2C2C2C',
+              'ayur-muted': '#8A8778',
+              'coral-dark': '#C45B4A'
+            },
+            fontFamily: {
+              "headline": ["Eb Garamond", "serif"],
+              "body": ["Dm Sans", "sans-serif"],
+              "label": ["Dm Sans", "sans-serif"]
+            },
+            borderRadius: {"DEFAULT": "0.5rem", "lg": "1rem", "xl": "1.5rem", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-ayur-bg font-body text-ayur-charcoal antialiased">
+<!-- TopAppBar -->
+<header class="fixed top-0 w-full z-50 flex justify-between items-center px-4 h-16 bg-orange-400 dark:bg-orange-900 shadow-sm transition-transform active:scale-95" style="background: linear-gradient(135deg, #E07A5F 0%, #C45B4A 100%);">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-orange-50" data-icon="arrow_back">arrow_back</span>
+<h1 class="font-serif text-xl font-semibold tracking-tight text-white">My Progress</h1>
+</div>
+<button class="bg-white/20 hover:bg-white/30 text-white px-4 py-1.5 rounded-full text-sm font-medium transition-colors border border-white/30">
+            Logout
+        </button>
+</header>
+<main class="pt-20 pb-24 px-4 max-w-md mx-auto space-y-6">
+<!-- Stats Row -->
+<section class="grid grid-cols-2 gap-3">
+<div class="bg-white p-4 rounded-xl shadow-[0_2px_12px_rgba(0,0,0,0.06)] flex flex-col items-center text-center">
+<span class="text-ayur-primary font-headline text-2xl font-bold">1</span>
+<span class="text-ayur-muted text-xs uppercase tracking-wider font-medium">Days Tracked</span>
+</div>
+<div class="bg-white p-4 rounded-xl shadow-[0_2px_12px_rgba(0,0,0,0.06)] flex flex-col items-center text-center">
+<span class="text-ayur-primary font-headline text-2xl font-bold">0d</span>
+<span class="text-ayur-muted text-xs uppercase tracking-wider font-medium">Sugar-Free</span>
+</div>
+<div class="bg-white p-4 rounded-xl shadow-[0_2px_12px_rgba(0,0,0,0.06)] flex flex-col items-center text-center">
+<span class="text-ayur-primary font-headline text-2xl font-bold">1d</span>
+<span class="text-ayur-muted text-xs uppercase tracking-wider font-medium">Best Streak</span>
+</div>
+<div class="bg-white p-4 rounded-xl shadow-[0_2px_12px_rgba(0,0,0,0.06)] flex flex-col items-center text-center">
+<span class="text-ayur-primary font-headline text-2xl font-bold">5%</span>
+<span class="text-ayur-muted text-xs uppercase tracking-wider font-medium">Completion</span>
+</div>
+</section>
+<!-- 21-Day Calendar Grid -->
+<section class="bg-white p-5 rounded-xl shadow-[0_2px_12px_rgba(0,0,0,0.06)]">
+<div class="flex items-center justify-between mb-4">
+<h2 class="font-headline text-lg font-semibold text-ayur-charcoal">Sugar Cut Journey</h2>
+<span class="text-ayur-muted text-xs font-medium">Week 1</span>
+</div>
+<div class="grid grid-cols-7 gap-y-4 gap-x-2">
+<!-- Day 1 (Completed) -->
+<div class="flex flex-col items-center gap-1">
+<div class="w-9 h-9 rounded-full bg-ayur-primary flex items-center justify-center text-white text-xs font-bold">1</div>
+</div>
+<!-- Day 2 (Today) -->
+<div class="flex flex-col items-center gap-1">
+<div class="w-9 h-9 rounded-full border-2 border-ayur-primary flex items-center justify-center text-ayur-primary text-xs font-bold">2</div>
+</div>
+<!-- Days 3-21 -->
+<div class="flex flex-col items-center gap-1"><div class="w-9 h-9 rounded-full border border-gray-100 flex items-center justify-center text-ayur-muted/40 text-xs">3</div></div>
+<div class="flex flex-col items-center gap-1"><div class="w-9 h-9 rounded-full border border-gray-100 flex items-center justify-center text-ayur-muted/40 text-xs">4</div></div>
+<div class="flex flex-col items-center gap-1"><div class="w-9 h-9 rounded-full border border-gray-100 flex items-center justify-center text-ayur-muted/40 text-xs">5</div></div>
+<div class="flex flex-col items-center gap-1"><div class="w-9 h-9 rounded-full border border-gray-100 flex items-center justify-center text-ayur-muted/40 text-xs">6</div></div>
+<div class="flex flex-col items-center gap-1"><div class="w-9 h-9 rounded-full border border-gray-100 flex items-center justify-center text-ayur-muted/40 text-xs">7</div></div>
+<!-- Row 2 -->
+<div class="flex flex-col items-center gap-1"><div class="w-9 h-9 rounded-full border border-gray-100 flex items-center justify-center text-ayur-muted/40 text-xs">8</div></div>
+<div class="flex flex-col items-center gap-1"><div class="w-9 h-9 rounded-full border border-gray-100 flex items-center justify-center text-ayur-muted/40 text-xs">9</div></div>
+<div class="flex flex-col items-center gap-1"><div class="w-9 h-9 rounded-full border border-gray-100 flex items-center justify-center text-ayur-muted/40 text-xs">10</div></div>
+<div class="flex flex-col items-center gap-1"><div class="w-9 h-9 rounded-full border border-gray-100 flex items-center justify-center text-ayur-muted/40 text-xs">11</div></div>
+<div class="flex flex-col items-center gap-1"><div class="w-9 h-9 rounded-full border border-gray-100 flex items-center justify-center text-ayur-muted/40 text-xs">12</div></div>
+<div class="flex flex-col items-center gap-1"><div class="w-9 h-9 rounded-full border border-gray-100 flex items-center justify-center text-ayur-muted/40 text-xs">13</div></div>
+<div class="flex flex-col items-center gap-1"><div class="w-9 h-9 rounded-full border border-gray-100 flex items-center justify-center text-ayur-muted/40 text-xs">14</div></div>
+<!-- Row 3 -->
+<div class="flex flex-col items-center gap-1"><div class="w-9 h-9 rounded-full border border-gray-100 flex items-center justify-center text-ayur-muted/40 text-xs">15</div></div>
+<div class="flex flex-col items-center gap-1"><div class="w-9 h-9 rounded-full border border-gray-100 flex items-center justify-center text-ayur-muted/40 text-xs">16</div></div>
+<div class="flex flex-col items-center gap-1"><div class="w-9 h-9 rounded-full border border-gray-100 flex items-center justify-center text-ayur-muted/40 text-xs">17</div></div>
+<div class="flex flex-col items-center gap-1"><div class="w-9 h-9 rounded-full border border-gray-100 flex items-center justify-center text-ayur-muted/40 text-xs">18</div></div>
+<div class="flex flex-col items-center gap-1"><div class="w-9 h-9 rounded-full border border-gray-100 flex items-center justify-center text-ayur-muted/40 text-xs">19</div></div>
+<div class="flex flex-col items-center gap-1"><div class="w-9 h-9 rounded-full border border-gray-100 flex items-center justify-center text-ayur-muted/40 text-xs">20</div></div>
+<div class="flex flex-col items-center gap-1"><div class="w-9 h-9 rounded-full border border-gray-100 flex items-center justify-center text-ayur-muted/40 text-xs">21</div></div>
+</div>
+<!-- Legend -->
+<div class="mt-6 pt-4 border-t border-gray-50 flex justify-between items-center text-[10px] uppercase tracking-widest text-ayur-muted font-bold">
+<div class="flex items-center gap-1.5">
+<span class="w-2 h-2 rounded-full bg-ayur-primary"></span> Completed
+                </div>
+<div class="flex items-center gap-1.5">
+<span class="w-2 h-2 rounded-full bg-gray-200"></span> Missed
+                </div>
+<div class="flex items-center gap-1.5">
+<span class="w-2 h-2 rounded-full border border-ayur-primary"></span> Today
+                </div>
+</div>
+</section>
+<!-- Trends Section -->
+<section class="bg-white p-5 rounded-xl shadow-[0_2px_12px_rgba(0,0,0,0.06)] space-y-5">
+<h2 class="font-headline text-lg font-semibold text-ayur-charcoal">Wellness Trends</h2>
+<div class="space-y-4">
+<!-- Energy Level -->
+<div class="space-y-1.5">
+<div class="flex justify-between text-xs font-medium">
+<span class="text-ayur-charcoal">Energy Level</span>
+<span class="text-ayur-secondary">Good</span>
+</div>
+<div class="h-2 w-full bg-gray-100 rounded-full overflow-hidden">
+<div class="h-full bg-ayur-secondary rounded-full" style="width: 75%;"></div>
+</div>
+</div>
+<!-- Sugar Cravings -->
+<div class="space-y-1.5">
+<div class="flex justify-between text-xs font-medium">
+<span class="text-ayur-charcoal">Sugar Cravings</span>
+<span class="text-ayur-accent">Mild</span>
+</div>
+<div class="h-2 w-full bg-gray-100 rounded-full overflow-hidden">
+<div class="h-full bg-ayur-accent rounded-full" style="width: 30%;"></div>
+</div>
+</div>
+<!-- Mood & Sleep Placeholder -->
+<div class="grid grid-cols-2 gap-4 pt-2">
+<div class="space-y-1.5">
+<span class="text-xs font-medium text-ayur-charcoal">Mood</span>
+<div class="h-2 w-full bg-gray-50 border border-dashed border-gray-200 rounded-full"></div>
+</div>
+<div class="space-y-1.5">
+<span class="text-xs font-medium text-ayur-charcoal">Sleep Quality</span>
+<div class="h-2 w-full bg-gray-50 border border-dashed border-gray-200 rounded-full"></div>
+</div>
+</div>
+</div>
+<div class="flex justify-between text-[10px] text-ayur-muted font-bold uppercase tracking-tighter pt-2">
+<span>Day 1</span>
+<span>Day 21</span>
+</div>
+</section>
+<!-- Weight Journey Card -->
+<section class="bg-white p-6 rounded-xl shadow-[0_2px_12px_rgba(0,0,0,0.06)] flex items-center justify-between overflow-hidden relative">
+<div class="absolute -right-4 -top-4 opacity-5">
+<span class="material-symbols-outlined text-8xl" data-icon="monitor_weight">monitor_weight</span>
+</div>
+<div class="text-center">
+<p class="text-[10px] font-bold text-ayur-muted uppercase mb-1">Day 1</p>
+<p class="font-headline text-2xl font-bold text-ayur-charcoal">70 <span class="text-sm font-normal">kg</span></p>
+</div>
+<span class="material-symbols-outlined text-ayur-muted/30" data-icon="arrow_forward">arrow_forward</span>
+<div class="text-center">
+<p class="text-[10px] font-bold text-ayur-muted uppercase mb-1">Day 21</p>
+<p class="font-headline text-2xl font-bold text-ayur-muted/40">--</p>
+</div>
+</section>
+<!-- CTA Card -->
+<section class="rounded-xl overflow-hidden shadow-[0_4px_16px_rgba(224,122,95,0.2)]">
+<div class="p-6 text-white text-center flex flex-col items-center gap-4" style="background: linear-gradient(135deg, #E07A5F 0%, #C45B4A 100%);">
+<div class="w-16 h-16 rounded-full border-4 border-white/20 overflow-hidden bg-white/10">
+<img alt="Dr. Aparna Albert" class="w-full h-full object-cover" data-alt="professional portrait of a warm and smiling female Ayurvedic doctor in white attire, soft studio lighting, medical office background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB-ooKRBtXXA1hRFBq53_LBtorevQm8QymOCvedhJTqnYdLkhOPtKKZ6QzsCZUwBNrrfzNgWqjPm46MAfIgvp4YfVLBOubcbYrKf1JTbLAkRdscla1UstgMxBUf-et2iWH072SkSjh5u174X2LjDqVQhC2T0OcFsJdct73GyNuLBMjKbc8BK-Srjkp6lYXKpXuxuxLw9UO6CNccIV7drwpmBXKGzBQ_2l28uoB85b766IPZ28ukvy-nAXRkKF73_WCW-7Yk9f9vaKI4"/>
+</div>
+<div>
+<h3 class="font-headline text-xl font-bold">Need guidance?</h3>
+<p class="text-orange-50/90 text-sm mt-1 leading-relaxed max-w-[240px]">Connect with Dr. Aparna for personalized Ayurvedic advice on your sugar-free journey.</p>
+</div>
+<button class="bg-white text-ayur-primary px-6 py-2.5 rounded-full text-sm font-bold shadow-lg active:scale-95 transition-transform flex items-center gap-2">
+<span class="material-symbols-outlined text-lg" data-icon="chat" style="font-variation-settings: 'FILL' 1;">chat</span>
+                    Chat on WhatsApp
+                </button>
+</div>
+</section>
+</main>
+<!-- BottomNavBar -->
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center h-16 px-4 bg-white dark:bg-stone-900 border-t border-orange-100 dark:border-stone-800 shadow-[0_-4px_12px_rgba(0,0,0,0.05)] rounded-t-2xl">
+<a class="flex flex-col items-center justify-center text-stone-500 dark:text-stone-400 pb-1 hover:text-orange-500 transition-opacity active:opacity-70" href="#">
+<span class="material-symbols-outlined" data-icon="calendar_today">calendar_today</span>
+<span class="font-sans text-[11px] font-medium tracking-wide">Today</span>
+</a>
+<a class="flex flex-col items-center justify-center text-orange-600 dark:text-orange-400 border-b-2 border-orange-600 pb-1 hover:text-orange-500 transition-opacity active:opacity-70" href="#">
+<span class="material-symbols-outlined" data-icon="analytics" style="font-variation-settings: 'FILL' 1;">analytics</span>
+<span class="font-sans text-[11px] font-medium tracking-wide">Progress</span>
+</a>
+<a class="flex flex-col items-center justify-center text-stone-500 dark:text-stone-400 pb-1 hover:text-orange-500 transition-opacity active:opacity-70" href="#">
+<span class="material-symbols-outlined" data-icon="restaurant_menu">restaurant_menu</span>
+<span class="font-sans text-[11px] font-medium tracking-wide">Recipes</span>
+</a>
+<a class="flex flex-col items-center justify-center text-stone-500 dark:text-stone-400 pb-1 hover:text-orange-500 transition-opacity active:opacity-70" href="#">
+<span class="material-symbols-outlined" data-icon="person">person</span>
+<span class="font-sans text-[11px] font-medium tracking-wide">Profile</span>
+</a>
+</nav>
+</body></html>

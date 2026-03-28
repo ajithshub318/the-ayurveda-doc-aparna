@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>21-Day Sugar Cut Challenge | Ayurveda Doc</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,700;1,400&amp;family=DM+Sans:wght@400;500;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        primary: "#E07A5F",
+                        secondary: "#7BA787",
+                        accent: "#D4A843",
+                        background: "#FAF7F2",
+                        charcoal: "#2C2C2C",
+                        "light-charcoal": "#4A4A4A",
+                        muted: "#8A8778"
+                    },
+                    fontFamily: {
+                        "headline": ["EB Garamond", "serif"],
+                        "body": ["DM Sans", "sans-serif"],
+                        "label": ["DM Sans", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.5rem",
+                        "lg": "1rem",
+                        "xl": "1.5rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body {
+            background-color: #FAF7F2;
+            color: #2C2C2C;
+            font-family: 'DM Sans', sans-serif;
+        }
+        .serif-title {
+            font-family: 'EB Garamond', serif;
+        }
+    </script>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="min-h-screen pb-20">
+
+    <!-- Top App Bar (Shared Component) -->
+    <header class="bg-[#FAF7F2] dark:bg-stone-950 text-[#E07A5F] dark:text-[#E07A5F] full-width top-0 sticky border-none z-50">
+        <div class="flex justify-between items-center px-6 py-4 max-w-[480px] mx-auto">
+            <div class="flex items-center gap-3">
+                <div class="w-8 h-8 rounded-full overflow-hidden bg-stone-200">
+                    <img src="https://images.unsplash.com/photo-1559839734-2b71ea197ec2?auto=format&fit=crop&q=80&w=100" 
+                         data-alt="Professional headshot of Dr. Aparna Albert, a warm and friendly female Ayurvedic doctor in clinical attire" 
+                         class="w-full h-full object-cover">
+                </div>
+                <span class="font-['EB_Garamond'] text-lg font-bold text-[#E07A5F]">Ayurveda Doc</span>
+            </div>
+            <button class="hover:opacity-80 transition-opacity active:scale-95 duration-200">
+                <span class="material-symbols-outlined" data-icon="notifications">notifications</span>
+            </button>
+        </div>
+    </header>
+
+    <main class="max-w-[480px] mx-auto overflow-x-hidden">
+        
+        <!-- Hero Section -->
+        <section class="relative bg-gradient-to-br from-[#E07A5F] to-[#C45B4A] px-6 pt-12 pb-16 overflow-hidden">
+            <!-- Decorative Emojis -->
+            <div class="absolute inset-0 opacity-10 pointer-events-none select-none text-4xl flex flex-wrap gap-8 p-4">
+                <span>🍬</span><span>🍭</span><span>🍩</span><span>🍰</span><span>🍦</span>
+            </div>
+            
+            <div class="relative z-10">
+                <span class="inline-block bg-[#FAD9D1] text-[#C45B4A] text-[10px] font-bold tracking-widest px-3 py-1 rounded-full mb-4 font-body">21-DAY CHALLENGE</span>
+                <h1 class="font-headline text-4xl leading-tight text-white font-bold mb-4">Cut the Sugar. Feel the Difference.</h1>
+                <p class="text-white/90 text-base leading-relaxed mb-6 font-body">A simple, guided 21-day program to break free from sugar dependency — the Ayurvedic way.</p>
+                <p class="text-white/80 text-sm font-medium font-body italic">by Dr. Aparna Albert — The Ayurveda Doc</p>
+            </div>
+
+            <!-- Image overlap decorative element -->
+            <div class="absolute -right-12 -bottom-8 w-48 h-48 bg-white/10 rounded-full blur-3xl"></div>
+        </section>
+
+        <!-- Quote Card -->
+        <section class="px-6 -mt-8 relative z-20">
+            <div class="bg-white rounded-xl p-6 shadow-[0_2px_12px_rgba(0,0,0,0.06)] border border-accent/20">
+                <p class="font-headline italic text-charcoal text-lg leading-snug mb-2">
+                    "Sugar doesn't just add weight — it disrupts your entire body clock."
+                </p>
+                <p class="text-muted text-xs font-bold uppercase tracking-wider">— Dr. Aparna Albert</p>
+            </div>
+        </section>
+
+        <!-- Benefits Grid -->
+        <section class="px-6 py-12">
+            <h2 class="font-headline text-2xl font-bold mb-8 text-center text-charcoal">Why Cut Sugar?</h2>
+            <div class="grid grid-cols-2 gap-4">
+                <!-- Benefit 1 -->
+                <div class="bg-white p-4 rounded-xl shadow-[0_2px_12px_rgba(0,0,0,0.06)] flex flex-col items-center text-center">
+                    <span class="text-2xl mb-2">🔥</span>
+                    <h3 class="font-bold text-sm text-charcoal">Better Energy</h3>
+                    <p class="text-[10px] text-muted leading-tight mt-1">Stable energy all day</p>
+                </div>
+                <!-- Benefit 2 -->
+                <div class="bg-white p-4 rounded-xl shadow-[0_2px_12px_rgba(0,0,0,0.06)] flex flex-col items-center text-center">
+                    <span class="text-2xl mb-2">😴</span>
+                    <h3 class="font-bold text-sm text-charcoal">Deeper Sleep</h3>
+                    <p class="text-[10px] text-muted leading-tight mt-1">Fall asleep faster</p>
+                </div>
+                <!-- Benefit 3 -->
+                <div class="bg-white p-4 rounded-xl shadow-[0_2px_12px_rgba(0,0,0,0.06)] flex flex-col items-center text-center">
+                    <span class="text-2xl mb-2">🧠</span>
+                    <h3 class="font-bold text-sm text-charcoal">Mental Clarity</h3>
+                    <p class="text-[10px] text-muted leading-tight mt-1">Sharper focus</p>
+                </div>
+                <!-- Benefit 4 -->
+                <div class="bg-white p-4 rounded-xl shadow-[0_2px_12px_rgba(0,0,0,0.06)] flex flex-col items-center text-center">
+                    <span class="text-2xl mb-2">💪</span>
+                    <h3 class="font-bold text-sm text-charcoal">Less Inflammation</h3>
+                    <p class="text-[10px] text-muted leading-tight mt-1">Reduced bloating</p>
+                </div>
+                <!-- Benefit 5 -->
+                <div class="bg-white p-4 rounded-xl shadow-[0_2px_12px_rgba(0,0,0,0.06)] flex flex-col items-center text-center">
+                    <span class="text-2xl mb-2">✨</span>
+                    <h3 class="font-bold text-sm text-charcoal">Clearer Skin</h3>
+                    <p class="text-[10px] text-muted leading-tight mt-1">Fewer breakouts</p>
+                </div>
+                <!-- Benefit 6 -->
+                <div class="bg-white p-4 rounded-xl shadow-[0_2px_12px_rgba(0,0,0,0.06)] flex flex-col items-center text-center">
+                    <span class="text-2xl mb-2">⚖️</span>
+                    <h3 class="font-bold text-sm text-charcoal">Healthy Weight</h3>
+                    <p class="text-[10px] text-muted leading-tight mt-1">Natural weight loss</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Daily Checklist Preview -->
+        <section class="px-6 py-8 bg-[#F0EBE3]/30">
+            <div class="flex justify-between items-end mb-6">
+                <h2 class="font-headline text-2xl font-bold text-charcoal">Your Daily Companion</h2>
+                <span class="text-primary text-[10px] font-bold">PREVIEW</span>
+            </div>
+            <div class="bg-white rounded-xl shadow-[0_2px_12px_rgba(0,0,0,0.06)] overflow-hidden">
+                <div class="p-4 border-b border-stone-100 flex items-center justify-between">
+                    <div class="flex items-center gap-2">
+                        <span class="material-symbols-outlined text-primary" data-icon="calendar_today">calendar_today</span>
+                        <span class="font-bold text-sm">Day 01 Tasks</span>
+                    </div>
+                    <span class="text-[10px] text-muted">0/8 Complete</span>
+                </div>
+                <div class="p-2">
+                    <ul class="divide-y divide-stone-50">
+                        <li class="p-3 flex items-center gap-3">
+                            <div class="w-5 h-5 rounded border-2 border-stone-200"></div>
+                            <span class="text-sm text-light-charcoal">No added sugar</span>
+                        </li>
+                        <li class="p-3 flex items-center gap-3">
+                            <div class="w-5 h-5 rounded border-2 border-stone-200"></div>
+                            <span class="text-sm text-light-charcoal">No soda/sweet drinks</span>
+                        </li>
+                        <li class="p-3 flex items-center gap-3">
+                            <div class="w-5 h-5 rounded border-2 border-stone-200"></div>
+                            <span class="text-sm text-light-charcoal">No desserts or sweets</span>
+                        </li>
+                        <li class="p-3 flex items-center gap-3">
+                            <div class="w-5 h-5 rounded border-2 border-stone-200"></div>
+                            <span class="text-sm text-light-charcoal">Read labels on packaged food</span>
+                        </li>
+                        <li class="p-3 flex items-center gap-3">
+                            <div class="w-5 h-5 rounded border-2 border-stone-200"></div>
+                            <span class="text-sm text-light-charcoal">Ate 1 whole fruit</span>
+                        </li>
+                        <li class="p-3 flex items-center gap-3">
+                            <div class="w-5 h-5 rounded border-2 border-stone-200"></div>
+                            <span class="text-sm text-light-charcoal">Drank 2.5L water</span>
+                        </li>
+                        <li class="p-3 flex items-center gap-3">
+                            <div class="w-5 h-5 rounded border-2 border-stone-200"></div>
+                            <span class="text-sm text-light-charcoal">Home-cooked meals only</span>
+                        </li>
+                        <li class="p-3 flex items-center gap-3">
+                            <div class="w-5 h-5 rounded border-2 border-stone-200"></div>
+                            <span class="text-sm text-light-charcoal">10-min mindful walking</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Signup Form Card -->
+        <section class="px-6 py-12 mb-12">
+            <div class="bg-white rounded-xl shadow-[0_4px_20px_rgba(0,0,0,0.08)] overflow-hidden">
+                <!-- Tabs -->
+                <div class="flex text-center border-b border-stone-100">
+                    <button class="flex-1 py-4 text-sm font-bold border-b-2 border-primary text-primary">Sign Up</button>
+                    <button class="flex-1 py-4 text-sm font-medium text-muted hover:text-charcoal transition-colors">Log In</button>
+                </div>
+                
+                <div class="p-6 space-y-5">
+                    <div>
+                        <label class="block text-[10px] font-bold text-muted uppercase tracking-wider mb-1 px-1">Full Name</label>
+                        <input type="text" placeholder="Aparna Albert" class="w-full bg-stone-50 border-stone-200 rounded-lg px-4 py-3 text-sm focus:ring-primary focus:border-primary">
+                    </div>
+                    <div class="grid grid-cols-2 gap-4">
+                        <div>
+                            <label class="block text-[10px] font-bold text-muted uppercase tracking-wider mb-1 px-1">Email (Optional)</label>
+                            <input type="email" placeholder="hello@doc.com" class="w-full bg-stone-50 border-stone-200 rounded-lg px-4 py-3 text-sm focus:ring-primary focus:border-primary">
+                        </div>
+                        <div>
+                            <label class="block text-[10px] font-bold text-muted uppercase tracking-wider mb-1 px-1">WhatsApp No.</label>
+                            <input type="tel" placeholder="+91..." class="w-full bg-stone-50 border-stone-200 rounded-lg px-4 py-3 text-sm focus:ring-primary focus:border-primary">
+                        </div>
+                    </div>
+                    <div class="grid grid-cols-2 gap-4">
+                        <div>
+                            <label class="block text-[10px] font-bold text-muted uppercase tracking-wider mb-1 px-1">4-Digit PIN</label>
+                            <input type="password" maxlength="4" placeholder="••••" class="w-full bg-stone-50 border-stone-200 rounded-lg px-4 py-3 text-sm focus:ring-primary focus:border-primary text-center">
+                        </div>
+                        <div>
+                            <label class="block text-[10px] font-bold text-muted uppercase tracking-wider mb-1 px-1">Weight (Optional)</label>
+                            <input type="number" placeholder="kg" class="w-full bg-stone-50 border-stone-200 rounded-lg px-4 py-3 text-sm focus:ring-primary focus:border-primary">
+                        </div>
+                    </div>
+                    
+                    <button class="w-full bg-primary hover:bg-opacity-90 text-white font-bold py-4 rounded-xl shadow-lg shadow-primary/20 transition-all active:scale-95 duration-150 mt-4">
+                        Start My 21-Day Sugar Cut
+                    </button>
+                    
+                    <p class="text-[10px] text-center text-muted">By signing up, you agree to our terms and wellness guidelines.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer (Shared Component) -->
+        <footer class="bg-[#FAF7F2] dark:bg-stone-950 text-[#4A4A4A] dark:text-stone-400 full-width pb-24 pt-12 border-t border-stone-200 dark:border-stone-800">
+            <div class="flex flex-col items-center text-center px-8 gap-4">
+                <div class="flex items-center gap-1 text-[#E07A5F] mb-2 cursor-pointer hover:opacity-80 transition-opacity">
+                    <span class="material-symbols-outlined text-sm" data-icon="arrow_back">arrow_back</span>
+                    <span class="text-xs font-medium">Back to The Ayurveda Doc</span>
+                </div>
+                <div class="flex gap-4">
+                    <span class="text-[#8A8778] hover:text-[#E07A5F] transition-colors cursor-pointer text-xs">Privacy Policy</span>
+                    <span class="text-[#8A8778] hover:text-[#E07A5F] transition-colors cursor-pointer text-xs">Terms of Service</span>
+                    <span class="text-[#8A8778] hover:text-[#E07A5F] transition-colors cursor-pointer text-xs">Contact</span>
+                </div>
+                <p class="font-['DM_Sans'] text-xs leading-relaxed">
+                    © 2024 The Ayurveda Doc. All rights reserved.<br>
+                    <span class="opacity-70 mt-1 block">Your data is stored securely</span>
+                </p>
+            </div>
+        </footer>
+
+    </main>
+
+    <!-- Bottom Navigation (Shared Component) - Home is active -->
+    <nav class="bg-white/80 dark:bg-stone-900/80 backdrop-blur-md fixed bottom-0 w-full z-50 rounded-t-2xl max-w-[480px] left-1/2 -translate-x-1/2 border-t border-stone-200/50 dark:border-stone-800 shadow-[0_-2px_12px_rgba(0,0,0,0.06)]">
+        <div class="flex justify-around items-center px-4 py-3">
+            <div class="flex flex-col items-center justify-center bg-[#E07A5F]/10 text-[#E07A5F] rounded-xl px-3 py-1 transition-transform duration-150 active:scale-90">
+                <span class="material-symbols-outlined" data-icon="home">home</span>
+                <span class="font-['DM_Sans'] text-[10px] font-medium">Home</span>
+            </div>
+            <div class="flex flex-col items-center justify-center text-[#8A8778] dark:text-stone-500 hover:text-[#E07A5F] transition-transform duration-150 active:scale-90">
+                <span class="material-symbols-outlined" data-icon="bolt">bolt</span>
+                <span class="font-['DM_Sans'] text-[10px] font-medium">Challenge</span>
+            </div>
+            <div class="flex flex-col items-center justify-center text-[#8A8778] dark:text-stone-500 hover:text-[#E07A5F] transition-transform duration-150 active:scale-90">
+                <span class="material-symbols-outlined" data-icon="analytics">analytics</span>
+                <span class="font-['DM_Sans'] text-[10px] font-medium">Progress</span>
+            </div>
+            <div class="flex flex-col items-center justify-center text-[#8A8778] dark:text-stone-500 hover:text-[#E07A5F] transition-transform duration-150 active:scale-90">
+                <span class="material-symbols-outlined" data-icon="person">person</span>
+                <span class="font-['DM_Sans'] text-[10px] font-medium">Profile</span>
+            </div>
+        </div>
+    </nav>
+
+</body>
+</html></style><style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head><body></body></html>

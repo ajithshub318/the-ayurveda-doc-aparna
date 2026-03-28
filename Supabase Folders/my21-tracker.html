@@ -1,0 +1,1696 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>My21 — The Ayurveda Doc</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=Playfair+Display:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --cream: #FAF7F2;
+    --cream-dark: #F0EBE3;
+    --sage: #7BA787;
+    --sage-dark: #6B9575;
+    --sage-light: #E8F0EA;
+    --tan: #C4B59A;
+    --charcoal: #2C2C2C;
+    --charcoal-light: #4A4A4A;
+    --warm-gray: #8A8778;
+    --white: #FFFFFF;
+    --error: #C45B4A;
+    --error-bg: #FDF0EE;
+    --gold: #D4A843;
+    --gold-light: #FFF8E7;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'DM Sans', -apple-system, sans-serif;
+    background: var(--cream);
+    color: var(--charcoal);
+    min-height: 100vh;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .container {
+    max-width: 480px;
+    margin: 0 auto;
+    padding: 24px 20px 40px;
+  }
+
+  h1, h2, h3 { font-family: 'Playfair Display', Georgia, serif; font-weight: 400; }
+
+  .accent { color: var(--sage); font-style: italic; }
+
+  /* ============ SHARED COMPONENTS ============ */
+  .card {
+    background: var(--white);
+    border-radius: 16px;
+    padding: 24px;
+    border: 1px solid var(--cream-dark);
+    margin-bottom: 16px;
+  }
+
+  .btn {
+    width: 100%;
+    padding: 16px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 15px;
+    font-weight: 500;
+    color: var(--white);
+    background: var(--charcoal);
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: background 0.2s;
+  }
+  .btn:hover { background: var(--charcoal-light); }
+  .btn:disabled { opacity: 0.5; cursor: not-allowed; }
+  .btn-sage { background: var(--sage); }
+  .btn-sage:hover { background: var(--sage-dark); }
+  .btn-small {
+    width: auto;
+    padding: 8px 18px;
+    font-size: 13px;
+    border-radius: 8px;
+  }
+  .btn-outline {
+    background: transparent;
+    color: var(--warm-gray);
+    border: 1px solid var(--cream-dark);
+  }
+  .btn-outline:hover { background: var(--cream); }
+
+  .input-group { margin-bottom: 18px; }
+  .input-group label {
+    display: block;
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--charcoal-light);
+    margin-bottom: 7px;
+  }
+  .input-group input, .input-group textarea {
+    width: 100%;
+    padding: 13px 15px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 15px;
+    color: var(--charcoal);
+    background: var(--cream);
+    border: 1px solid var(--cream-dark);
+    border-radius: 10px;
+    outline: none;
+    transition: border-color 0.2s;
+  }
+  .input-group input:focus, .input-group textarea:focus {
+    border-color: var(--sage);
+  }
+  .input-group textarea {
+    resize: vertical;
+    min-height: 80px;
+  }
+
+  .error-msg {
+    background: var(--error-bg);
+    color: var(--error);
+    font-size: 13px;
+    padding: 12px 16px;
+    border-radius: 10px;
+    margin-bottom: 16px;
+  }
+
+  .badge {
+    display: inline-block;
+    background: var(--sage-light);
+    color: var(--sage-dark);
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    padding: 5px 14px;
+    border-radius: 20px;
+  }
+
+  .section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 18px;
+    font-weight: 400;
+    margin-bottom: 14px;
+  }
+
+  .screen { display: none; }
+  .screen.active { display: block; }
+
+  /* ============ LANDING ============ */
+  .logo-area { text-align: center; margin-bottom: 28px; }
+  .logo-sub {
+    font-family: 'Playfair Display', serif;
+    font-size: 13px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--warm-gray);
+  }
+  .logo-name {
+    font-family: 'Playfair Display', serif;
+    font-size: 28px;
+    font-style: italic;
+    color: var(--charcoal);
+    margin-top: 2px;
+  }
+
+  .hero { text-align: center; margin-bottom: 32px; }
+  .hero h1 { font-size: 38px; line-height: 1.15; margin-top: 16px; }
+  .hero p {
+    font-size: 15px;
+    color: var(--warm-gray);
+    line-height: 1.6;
+    margin-top: 14px;
+  }
+
+  .challenge-card {
+    background: var(--white);
+    border-radius: 16px;
+    padding: 24px;
+    border: 1px solid var(--cream-dark);
+    margin-bottom: 28px;
+  }
+  .challenge-label {
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--sage);
+    margin-bottom: 8px;
+  }
+  .challenge-name {
+    font-family: 'Playfair Display', serif;
+    font-size: 20px;
+    margin-bottom: 10px;
+  }
+  .challenge-desc {
+    font-size: 14px;
+    color: var(--warm-gray);
+    line-height: 1.65;
+  }
+  .challenge-duration {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    margin-top: 14px;
+    font-size: 13px;
+    color: var(--sage);
+    font-weight: 500;
+  }
+
+  .tabs {
+    display: flex;
+    background: var(--cream-dark);
+    border-radius: 12px;
+    padding: 4px;
+    margin-bottom: 24px;
+  }
+  .tab {
+    flex: 1;
+    padding: 11px;
+    text-align: center;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+    border-radius: 10px;
+    cursor: pointer;
+    border: none;
+    background: transparent;
+    color: var(--warm-gray);
+    transition: all 0.2s;
+  }
+  .tab.active {
+    background: var(--white);
+    color: var(--charcoal);
+    box-shadow: 0 1px 3px rgba(0,0,0,0.08);
+  }
+
+  .pin-container { display: flex; gap: 12px; justify-content: center; }
+  .pin-input {
+    width: 54px;
+    height: 54px;
+    text-align: center;
+    font-family: 'Playfair Display', serif;
+    font-size: 22px;
+    color: var(--charcoal);
+    background: var(--cream);
+    border: 1px solid var(--cream-dark);
+    border-radius: 10px;
+    outline: none;
+  }
+  .pin-input:focus { border-color: var(--sage); }
+
+  .divider {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin: 18px 0;
+  }
+  .divider-line { flex: 1; height: 1px; background: var(--cream-dark); }
+  .divider-text {
+    font-size: 11px;
+    color: var(--warm-gray);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+
+  .footer {
+    text-align: center;
+    margin-top: 28px;
+    font-size: 13px;
+    color: var(--warm-gray);
+  }
+  .footer a { color: var(--sage); text-decoration: none; font-weight: 500; }
+
+  /* ============ TODAY ============ */
+  .nav-bar {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 22px;
+  }
+  .nav-link {
+    font-size: 13px;
+    color: var(--warm-gray);
+    padding: 8px 16px;
+    border-radius: 8px;
+    background: var(--white);
+    border: 1px solid var(--cream-dark);
+    cursor: pointer;
+    font-family: 'DM Sans', sans-serif;
+    transition: all 0.2s;
+  }
+  .nav-link.active {
+    color: var(--sage);
+    border-color: var(--sage);
+    background: var(--sage-light);
+  }
+
+  .today-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+  }
+  .greeting { font-size: 14px; color: var(--warm-gray); }
+  .day-title { font-family: 'Playfair Display', serif; font-size: 28px; margin-top: 2px; }
+
+  .progress-ring { position: relative; width: 56px; height: 56px; }
+  .progress-ring-text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-family: 'Playfair Display', serif;
+    font-size: 14px;
+    font-weight: 600;
+  }
+
+  .date-bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: var(--white);
+    border-radius: 12px;
+    padding: 13px 18px;
+    margin-bottom: 20px;
+    border: 1px solid var(--cream-dark);
+  }
+  .date-text { font-size: 14px; font-weight: 500; }
+  .day-badge {
+    font-size: 12px;
+    color: var(--sage);
+    font-weight: 500;
+    background: var(--sage-light);
+    padding: 4px 12px;
+    border-radius: 20px;
+  }
+
+  .progress-bar-container { margin-bottom: 24px; }
+  .progress-bar-track {
+    display: flex;
+    gap: 3px;
+  }
+  .progress-segment {
+    flex: 1;
+    height: 4px;
+    border-radius: 2px;
+    background: var(--cream-dark);
+  }
+  .progress-segment.filled { background: var(--sage); }
+  .progress-pct {
+    font-size: 12px;
+    color: var(--warm-gray);
+    text-align: right;
+    margin-top: 5px;
+  }
+
+  .check-item {
+    display: flex;
+    align-items: center;
+    padding: 14px 0;
+    border-bottom: 1px solid var(--cream);
+    cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
+  }
+  .check-item:last-child { border-bottom: none; }
+  .checkbox {
+    width: 24px;
+    height: 24px;
+    border-radius: 8px;
+    border: 2px solid var(--cream-dark);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 12px;
+    transition: all 0.2s;
+    flex-shrink: 0;
+  }
+  .checkbox.checked {
+    background: var(--sage);
+    border-color: var(--sage);
+  }
+  .checkbox.checked::after {
+    content: '✓';
+    color: white;
+    font-size: 14px;
+    font-weight: bold;
+  }
+  .check-icon { font-size: 17px; margin-right: 10px; width: 24px; text-align: center; }
+  .check-label { font-size: 15px; flex: 1; }
+  .check-item.checked .check-label { color: var(--warm-gray); }
+
+  .assessment-row { margin-bottom: 18px; }
+  .assessment-label {
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--charcoal-light);
+    margin-bottom: 9px;
+  }
+  .option-group { display: flex; gap: 7px; }
+  .option-btn {
+    flex: 1;
+    padding: 10px 4px;
+    text-align: center;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 12px;
+    font-weight: 500;
+    border-radius: 8px;
+    cursor: pointer;
+    border: 1px solid var(--cream-dark);
+    background: var(--cream);
+    color: var(--warm-gray);
+    transition: all 0.2s;
+    -webkit-tap-highlight-color: transparent;
+  }
+  .option-btn.selected {
+    background: var(--sage);
+    border-color: var(--sage);
+    color: white;
+  }
+
+  .save-bar {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: var(--white);
+    padding: 14px 20px;
+    border-top: 1px solid var(--cream-dark);
+    display: flex;
+    justify-content: center;
+    z-index: 100;
+  }
+  .save-bar .btn { max-width: 480px; }
+  .btn-saved { background: var(--sage); }
+
+  /* ============ PROGRESS ============ */
+  .stats-row {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 22px;
+  }
+  .stat-card {
+    flex: 1;
+    background: var(--white);
+    border-radius: 14px;
+    padding: 16px 12px;
+    text-align: center;
+    border: 1px solid var(--cream-dark);
+  }
+  .stat-number {
+    font-family: 'Playfair Display', serif;
+    font-size: 26px;
+  }
+  .stat-label {
+    font-size: 10px;
+    font-weight: 500;
+    color: var(--warm-gray);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-top: 3px;
+  }
+
+  .calendar-grid {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 5px;
+  }
+  .cal-day {
+    aspect-ratio: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border-radius: 10px;
+    font-size: 13px;
+    font-weight: 500;
+  }
+  .cal-day.completed { background: var(--sage-light); color: var(--sage-dark); }
+  .cal-day.missed { background: var(--cream); color: var(--warm-gray); }
+  .cal-day.future { color: var(--cream-dark); }
+  .cal-day.today { border: 2px solid var(--sage); }
+  .cal-score { font-size: 8px; color: var(--warm-gray); margin-top: 1px; }
+
+  .trend-row {
+    display: flex;
+    align-items: center;
+    margin-bottom: 14px;
+  }
+  .trend-label {
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--charcoal-light);
+    width: 70px;
+    flex-shrink: 0;
+  }
+  .trend-bars {
+    flex: 1;
+    display: flex;
+    gap: 2px;
+    align-items: end;
+    height: 30px;
+  }
+  .trend-bar {
+    flex: 1;
+    border-radius: 2px 2px 0 0;
+    min-height: 3px;
+    transition: height 0.3s;
+  }
+
+  .cta-card {
+    background: var(--charcoal);
+    border-radius: 16px;
+    padding: 28px;
+    text-align: center;
+    margin-bottom: 16px;
+  }
+  .cta-card h3 { color: var(--white); font-size: 20px; margin-bottom: 8px; }
+  .cta-card p { color: #ABABAB; font-size: 14px; line-height: 1.6; margin-bottom: 18px; }
+  .cta-wa {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 13px 26px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--charcoal);
+    background: var(--white);
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    text-decoration: none;
+  }
+
+  .weight-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 14px 0;
+  }
+  .weight-label { font-size: 14px; color: var(--warm-gray); }
+  .weight-value { font-family: 'Playfair Display', serif; font-size: 24px; }
+  .weight-change {
+    text-align: center;
+    padding: 16px;
+    background: var(--sage-light);
+    border-radius: 12px;
+    margin-top: 10px;
+  }
+  .weight-change-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 26px;
+    color: var(--sage);
+  }
+
+  /* ============ ADMIN ============ */
+  .admin-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 14px;
+  }
+
+  .challenge-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 14px 0;
+    border-bottom: 1px solid var(--cream);
+  }
+  .challenge-row:last-child { border-bottom: none; }
+
+  .active-badge {
+    display: inline-block;
+    background: var(--sage-light);
+    color: var(--sage);
+    font-size: 11px;
+    font-weight: 500;
+    padding: 2px 10px;
+    border-radius: 12px;
+    margin-left: 8px;
+  }
+
+  table { width: 100%; border-collapse: collapse; }
+  th {
+    font-size: 11px;
+    font-weight: 500;
+    color: var(--warm-gray);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    padding: 10px 8px;
+    text-align: left;
+    border-bottom: 1px solid var(--cream-dark);
+  }
+  td {
+    font-size: 13px;
+    padding: 12px 8px;
+    border-bottom: 1px solid var(--cream);
+  }
+  td a { color: var(--sage); text-decoration: none; }
+
+  .mini-bar {
+    width: 50px;
+    height: 5px;
+    background: var(--cream-dark);
+    border-radius: 3px;
+    overflow: hidden;
+    display: inline-block;
+    margin-right: 5px;
+    vertical-align: middle;
+  }
+  .mini-bar-fill {
+    height: 100%;
+    background: var(--sage);
+    border-radius: 3px;
+  }
+
+  .logout-btn {
+    font-size: 13px;
+    color: var(--warm-gray);
+    background: none;
+    border: none;
+    cursor: pointer;
+    text-decoration: underline;
+    font-family: 'DM Sans', sans-serif;
+  }
+
+  /* Day 21 weight */
+  .day21-card {
+    background: var(--gold-light);
+    border-radius: 16px;
+    padding: 24px;
+    text-align: center;
+    border: 1px solid rgba(212,168,67,0.2);
+    margin-bottom: 22px;
+  }
+  .day21-input {
+    width: 110px;
+    padding: 12px;
+    font-family: 'Playfair Display', serif;
+    font-size: 20px;
+    text-align: center;
+    background: var(--white);
+    border: 1px solid var(--cream-dark);
+    border-radius: 10px;
+    outline: none;
+    margin: 10px 0;
+  }
+
+  .challenge-info-card {
+    background: var(--sage-light);
+    border-radius: 16px;
+    padding: 20px;
+    border: 1px solid rgba(123,167,135,0.2);
+    margin-bottom: 16px;
+  }
+  .challenge-info-label {
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--sage);
+    margin-bottom: 5px;
+  }
+  .challenge-info-name {
+    font-family: 'Playfair Display', serif;
+    font-size: 16px;
+    margin-bottom: 5px;
+  }
+  .challenge-info-desc {
+    font-size: 13px;
+    color: var(--charcoal-light);
+    line-height: 1.6;
+  }
+
+  .no-challenge {
+    text-align: center;
+    padding: 60px 20px;
+  }
+  .no-challenge h2 {
+    font-size: 24px;
+    margin-bottom: 10px;
+  }
+  .no-challenge p {
+    color: var(--warm-gray);
+    font-size: 15px;
+    line-height: 1.6;
+  }
+</style>
+</head>
+<body>
+
+<!-- ==================== SCREEN: LANDING ==================== -->
+<div id="screen-landing" class="screen active">
+  <div class="container">
+    <div class="logo-area">
+      <div class="logo-sub">The Ayurveda Doc</div>
+      <div class="logo-name">My21</div>
+    </div>
+
+    <div class="hero">
+      <span class="badge">21-Day Tracker</span>
+      <h1>Your <span class="accent">21 days</span><br>start here</h1>
+      <p>Track your daily habits, see your progress, and transform how you feel — one day at a time.</p>
+    </div>
+
+    <div id="landing-challenge-card" class="challenge-card" style="display:none;">
+      <div class="challenge-label">Current Challenge</div>
+      <div class="challenge-name" id="landing-challenge-name"></div>
+      <div class="challenge-desc" id="landing-challenge-desc"></div>
+      <div class="challenge-duration">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--sage)" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12,6 12,12 16,14"/></svg>
+        <span id="landing-challenge-duration"></span>
+      </div>
+    </div>
+
+    <div id="no-challenge-msg" class="no-challenge" style="display:none;">
+      <h2>No active challenge yet</h2>
+      <p>Dr. Aparna hasn't set up a challenge yet. Check back soon, or ask her for the link.</p>
+    </div>
+
+    <div class="tabs" id="landing-tabs">
+      <button class="tab active" onclick="switchTab('signup')">Join Challenge</button>
+      <button class="tab" onclick="switchTab('login')">Log In</button>
+    </div>
+
+    <div id="landing-error" class="error-msg" style="display:none;"></div>
+
+    <!-- SIGNUP FORM -->
+    <div id="form-signup">
+      <div class="card">
+        <div class="input-group">
+          <label>Your Name</label>
+          <input type="text" id="signup-name" placeholder="Your name">
+        </div>
+        <div class="input-group">
+          <label>Email Address</label>
+          <input type="email" id="signup-email" placeholder="you@example.com">
+        </div>
+        <div class="input-group">
+          <label>WhatsApp Number</label>
+          <input type="tel" id="signup-whatsapp" placeholder="+91 70123 99593">
+        </div>
+        <div class="input-group">
+          <label>Set a 4-Digit PIN</label>
+          <div class="pin-container">
+            <input class="pin-input" type="password" inputmode="numeric" maxlength="1" data-pin="0">
+            <input class="pin-input" type="password" inputmode="numeric" maxlength="1" data-pin="1">
+            <input class="pin-input" type="password" inputmode="numeric" maxlength="1" data-pin="2">
+            <input class="pin-input" type="password" inputmode="numeric" maxlength="1" data-pin="3">
+          </div>
+        </div>
+        <div class="divider">
+          <div class="divider-line"></div>
+          <span class="divider-text">Optional</span>
+          <div class="divider-line"></div>
+        </div>
+        <div class="input-group">
+          <label>Day 1 Weight <span style="font-weight:400;color:var(--warm-gray);font-size:12px;">(you can skip this)</span></label>
+          <div style="display:flex;align-items:center;gap:10px;">
+            <input type="number" id="signup-weight" placeholder="70" style="width:110px;">
+            <span style="font-size:14px;color:var(--warm-gray);">kg</span>
+          </div>
+        </div>
+        <button class="btn" onclick="handleSignUp()">I'm In — Start My 21 Days</button>
+      </div>
+    </div>
+
+    <!-- LOGIN FORM -->
+    <div id="form-login" style="display:none;">
+      <div class="card">
+        <div class="input-group">
+          <label>WhatsApp Number</label>
+          <input type="tel" id="login-whatsapp" placeholder="+91 70123 99593">
+        </div>
+        <div class="input-group">
+          <label>Your 4-Digit PIN</label>
+          <div class="pin-container">
+            <input class="pin-input" type="password" inputmode="numeric" maxlength="1" data-login-pin="0">
+            <input class="pin-input" type="password" inputmode="numeric" maxlength="1" data-login-pin="1">
+            <input class="pin-input" type="password" inputmode="numeric" maxlength="1" data-login-pin="2">
+            <input class="pin-input" type="password" inputmode="numeric" maxlength="1" data-login-pin="3">
+          </div>
+        </div>
+        <button class="btn" onclick="handleLogin()">Continue My Challenge</button>
+      </div>
+    </div>
+
+    <div class="footer">
+      <a href="https://theayurvedadoc.com">theayurvedadoc.com</a>
+      <span style="margin:0 8px;">·</span>
+      A journey with Dr. Aparna Albert
+    </div>
+  </div>
+</div>
+
+<!-- ==================== SCREEN: TODAY ==================== -->
+<div id="screen-today" class="screen">
+  <div class="container" style="padding-bottom:100px;">
+    <div class="nav-bar">
+      <button class="nav-link active" onclick="showScreen('today')">Today</button>
+      <button class="nav-link" onclick="showScreen('progress')">Progress</button>
+    </div>
+
+    <div class="today-header">
+      <div>
+        <div class="greeting">Hello, <span id="today-name"></span></div>
+        <div class="day-title">Day <span class="accent" id="today-day-num"></span></div>
+      </div>
+      <div class="progress-ring">
+        <svg width="56" height="56" viewBox="0 0 56 56">
+          <circle cx="28" cy="28" r="24" fill="none" stroke="var(--cream-dark)" stroke-width="4"/>
+          <circle id="ring-progress" cx="28" cy="28" r="24" fill="none" stroke="var(--sage)" stroke-width="4" stroke-linecap="round" stroke-dasharray="150.8" stroke-dashoffset="150.8" transform="rotate(-90 28 28)" style="transition:stroke-dashoffset 0.4s"/>
+        </svg>
+        <div class="progress-ring-text" id="ring-text">0/8</div>
+      </div>
+    </div>
+
+    <div class="date-bar">
+      <div class="date-text" id="today-date"></div>
+      <div class="day-badge" id="today-day-badge"></div>
+    </div>
+
+    <div class="progress-bar-container">
+      <div class="progress-bar-track" id="day-progress-bar"></div>
+      <div class="progress-pct" id="day-progress-pct"></div>
+    </div>
+
+    <!-- Checklist -->
+    <div style="margin-bottom:22px;">
+      <div class="section-title">Daily Checklist</div>
+      <div class="card" id="checklist-card"></div>
+    </div>
+
+    <!-- Assessment -->
+    <div style="margin-bottom:22px;">
+      <div class="section-title">How are you feeling?</div>
+      <div class="card" id="assessment-card"></div>
+    </div>
+
+    <!-- Challenge Info -->
+    <div class="challenge-info-card" id="today-challenge-info" style="display:none;">
+      <div class="challenge-info-label">Your Challenge</div>
+      <div class="challenge-info-name" id="today-ch-name"></div>
+      <div class="challenge-info-desc" id="today-ch-desc"></div>
+    </div>
+  </div>
+
+  <div class="save-bar">
+    <button class="btn" id="save-btn" onclick="handleSave()">Save Day</button>
+  </div>
+</div>
+
+<!-- ==================== SCREEN: PROGRESS ==================== -->
+<div id="screen-progress" class="screen">
+  <div class="container">
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:22px;">
+      <div class="nav-bar" style="margin-bottom:0;">
+        <button class="nav-link" onclick="showScreen('today')">Today</button>
+        <button class="nav-link active" onclick="showScreen('progress')">Progress</button>
+      </div>
+      <button class="logout-btn" onclick="handleLogout()">Log out</button>
+    </div>
+
+    <div style="text-align:center;margin-bottom:28px;">
+      <h1 style="font-size:28px;">Your <span class="accent">Progress</span></h1>
+      <p style="font-size:14px;color:var(--warm-gray);margin-top:6px;" id="progress-subtitle"></p>
+    </div>
+
+    <div class="stats-row">
+      <div class="stat-card">
+        <div class="stat-number" id="stat-days">0</div>
+        <div class="stat-label">Days Tracked</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-number" id="stat-streak">0</div>
+        <div class="stat-label">Best Streak</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-number" style="color:var(--sage);" id="stat-score">0%</div>
+        <div class="stat-label">Completion</div>
+      </div>
+    </div>
+
+    <!-- Day 21 Weight -->
+    <div id="day21-weight-section" class="day21-card" style="display:none;">
+      <h3 style="font-family:'Playfair Display',serif;font-size:18px;">Congratulations! Day 21!</h3>
+      <p style="font-size:13px;color:var(--warm-gray);">Enter your final weight to see your journey</p>
+      <div>
+        <input type="number" id="day21-weight-input" class="day21-input" placeholder="70">
+        <span style="font-size:14px;color:var(--warm-gray);"> kg</span>
+      </div>
+      <br>
+      <button class="btn btn-small btn-sage" onclick="saveDay21Weight()" style="background:var(--gold);">Save Final Weight</button>
+    </div>
+
+    <!-- Weight Comparison -->
+    <div id="weight-section" style="display:none;margin-bottom:22px;">
+      <div class="section-title">Weight Journey</div>
+      <div class="card">
+        <div class="weight-row">
+          <div>
+            <div class="weight-label">Day 1</div>
+            <div class="weight-value" id="weight-day1"></div>
+          </div>
+          <div style="font-size:20px;color:var(--cream-dark);">→</div>
+          <div style="text-align:right;">
+            <div class="weight-label" id="weight-day-label">Day 21</div>
+            <div class="weight-value" id="weight-day21"></div>
+          </div>
+        </div>
+        <div class="weight-change">
+          <div class="weight-change-num" id="weight-change-num"></div>
+          <div style="font-size:13px;color:var(--warm-gray);margin-top:3px;" id="weight-change-label"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Calendar -->
+    <div style="margin-bottom:22px;">
+      <div class="section-title">Daily Log</div>
+      <div class="card">
+        <div class="calendar-grid" id="progress-calendar"></div>
+      </div>
+    </div>
+
+    <!-- Trends -->
+    <div style="margin-bottom:22px;">
+      <div class="section-title">Trends</div>
+      <div class="card" id="trends-card"></div>
+    </div>
+
+    <!-- WhatsApp CTA -->
+    <div class="cta-card">
+      <h3>Want to understand your patterns?</h3>
+      <p>Dr. Aparna can look at your 21-day data and tell you what it means for your body.</p>
+      <a id="progress-wa-link" href="#" target="_blank" class="cta-wa">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="#25D366"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.625.846 5.059 2.284 7.034L.789 23.492a.5.5 0 00.611.611l4.458-1.495A11.952 11.952 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-2.387 0-4.607-.798-6.384-2.147l-.108-.086-3.348 1.123 1.123-3.348-.086-.108A9.953 9.953 0 012 12C2 6.486 6.486 2 12 2s10 4.486 10 10-4.486 10-10 10z"/></svg>
+        Talk to Dr. Aparna
+      </a>
+    </div>
+  </div>
+</div>
+
+<!-- ==================== SCREEN: ADMIN ==================== -->
+<div id="screen-admin" class="screen">
+  <div class="container" style="max-width:720px;">
+    <!-- Admin Login -->
+    <div id="admin-login" style="max-width:380px;margin:80px auto;">
+      <div class="card" style="text-align:center;">
+        <h2 style="font-size:24px;margin-bottom:6px;">My21 Admin</h2>
+        <p style="font-size:14px;color:var(--warm-gray);margin-bottom:22px;">Enter admin password</p>
+        <div id="admin-error" class="error-msg" style="display:none;"></div>
+        <div class="input-group">
+          <input type="password" id="admin-password" placeholder="Password">
+        </div>
+        <button class="btn" onclick="handleAdminLogin()">Sign In</button>
+      </div>
+    </div>
+
+    <!-- Admin Dashboard -->
+    <div id="admin-dashboard" style="display:none;">
+      <div style="margin-bottom:28px;">
+        <h1 style="font-size:28px;">My21 <span class="accent">Admin</span></h1>
+        <p style="font-size:14px;color:var(--warm-gray);margin-top:4px;">Manage challenges and track participants</p>
+      </div>
+
+      <!-- Stats -->
+      <div class="stats-row" style="margin-bottom:24px;">
+        <div class="stat-card">
+          <div class="stat-number" id="admin-total-users">0</div>
+          <div class="stat-label">Total Users</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-number" id="admin-active-users">0</div>
+          <div class="stat-label">Active Users</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-number" style="color:var(--sage);" id="admin-avg-days">0</div>
+          <div class="stat-label">Avg Days Done</div>
+        </div>
+      </div>
+
+      <!-- Challenges -->
+      <div style="margin-bottom:28px;">
+        <div class="admin-header">
+          <div class="section-title" style="margin-bottom:0;">Challenges</div>
+          <button class="btn btn-small btn-sage" id="new-challenge-btn" onclick="toggleNewChallenge()">+ New Challenge</button>
+        </div>
+
+        <div id="new-challenge-form" class="card" style="display:none;border-color:rgba(123,167,135,0.3);">
+          <div class="input-group">
+            <label>Challenge Name</label>
+            <input type="text" id="new-ch-name" placeholder="e.g., 21-Day Sugar Cut">
+          </div>
+          <div class="input-group">
+            <label>Description</label>
+            <textarea id="new-ch-desc" placeholder="Describe the challenge..."></textarea>
+          </div>
+          <div class="input-group">
+            <label>Duration (days)</label>
+            <input type="number" id="new-ch-duration" value="21" style="width:100px;" min="7" max="90">
+          </div>
+          <button class="btn" onclick="handleCreateChallenge()">Create & Set as Active</button>
+        </div>
+
+        <div class="card" id="challenges-list">
+          <div style="text-align:center;padding:20px;color:var(--warm-gray);font-size:14px;">
+            No challenges yet. Create your first one.
+          </div>
+        </div>
+      </div>
+
+      <!-- Users -->
+      <div>
+        <div class="admin-header">
+          <div class="section-title" style="margin-bottom:0;">Participants</div>
+          <button class="btn btn-small" style="background:var(--sage-light);color:var(--sage);" onclick="exportCSV()">Export CSV</button>
+        </div>
+        <div class="card" style="overflow-x:auto;" id="users-table-card">
+          <div style="text-align:center;padding:20px;color:var(--warm-gray);font-size:14px;">
+            No participants yet.
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+// ==================== DATA LAYER (localStorage) ====================
+const DB = {
+  getUsers: () => JSON.parse(localStorage.getItem('my21_users') || '[]'),
+  saveUsers: (users) => localStorage.setItem('my21_users', JSON.stringify(users)),
+
+  getChallenges: () => JSON.parse(localStorage.getItem('my21_challenges') || '[]'),
+  saveChallenges: (c) => localStorage.setItem('my21_challenges', JSON.stringify(c)),
+
+  getEntries: () => JSON.parse(localStorage.getItem('my21_entries') || '[]'),
+  saveEntries: (e) => localStorage.setItem('my21_entries', JSON.stringify(e)),
+
+  getEnrollments: () => JSON.parse(localStorage.getItem('my21_enrollments') || '[]'),
+  saveEnrollments: (e) => localStorage.setItem('my21_enrollments', JSON.stringify(e)),
+
+  getSession: () => JSON.parse(localStorage.getItem('my21_session') || 'null'),
+  saveSession: (s) => localStorage.setItem('my21_session', JSON.stringify(s)),
+  clearSession: () => localStorage.removeItem('my21_session'),
+
+  getAdminAuth: () => localStorage.getItem('my21_admin_auth') === 'true',
+  setAdminAuth: (v) => localStorage.setItem('my21_admin_auth', v ? 'true' : 'false'),
+};
+
+// Admin password — change this
+const ADMIN_PASSWORD = 'ayurveda2026';
+
+// ==================== CHECKLIST CONFIG ====================
+const CHECKLIST = [
+  { key: 'wokeUpOnTime', label: 'Woke up on time', icon: '☀️' },
+  { key: 'drankWater', label: 'Drank 3+ litres of water', icon: '💧' },
+  { key: 'exercised', label: 'Exercised or walked 30+ mins', icon: '🚶' },
+  { key: 'ateHomeCooked', label: 'Ate home-cooked meals', icon: '🍲' },
+  { key: 'avoidedProcessed', label: 'Avoided processed/packaged food', icon: '🚫' },
+  { key: 'noSugar', label: 'No sugar', icon: '🍬' },
+  { key: 'readOrLearned', label: 'Read or learned something new', icon: '📖' },
+  { key: 'sleptBefore10', label: 'Slept before 10 PM', icon: '🌙' },
+];
+
+const ASSESSMENTS = [
+  { key: 'energy', label: 'Energy', options: ['Low', 'Okay', 'Good', 'Great'], values: ['low','okay','good','great'] },
+  { key: 'mood', label: 'Mood', options: ['Low', 'Okay', 'Good', 'Great'], values: ['low','okay','good','great'] },
+  { key: 'sleepQuality', label: 'Sleep Quality', options: ['Low', 'Okay', 'Good', 'Great'], values: ['low','okay','good','great'] },
+  { key: 'cravings', label: 'Cravings', options: ['None', 'Mild', 'Strong', 'Gave in'], values: ['none','mild','strong','gave_in'] },
+];
+
+// ==================== STATE ====================
+let currentChecklist = {};
+let currentAssessment = { energy: null, mood: null, sleepQuality: null, cravings: null, notes: '' };
+
+// ==================== PIN INPUT HANDLER ====================
+document.addEventListener('DOMContentLoaded', () => {
+  // Signup PIN
+  document.querySelectorAll('.pin-input[data-pin]').forEach(input => {
+    input.addEventListener('input', (e) => {
+      if (!/^\d?$/.test(e.target.value)) { e.target.value = ''; return; }
+      const idx = parseInt(e.target.dataset.pin);
+      if (e.target.value && idx < 3) {
+        document.querySelector(`.pin-input[data-pin="${idx + 1}"]`).focus();
+      }
+    });
+    input.addEventListener('keydown', (e) => {
+      if (e.key === 'Backspace' && !e.target.value) {
+        const idx = parseInt(e.target.dataset.pin);
+        if (idx > 0) document.querySelector(`.pin-input[data-pin="${idx - 1}"]`).focus();
+      }
+    });
+  });
+
+  // Login PIN
+  document.querySelectorAll('.pin-input[data-login-pin]').forEach(input => {
+    input.addEventListener('input', (e) => {
+      if (!/^\d?$/.test(e.target.value)) { e.target.value = ''; return; }
+      const idx = parseInt(e.target.dataset.loginPin);
+      if (e.target.value && idx < 3) {
+        document.querySelector(`.pin-input[data-login-pin="${idx + 1}"]`).focus();
+      }
+    });
+    input.addEventListener('keydown', (e) => {
+      if (e.key === 'Backspace' && !e.target.value) {
+        const idx = parseInt(e.target.dataset.loginPin);
+        if (idx > 0) document.querySelector(`.pin-input[data-login-pin="${idx - 1}"]`).focus();
+      }
+    });
+  });
+
+  // Check for existing session
+  const session = DB.getSession();
+  if (session) {
+    showScreen('today');
+  } else {
+    initLanding();
+  }
+
+  // Check for admin hash in URL
+  if (window.location.hash === '#admin') {
+    showScreen('admin');
+  }
+});
+
+// ==================== NAVIGATION ====================
+function showScreen(name) {
+  document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
+  document.getElementById('screen-' + name).classList.add('active');
+
+  if (name === 'landing') initLanding();
+  if (name === 'today') initToday();
+  if (name === 'progress') initProgress();
+  if (name === 'admin') initAdmin();
+
+  window.scrollTo(0, 0);
+}
+
+// ==================== LANDING ====================
+function initLanding() {
+  const challenges = DB.getChallenges();
+  const active = challenges.find(c => c.isActive);
+
+  if (active) {
+    document.getElementById('landing-challenge-card').style.display = 'block';
+    document.getElementById('no-challenge-msg').style.display = 'none';
+    document.getElementById('landing-challenge-name').textContent = active.name;
+    document.getElementById('landing-challenge-desc').textContent = active.description;
+    document.getElementById('landing-challenge-duration').textContent = active.duration + ' days';
+    document.getElementById('landing-tabs').style.display = 'flex';
+    document.getElementById('form-signup').style.display = 'block';
+  } else {
+    document.getElementById('landing-challenge-card').style.display = 'none';
+    document.getElementById('no-challenge-msg').style.display = 'block';
+    // Still show forms
+  }
+}
+
+function switchTab(mode) {
+  const tabs = document.querySelectorAll('#landing-tabs .tab');
+  tabs.forEach(t => t.classList.remove('active'));
+
+  if (mode === 'signup') {
+    tabs[0].classList.add('active');
+    document.getElementById('form-signup').style.display = 'block';
+    document.getElementById('form-login').style.display = 'none';
+  } else {
+    tabs[1].classList.add('active');
+    document.getElementById('form-signup').style.display = 'none';
+    document.getElementById('form-login').style.display = 'block';
+  }
+  document.getElementById('landing-error').style.display = 'none';
+}
+
+function showError(msg) {
+  const el = document.getElementById('landing-error');
+  el.textContent = msg;
+  el.style.display = 'block';
+}
+
+function getSignupPin() {
+  return Array.from(document.querySelectorAll('.pin-input[data-pin]')).map(i => i.value).join('');
+}
+function getLoginPin() {
+  return Array.from(document.querySelectorAll('.pin-input[data-login-pin]')).map(i => i.value).join('');
+}
+
+function handleSignUp() {
+  const name = document.getElementById('signup-name').value.trim();
+  const email = document.getElementById('signup-email').value.trim();
+  const whatsapp = document.getElementById('signup-whatsapp').value.trim();
+  const pin = getSignupPin();
+  const weight = document.getElementById('signup-weight').value;
+
+  if (!name || !email || !whatsapp || pin.length !== 4) {
+    showError('Please fill in all required fields and set a 4-digit PIN.');
+    return;
+  }
+
+  const users = DB.getUsers();
+  if (users.find(u => u.whatsapp === whatsapp)) {
+    showError('This WhatsApp number is already registered. Please log in.');
+    return;
+  }
+  if (users.find(u => u.email === email)) {
+    showError('This email is already registered. Please log in.');
+    return;
+  }
+
+  const userId = 'u_' + Date.now();
+  users.push({ id: userId, name, email, whatsapp, pin, createdAt: new Date().toISOString() });
+  DB.saveUsers(users);
+
+  // Enroll in active challenge
+  const challenges = DB.getChallenges();
+  const active = challenges.find(c => c.isActive);
+  if (active) {
+    const enrollments = DB.getEnrollments();
+    enrollments.push({
+      id: 'e_' + Date.now(),
+      userId,
+      challengeId: active.id,
+      startDate: new Date().toISOString().split('T')[0],
+      day1Weight: weight ? parseFloat(weight) : null,
+      day21Weight: null,
+      completed: false,
+    });
+    DB.saveEnrollments(enrollments);
+  }
+
+  DB.saveSession({ userId, name });
+  showScreen('today');
+}
+
+function handleLogin() {
+  const whatsapp = document.getElementById('login-whatsapp').value.trim();
+  const pin = getLoginPin();
+
+  if (!whatsapp || pin.length !== 4) {
+    showError('Please enter your WhatsApp number and 4-digit PIN.');
+    return;
+  }
+
+  const users = DB.getUsers();
+  const user = users.find(u => u.whatsapp === whatsapp);
+  if (!user) { showError('No account found with this WhatsApp number.'); return; }
+  if (user.pin !== pin) { showError('Incorrect PIN. Please try again.'); return; }
+
+  DB.saveSession({ userId: user.id, name: user.name });
+  showScreen('today');
+}
+
+function handleLogout() {
+  DB.clearSession();
+  showScreen('landing');
+}
+
+// ==================== TODAY ====================
+function initToday() {
+  const session = DB.getSession();
+  if (!session) { showScreen('landing'); return; }
+
+  const enrollments = DB.getEnrollments();
+  const enrollment = enrollments.filter(e => e.userId === session.userId).sort((a,b) => b.startDate.localeCompare(a.startDate))[0];
+  if (!enrollment) { showScreen('landing'); return; }
+
+  const challenges = DB.getChallenges();
+  const challenge = challenges.find(c => c.id === enrollment.challengeId);
+  const duration = challenge ? challenge.duration : 21;
+
+  const startDate = new Date(enrollment.startDate + 'T00:00:00');
+  const today = new Date();
+  today.setHours(0,0,0,0);
+  const diffDays = Math.floor((today - startDate) / 86400000) + 1;
+  const dayNumber = Math.min(Math.max(diffDays, 1), duration);
+
+  document.getElementById('today-name').textContent = session.name;
+  document.getElementById('today-day-num').textContent = dayNumber;
+  document.getElementById('today-date').textContent = today.toLocaleDateString('en-IN', { weekday: 'long', day: 'numeric', month: 'long', year: 'numeric' });
+  document.getElementById('today-day-badge').textContent = dayNumber + ' of ' + duration;
+
+  // Day progress bar
+  let barHTML = '';
+  for (let i = 1; i <= duration; i++) {
+    barHTML += `<div class="progress-segment ${i <= dayNumber ? 'filled' : ''}"></div>`;
+  }
+  document.getElementById('day-progress-bar').innerHTML = barHTML;
+  document.getElementById('day-progress-pct').textContent = Math.round((dayNumber / duration) * 100) + '% complete';
+
+  // Challenge info
+  if (challenge) {
+    document.getElementById('today-challenge-info').style.display = 'block';
+    document.getElementById('today-ch-name').textContent = challenge.name;
+    document.getElementById('today-ch-desc').textContent = challenge.description;
+  }
+
+  // Load existing entry
+  const entries = DB.getEntries();
+  const existing = entries.find(e => e.enrollmentId === enrollment.id && e.dayNumber === dayNumber);
+
+  currentChecklist = {};
+  CHECKLIST.forEach(item => { currentChecklist[item.key] = existing ? (existing.checklist[item.key] || false) : false; });
+  currentAssessment = existing ? { ...existing.assessment } : { energy: null, mood: null, sleepQuality: null, cravings: null, notes: '' };
+
+  renderChecklist();
+  renderAssessment();
+  updateRing();
+
+  document.getElementById('save-btn').textContent = 'Save Day ' + dayNumber;
+  document.getElementById('save-btn').className = 'btn';
+
+  // Store for save
+  window._currentEnrollmentId = enrollment.id;
+  window._currentDayNumber = dayNumber;
+}
+
+function renderChecklist() {
+  const card = document.getElementById('checklist-card');
+  card.innerHTML = CHECKLIST.map((item, i) => `
+    <div class="check-item ${currentChecklist[item.key] ? 'checked' : ''}" onclick="toggleCheck('${item.key}')">
+      <div class="checkbox ${currentChecklist[item.key] ? 'checked' : ''}"></div>
+      <span class="check-icon">${item.icon}</span>
+      <span class="check-label">${item.label}</span>
+    </div>
+  `).join('');
+}
+
+function toggleCheck(key) {
+  currentChecklist[key] = !currentChecklist[key];
+  renderChecklist();
+  updateRing();
+}
+
+function updateRing() {
+  const count = Object.values(currentChecklist).filter(Boolean).length;
+  const pct = count / 8;
+  const circumference = 2 * Math.PI * 24;
+  const offset = circumference - (pct * circumference);
+  document.getElementById('ring-progress').setAttribute('stroke-dashoffset', offset);
+  document.getElementById('ring-text').textContent = count + '/8';
+}
+
+function renderAssessment() {
+  const card = document.getElementById('assessment-card');
+  let html = '';
+
+  ASSESSMENTS.forEach(a => {
+    html += `<div class="assessment-row">
+      <div class="assessment-label">${a.label}</div>
+      <div class="option-group">
+        ${a.options.map((opt, i) => `
+          <button class="option-btn ${currentAssessment[a.key] === a.values[i] ? 'selected' : ''}"
+                  onclick="setAssessment('${a.key}','${a.values[i]}')">
+            ${opt}
+          </button>
+        `).join('')}
+      </div>
+    </div>`;
+  });
+
+  html += `<div class="assessment-row">
+    <div class="assessment-label">Notes (optional)</div>
+    <textarea id="notes-input" placeholder="How was your day? Any observations..."
+              style="width:100%;padding:12px 14px;font-family:'DM Sans',sans-serif;font-size:14px;
+              color:var(--charcoal);background:var(--cream);border:1px solid var(--cream-dark);
+              border-radius:10px;outline:none;resize:vertical;min-height:70px;box-sizing:border-box;"
+              oninput="currentAssessment.notes=this.value">${currentAssessment.notes || ''}</textarea>
+  </div>`;
+
+  card.innerHTML = html;
+}
+
+function setAssessment(key, value) {
+  currentAssessment[key] = value;
+  renderAssessment();
+}
+
+function handleSave() {
+  const entries = DB.getEntries();
+  const existingIdx = entries.findIndex(e => e.enrollmentId === window._currentEnrollmentId && e.dayNumber === window._currentDayNumber);
+
+  const entry = {
+    enrollmentId: window._currentEnrollmentId,
+    dayNumber: window._currentDayNumber,
+    date: new Date().toISOString().split('T')[0],
+    checklist: { ...currentChecklist },
+    assessment: { ...currentAssessment, notes: document.getElementById('notes-input')?.value || '' },
+  };
+
+  if (existingIdx >= 0) {
+    entries[existingIdx] = entry;
+  } else {
+    entries.push(entry);
+  }
+  DB.saveEntries(entries);
+
+  const btn = document.getElementById('save-btn');
+  btn.textContent = '✓ Saved for today';
+  btn.classList.add('btn-saved');
+  setTimeout(() => {
+    btn.textContent = 'Save Day ' + window._currentDayNumber;
+    btn.classList.remove('btn-saved');
+  }, 2500);
+}
+
+// ==================== PROGRESS ====================
+const valueToNum = { low: 1, okay: 2, good: 3, great: 4, none: 4, mild: 3, strong: 2, gave_in: 1 };
+const levelColors = { 1: '#E8A598', 2: '#C4B59A', 3: '#B5C9A8', 4: '#7BA787' };
+
+function initProgress() {
+  const session = DB.getSession();
+  if (!session) { showScreen('landing'); return; }
+
+  const enrollments = DB.getEnrollments();
+  const enrollment = enrollments.filter(e => e.userId === session.userId).sort((a,b) => b.startDate.localeCompare(a.startDate))[0];
+  if (!enrollment) { showScreen('landing'); return; }
+
+  const challenges = DB.getChallenges();
+  const challenge = challenges.find(c => c.id === enrollment.challengeId);
+  const duration = challenge ? challenge.duration : 21;
+
+  const startDate = new Date(enrollment.startDate + 'T00:00:00');
+  const today = new Date();
+  today.setHours(0,0,0,0);
+  const dayNumber = Math.min(Math.floor((today - startDate) / 86400000) + 1, duration);
+
+  const entries = DB.getEntries().filter(e => e.enrollmentId === enrollment.id);
+
+  document.getElementById('progress-subtitle').textContent = (challenge ? challenge.name : 'My21 Challenge') + ' — Day ' + dayNumber + ' of ' + duration;
+
+  // Stats
+  const completedDays = entries.length;
+  let totalChecks = 0;
+  entries.forEach(e => {
+    totalChecks += Object.values(e.checklist || {}).filter(Boolean).length;
+  });
+  const overallScore = completedDays > 0 ? Math.round((totalChecks / (completedDays * 8)) * 100) : 0;
+
+  let currentStreak = 0, longestStreak = 0;
+  const entryDays = new Set(entries.map(e => e.dayNumber));
+  for (let d = 1; d <= dayNumber; d++) {
+    if (entryDays.has(d)) { currentStreak++; longestStreak = Math.max(longestStreak, currentStreak); }
+    else { currentStreak = 0; }
+  }
+
+  document.getElementById('stat-days').textContent = completedDays;
+  document.getElementById('stat-streak').textContent = longestStreak;
+  document.getElementById('stat-score').textContent = overallScore + '%';
+
+  // Day 21 weight
+  const isDay21 = dayNumber >= duration;
+  if (isDay21 && enrollment.day1Weight && !enrollment.day21Weight) {
+    document.getElementById('day21-weight-section').style.display = 'block';
+    window._currentEnrollmentIdForWeight = enrollment.id;
+  } else {
+    document.getElementById('day21-weight-section').style.display = 'none';
+  }
+
+  // Weight comparison
+  if (enrollment.day1Weight && enrollment.day21Weight) {
+    document.getElementById('weight-section').style.display = 'block';
+    document.getElementById('weight-day1').textContent = enrollment.day1Weight + ' kg';
+    document.getElementById('weight-day-label').textContent = 'Day ' + duration;
+    document.getElementById('weight-day21').textContent = enrollment.day21Weight + ' kg';
+    const change = (enrollment.day21Weight - enrollment.day1Weight).toFixed(1);
+    document.getElementById('weight-change-num').textContent = change + ' kg';
+    document.getElementById('weight-change-label').textContent = 'change over ' + duration + ' days';
+  } else {
+    document.getElementById('weight-section').style.display = 'none';
+  }
+
+  // Calendar
+  let calHTML = '';
+  for (let d = 1; d <= duration; d++) {
+    const entry = entries.find(e => e.dayNumber === d);
+    const isFuture = d > dayNumber;
+    const isToday = d === dayNumber;
+    const cls = entry ? 'completed' : isFuture ? 'future' : 'missed';
+    const todayCls = isToday ? ' today' : '';
+    const checks = entry ? Object.values(entry.checklist || {}).filter(Boolean).length : 0;
+    calHTML += `<div class="cal-day ${cls}${todayCls}"><span>${d}</span>${entry ? `<span class="cal-score">${checks}/8</span>` : ''}</div>`;
+  }
+  document.getElementById('progress-calendar').innerHTML = calHTML;
+
+  // Trends
+  const metrics = [
+    { key: 'energy', label: 'Energy' },
+    { key: 'mood', label: 'Mood' },
+    { key: 'sleepQuality', label: 'Sleep' },
+    { key: 'cravings', label: 'Cravings' },
+  ];
+  let trendsHTML = '';
+  metrics.forEach(m => {
+    trendsHTML += `<div class="trend-row"><div class="trend-label">${m.label}</div><div class="trend-bars">`;
+    for (let d = 1; d <= duration; d++) {
+      const entry = entries.find(e => e.dayNumber === d);
+      const val = entry && entry.assessment ? (valueToNum[entry.assessment[m.key]] || 0) : 0;
+      const h = val > 0 ? (val / 4 * 100) + '%' : '3px';
+      const c = val > 0 ? levelColors[val] : 'var(--cream-dark)';
+      trendsHTML += `<div class="trend-bar" style="height:${h};background:${c};"></div>`;
+    }
+    trendsHTML += '</div></div>';
+  });
+  document.getElementById('trends-card').innerHTML = trendsHTML;
+
+  // WhatsApp link
+  const waText = encodeURIComponent(`Hi Dr. Aparna, I just completed the ${challenge ? challenge.name : 'My21'} challenge. I tracked ${completedDays} days with ${overallScore}% completion. I'd love to discuss what I noticed.`);
+  document.getElementById('progress-wa-link').href = `https://wa.me/917012399593?text=${waText}`;
+}
+
+function saveDay21Weight() {
+  const weight = document.getElementById('day21-weight-input').value;
+  if (!weight) return;
+
+  const enrollments = DB.getEnrollments();
+  const idx = enrollments.findIndex(e => e.id === window._currentEnrollmentIdForWeight);
+  if (idx >= 0) {
+    enrollments[idx].day21Weight = parseFloat(weight);
+    enrollments[idx].completed = true;
+    DB.saveEnrollments(enrollments);
+  }
+  initProgress();
+}
+
+// ==================== ADMIN ====================
+function initAdmin() {
+  if (DB.getAdminAuth()) {
+    document.getElementById('admin-login').style.display = 'none';
+    document.getElementById('admin-dashboard').style.display = 'block';
+    loadAdminData();
+  }
+}
+
+function handleAdminLogin() {
+  const pw = document.getElementById('admin-password').value;
+  if (pw === ADMIN_PASSWORD) {
+    DB.setAdminAuth(true);
+    document.getElementById('admin-login').style.display = 'none';
+    document.getElementById('admin-dashboard').style.display = 'block';
+    loadAdminData();
+  } else {
+    document.getElementById('admin-error').textContent = 'Incorrect password.';
+    document.getElementById('admin-error').style.display = 'block';
+  }
+}
+
+function toggleNewChallenge() {
+  const form = document.getElementById('new-challenge-form');
+  form.style.display = form.style.display === 'none' ? 'block' : 'none';
+}
+
+function handleCreateChallenge() {
+  const name = document.getElementById('new-ch-name').value.trim();
+  const desc = document.getElementById('new-ch-desc').value.trim();
+  const duration = parseInt(document.getElementById('new-ch-duration').value) || 21;
+
+  if (!name || !desc) return;
+
+  const challenges = DB.getChallenges();
+  challenges.forEach(c => c.isActive = false);
+  challenges.push({
+    id: 'ch_' + Date.now(),
+    name,
+    description: desc,
+    duration,
+    isActive: true,
+    createdAt: new Date().toISOString(),
+  });
+  DB.saveChallenges(challenges);
+
+  document.getElementById('new-ch-name').value = '';
+  document.getElementById('new-ch-desc').value = '';
+  document.getElementById('new-ch-duration').value = '21';
+  document.getElementById('new-challenge-form').style.display = 'none';
+  loadAdminData();
+}
+
+function toggleChallengeActive(id) {
+  const challenges = DB.getChallenges();
+  const ch = challenges.find(c => c.id === id);
+  if (ch.isActive) {
+    ch.isActive = false;
+  } else {
+    challenges.forEach(c => c.isActive = false);
+    ch.isActive = true;
+  }
+  DB.saveChallenges(challenges);
+  loadAdminData();
+}
+
+function loadAdminData() {
+  const challenges = DB.getChallenges();
+  const users = DB.getUsers();
+  const enrollments = DB.getEnrollments();
+  const entries = DB.getEntries();
+
+  // Stats
+  document.getElementById('admin-total-users').textContent = users.length;
+  const usersWithEntries = new Set(entries.map(e => {
+    const enr = enrollments.find(en => en.id === e.enrollmentId);
+    return enr ? enr.userId : null;
+  }).filter(Boolean));
+  document.getElementById('admin-active-users').textContent = usersWithEntries.size;
+
+  const avgDays = enrollments.length > 0 ?
+    Math.round(enrollments.reduce((acc, enr) => acc + entries.filter(e => e.enrollmentId === enr.id).length, 0) / enrollments.length) : 0;
+  document.getElementById('admin-avg-days').textContent = avgDays;
+
+  // Challenges list
+  const listEl = document.getElementById('challenges-list');
+  if (challenges.length === 0) {
+    listEl.innerHTML = '<div style="text-align:center;padding:20px;color:var(--warm-gray);font-size:14px;">No challenges yet. Create your first one.</div>';
+  } else {
+    listEl.innerHTML = challenges.map(ch => `
+      <div class="challenge-row">
+        <div style="flex:1;">
+          <div style="font-family:'Playfair Display',serif;font-size:16px;">
+            ${ch.name}
+            <span class="${ch.isActive ? 'active-badge' : ''}" style="${!ch.isActive ? 'display:inline-block;background:var(--cream);color:var(--warm-gray);font-size:11px;font-weight:500;padding:2px 10px;border-radius:12px;margin-left:8px;' : ''}">
+              ${ch.isActive ? 'Active' : 'Inactive'}
+            </span>
+          </div>
+          <div style="font-size:12px;color:var(--warm-gray);margin-top:3px;">${ch.duration} days · ${enrollments.filter(e => e.challengeId === ch.id).length} participants</div>
+        </div>
+        <button class="btn btn-small ${ch.isActive ? 'btn-outline' : 'btn-sage'}" onclick="toggleChallengeActive('${ch.id}')">
+          ${ch.isActive ? 'Deactivate' : 'Set Active'}
+        </button>
+      </div>
+    `).join('');
+  }
+
+  // Users table
+  const tableEl = document.getElementById('users-table-card');
+  if (enrollments.length === 0) {
+    tableEl.innerHTML = '<div style="text-align:center;padding:20px;color:var(--warm-gray);font-size:14px;">No participants yet.</div>';
+  } else {
+    let tableHTML = `<table><thead><tr>
+      <th>Name</th><th>WhatsApp</th><th>Email</th><th>Started</th><th>Progress</th><th>Weight</th>
+    </tr></thead><tbody>`;
+
+    enrollments.forEach(enr => {
+      const user = users.find(u => u.id === enr.userId);
+      if (!user) return;
+      const userEntries = entries.filter(e => e.enrollmentId === enr.id);
+      const daysCompleted = userEntries.length;
+      const duration = challenges.find(c => c.id === enr.challengeId)?.duration || 21;
+      const pct = Math.round((daysCompleted / duration) * 100);
+
+      tableHTML += `<tr>
+        <td>${user.name}</td>
+        <td><a href="https://wa.me/${user.whatsapp.replace(/[^0-9]/g,'')}" target="_blank">${user.whatsapp}</a></td>
+        <td style="color:var(--warm-gray);">${user.email}</td>
+        <td style="color:var(--warm-gray);">${new Date(enr.startDate).toLocaleDateString('en-IN',{day:'numeric',month:'short'})}</td>
+        <td>
+          <div class="mini-bar"><div class="mini-bar-fill" style="width:${pct}%"></div></div>
+          <span style="font-size:12px;color:var(--warm-gray);">${daysCompleted}/${duration}</span>
+        </td>
+        <td style="color:var(--warm-gray);">${enr.day1Weight ? enr.day1Weight + '→' + (enr.day21Weight || '?') : '—'}</td>
+      </tr>`;
+    });
+
+    tableHTML += '</tbody></table>';
+    tableEl.innerHTML = tableHTML;
+  }
+}
+
+function exportCSV() {
+  const users = DB.getUsers();
+  const enrollments = DB.getEnrollments();
+  const entries = DB.getEntries();
+  const challenges = DB.getChallenges();
+
+  const headers = ['Name','Email','WhatsApp','Challenge','Start Date','Days Completed','Day 1 Weight','Day 21 Weight'];
+  const rows = enrollments.map(enr => {
+    const user = users.find(u => u.id === enr.userId);
+    const ch = challenges.find(c => c.id === enr.challengeId);
+    const daysCompleted = entries.filter(e => e.enrollmentId === enr.id).length;
+    return [
+      user?.name || '', user?.email || '', user?.whatsapp || '',
+      ch?.name || '', enr.startDate, daysCompleted,
+      enr.day1Weight || '', enr.day21Weight || ''
+    ];
+  });
+
+  const csv = [headers, ...rows].map(r => r.join(',')).join('\n');
+  const blob = new Blob([csv], { type: 'text/csv' });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = 'my21-participants-' + new Date().toISOString().split('T')[0] + '.csv';
+  a.click();
+  URL.revokeObjectURL(url);
+}
+</script>
+
+</body>
+</html>

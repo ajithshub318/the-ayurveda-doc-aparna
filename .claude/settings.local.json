@@ -19,7 +19,13 @@
       "Bash(git add:*)",
       "Bash(git commit:*)",
       "WebSearch",
-      "Bash(npx tsc:*)"
+      "Bash(npx tsc:*)",
+      "Bash(SUPABASE_ACCESS_TOKEN=sbp_806c3d65965b3c4681e971ea9e24f3ee8d79b12e npx supabase db execute --project-ref ussbsxpvbfxfppjhuahr -f - <<'SQL':*)",
+      "Bash(SUPABASE_ACCESS_TOKEN=sbp_806c3d65965b3c4681e971ea9e24f3ee8d79b12e npx supabase db query --help)",
+      "Bash(SUPABASE_ACCESS_TOKEN=sbp_806c3d65965b3c4681e971ea9e24f3ee8d79b12e npx supabase db query --linked \":*)",
+      "Bash(SUPABASE_ACCESS_TOKEN=sbp_806c3d65965b3c4681e971ea9e24f3ee8d79b12e npx supabase db query --linked -f fix-rls.sql)",
+      "Bash(curl:*)",
+      "Bash(SUPABASE_ACCESS_TOKEN=sbp_806c3d65965b3c4681e971ea9e24f3ee8d79b12e npx supabase db query --linked \"INSERT INTO my21_challenges \\(name, description, duration, is_active\\) VALUES \\(''21-Day Sugar Cut'', ''For 21 days, cut every source of refined sugar. Keep fruits, dry fruits, rice, and whole grains. Track how your body responds.'', 21, true\\);\")"
     ],
     "deny": [],
     "ask": []
