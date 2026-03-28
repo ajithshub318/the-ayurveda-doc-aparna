@@ -205,21 +205,19 @@ function AuthModal({ open, onClose, config, theme, onSuccess }: {
                   />
                 </div>
               </div>
-              <div className="grid grid-cols-2 gap-4">
-                <div>
-                  <label className="block text-[10px] font-bold text-[#8A8778] uppercase tracking-wider mb-1 px-1">4-Digit PIN *</label>
-                  <PinInput value={pin} onChange={setPin} disabled={loading} accentColor={theme.primary} />
-                  <p className="text-[9px] text-[#8A8778] mt-1 px-1">You'll use this to log in daily</p>
-                </div>
-                <div>
-                  <label className="block text-[10px] font-bold text-[#8A8778] uppercase tracking-wider mb-1 px-1">Weight (Optional)</label>
-                  <input type="number" value={day1Weight} onChange={(e) => setDay1Weight(e.target.value)}
-                    placeholder="e.g. 72.5 kg" disabled={loading} step="0.1"
-                    className="w-full bg-stone-50 border border-stone-200 rounded-lg px-4 py-3 text-sm outline-none transition-colors"
-                    onFocus={(e) => { e.currentTarget.style.borderColor = theme.primary; }}
-                    onBlur={(e) => { e.currentTarget.style.borderColor = '#e7e5e4'; }}
-                  />
-                </div>
+              <div>
+                <label className="block text-[10px] font-bold text-[#8A8778] uppercase tracking-wider mb-1 px-1">4-Digit PIN *</label>
+                <PinInput value={pin} onChange={setPin} disabled={loading} accentColor={theme.primary} />
+                <p className="text-[9px] text-[#8A8778] mt-1 px-1">You'll use this to log in daily</p>
+              </div>
+              <div>
+                <label className="block text-[10px] font-bold text-[#8A8778] uppercase tracking-wider mb-1 px-1">Weight (Optional)</label>
+                <input type="number" value={day1Weight} onChange={(e) => setDay1Weight(e.target.value)}
+                  placeholder="e.g. 72.5 kg" disabled={loading} step="0.1"
+                  className="w-full bg-stone-50 border border-stone-200 rounded-lg px-4 py-3 text-sm outline-none transition-colors"
+                  onFocus={(e) => { e.currentTarget.style.borderColor = theme.primary; }}
+                  onBlur={(e) => { e.currentTarget.style.borderColor = '#e7e5e4'; }}
+                />
               </div>
               <button type="submit" disabled={loading}
                 className="w-full text-white font-bold py-4 rounded-xl shadow-lg transition-all active:scale-95 duration-150"
