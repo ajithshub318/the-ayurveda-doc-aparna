@@ -9,7 +9,25 @@ interface HeroSectionProps {
 
 export function HeroSection({ onBookingClick, onContactClick }: HeroSectionProps) {
   return (
-    <section aria-label="Dr. Aparna Albert - Ayurveda Doctor in Trivandrum, Kerala" className="relative pt-16 sm:pt-20 lg:pt-24 min-h-screen flex items-center bg-ivory overflow-hidden">
+    <>
+    {/* 21-Day Challenge Banner */}
+    <a
+      href="/my21"
+      className="block w-full bg-gradient-to-r from-[#E07A5F] to-[#C45B4A] text-white text-center py-3 px-4 relative overflow-hidden group mt-16 sm:mt-20 lg:mt-24"
+      style={{ zIndex: 40 }}
+    >
+      <div className="absolute inset-0 opacity-10 pointer-events-none text-2xl flex items-center justify-center gap-6">
+        <span>🍬</span><span>🍭</span><span>🍩</span><span>🍰</span><span>🍦</span>
+      </div>
+      <div className="relative flex items-center justify-center gap-3 flex-wrap">
+        <span className="bg-white/20 text-[10px] font-bold tracking-widest px-2 py-0.5 rounded-full uppercase">Live Now</span>
+        <span className="font-medium text-sm sm:text-base">
+          Join me for the <strong className="font-bold">21-Day Sugar Cut Challenge</strong>
+        </span>
+        <span className="text-white/80 text-sm group-hover:translate-x-1 transition-transform">→</span>
+      </div>
+    </a>
+    <section aria-label="Dr. Aparna Albert - Ayurveda Doctor in Trivandrum, Kerala" className="relative min-h-screen flex items-center bg-ivory overflow-hidden">
       <div className="absolute inset-0 opacity-[0.03]" style={{ backgroundImage: 'radial-gradient(circle at 1px 1px, #4A4340 1px, transparent 0)', backgroundSize: '24px 24px' }}></div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12 lg:py-20 w-full relative">
@@ -107,5 +125,6 @@ export function HeroSection({ onBookingClick, onContactClick }: HeroSectionProps
         </div>
       </div>
     </section>
+    </>
   );
 }
